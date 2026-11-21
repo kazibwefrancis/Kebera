@@ -20,7 +20,10 @@
 ## Use it only on networks you are allowed to test
 
 Run Kebera only on your own connection or one you have permission to diagnose.
-You are responsible for how you use it.
+You are responsible for how you use it. **Misuse or perversion of Kebera is not
+tolerated.** Using it, or a modified version, against networks or devices you
+don't own or aren't permitted to test may be a crime, and is entirely the
+user's responsibility. See [ACCEPTABLE_USE.md](ACCEPTABLE_USE.md).
 
 ## Not affiliated with any provider or manufacturer
 

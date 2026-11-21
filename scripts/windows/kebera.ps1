@@ -527,6 +527,7 @@ function Get-CellGrades($cell) {
 Write-Host ''
 Write-Host "Kebera $KeberaVersion - home internet check-up (read-only)" -ForegroundColor Green
 Write-Host 'Nothing on your network will be changed. Press Ctrl+C to stop at any time.' -ForegroundColor Gray
+Write-Host 'Kebera is NOT a hacking tool. Use it only on your own connection. See ACCEPTABLE_USE.md.' -ForegroundColor Gray
 
 $report = [ordered]@{
     tool      = 'Kebera'

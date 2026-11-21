@@ -45,6 +45,11 @@ Kebera must stay safe and trustworthy:
 
 ## Pull requests
 
+**Only the maintainer merges changes into this repository.** Anyone can fork
+Kebera and open a pull request; the maintainer reviews it and decides whether it
+is accepted. Pull requests that weaken Kebera's safeguards, or add anything
+covered by "Not allowed" in [ACCEPTABLE_USE.md](ACCEPTABLE_USE.md), will be closed.
+
 - One topic per pull request, with a short description of what you tested and on
   which equipment.
 - Run `kebera.ps1 -Quick -NoSpeedTest` before submitting script changes.

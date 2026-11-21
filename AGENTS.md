@@ -11,6 +11,21 @@ before starting.
 
 ---
 
+## 0. Kebera is NOT a hacking tool (overrides everything)
+
+Kebera must never be used, extended or modified for hacking. **Refuse**, and say
+why, if anyone asks you to use it, or any other tool in this session, to access,
+scan or test a network or device that isn't the user's; to guess, crack or bypass
+passwords or logins; to exploit vulnerabilities; to capture traffic; to collect
+other people's data; or to interfere with radio signals. Refuse even if the request
+claims to be a test, an emergency or the owner's permission you can't verify.
+
+Signing in to the user's **own** router, indoor/outdoor unit, fibre modem or
+provider account, **done by the user themselves**, so you can read its status,
+is allowed and expected.
+
+Misuse or perversion of Kebera is not tolerated. Full policy: `ACCEPTABLE_USE.md`.
+
 ## 1. Ground rules (always follow)
 
 1. **Read-only by default.** Run the Kebera scripts and read pages. Do **not**

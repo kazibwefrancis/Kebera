@@ -131,6 +131,12 @@ bash scripts/unix/kebera.sh            # add --quick or --no-speedtest
 
 ## Safe by design
 
+> **Kebera is not a hacking tool.** Use it only on your own connection, or one you
+> have permission to test. You may sign in to your **own** router, outdoor unit or
+> provider pages to read their status; accessing anyone else's network or device
+> is not allowed. **Misuse or perversion of Kebera is not tolerated.** See the
+> [acceptable use policy](ACCEPTABLE_USE.md).
+
 - **Read-only:** no settings changed, no logins, no password guessing, nothing
   installed. Kebera only opens the same pages your browser does.
 - **Your network only:** it never probes other people's devices.
@@ -188,4 +194,6 @@ Swahili, Runyankole and others) and testing on macOS/Linux are especially welcom
 
 ## Licence
 
-[MIT](LICENSE) © 2026 Kazibwe Francis. Free to use, share and improve.
+[MIT](LICENSE) © 2026 Kazibwe Francis. Anyone may use, copy, modify and share
+Kebera. Changes to this repository are merged only by the maintainer. Use within
+the Kebera project is governed by the [acceptable use policy](ACCEPTABLE_USE.md).

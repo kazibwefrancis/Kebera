@@ -37,6 +37,7 @@ is_private() {
 }
 
 echo "Kebera $VERSION - home internet check-up (read-only, beta for macOS/Linux)"
+echo "Kebera is NOT a hacking tool. Use it only on your own connection. See ACCEPTABLE_USE.md."
 
 # ---------------------------------------------------------------- connection
 step "Checking how this computer is connected"
