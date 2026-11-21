@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-labelledby="t d">
+  <title id="t">How Kebera finds the problem</title>
+  <desc id="d">Kebera pings your router, the next device and two internet servers at the same moment. The first link that fails shows where the problem is: your home, your outdoor unit or modem, or your provider.</desc>
+  <rect width="1200" height="420" rx="18" fill="#ffffff"/>
+  <style>
+    .t{font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif;fill:#1d2433}
+    .s{font-size:15px;fill:#5b6475}
+    .h{font-size:19px;font-weight:700}
+    .z{font-size:14px;font-weight:700;letter-spacing:.06em}
+  </style>
+  <text x="40" y="48" class="t" font-size="24" font-weight="700">Kebera checks every link at the same moment</text>
+  <text x="40" y="76" class="t s">The first link that fails is where the problem is.</text>
+
+  <!-- zones -->
+  <rect x="30" y="100" width="560" height="250" rx="14" fill="#e8f5e9"/>
+  <rect x="600" y="100" width="190" height="250" rx="14" fill="#fff8e1"/>
+  <rect x="800" y="100" width="370" height="250" rx="14" fill="#e3f2fd"/>
+  <text x="50" y="128" class="t z" fill="#2e7d32">YOUR HOME</text>
+  <text x="618" y="128" class="t z" fill="#b26a00">YOUR EQUIPMENT</text>
+  <text x="820" y="128" class="t z" fill="#1565c0">PROVIDER &amp; INTERNET</text>
+
+  <!-- boxes -->
+  <g class="t">
+    <rect x="55" y="170" width="150" height="80" rx="12" fill="#fff" stroke="#9fb3a2" stroke-width="2"/>
+    <text x="130" y="205" text-anchor="middle" class="h">Your devices</text>
+    <text x="130" y="228" text-anchor="middle" class="s">laptop, phone, Xbox</text>
+
+    <rect x="250" y="170" width="150" height="80" rx="12" fill="#fff" stroke="#9fb3a2" stroke-width="2"/>
+    <text x="325" y="205" text-anchor="middle" class="h">Wi-Fi / cable</text>
+    <text x="325" y="228" text-anchor="middle" class="s">2.4 GHz · 5 GHz</text>
+
+    <rect x="430" y="170" width="140" height="80" rx="12" fill="#fff" stroke="#9fb3a2" stroke-width="2"/>
+    <text x="500" y="205" text-anchor="middle" class="h">Router</text>
+    <text x="500" y="228" text-anchor="middle" class="s">indoor unit</text>
+
+    <rect x="620" y="170" width="150" height="80" rx="12" fill="#fff" stroke="#d6b36a" stroke-width="2"/>
+    <text x="695" y="198" text-anchor="middle" class="h">Outdoor unit</text>
+    <text x="695" y="220" text-anchor="middle" class="s">or fibre modem</text>
+    <text x="695" y="240" text-anchor="middle" class="s">(if you have one)</text>
+
+    <rect x="825" y="170" width="150" height="80" rx="12" fill="#fff" stroke="#8fb2d6" stroke-width="2"/>
+    <text x="900" y="205" text-anchor="middle" class="h">Provider</text>
+    <text x="900" y="228" text-anchor="middle" class="s">tower · fibre line</text>
+
+    <rect x="1005" y="170" width="145" height="80" rx="12" fill="#fff" stroke="#8fb2d6" stroke-width="2"/>
+    <text x="1077" y="205" text-anchor="middle" class="h">Internet</text>
+    <text x="1077" y="228" text-anchor="middle" class="s">Google · Cloudflare</text>
+  </g>
+  <!-- arrows -->
+  <g stroke="#7a8496" stroke-width="3" fill="none">
+    <path d="M205 210 H245"/><path d="M400 210 H425"/><path d="M570 210 H615"/><path d="M770 210 H820"/><path d="M975 210 H1000"/>
+  </g>
+  <!-- ping markers -->
+  <g class="t" font-size="13" font-weight="700">
+    <circle cx="500" cy="290" r="16" fill="#2e7d32"/><text x="500" y="295" text-anchor="middle" fill="#fff">1</text>
+    <circle cx="695" cy="290" r="16" fill="#b26a00"/><text x="695" y="295" text-anchor="middle" fill="#fff">2</text>
+    <circle cx="1077" cy="290" r="16" fill="#1565c0"/><text x="1077" y="295" text-anchor="middle" fill="#fff">3</text>
+  </g>
+  <g stroke-dasharray="4 5" stroke-width="2" fill="none">
+    <path d="M500 250 V272" stroke="#2e7d32"/><path d="M695 250 V272" stroke="#b26a00"/><path d="M1077 250 V272" stroke="#1565c0"/>
+  </g>
+  <text x="40" y="385" class="t s"><tspan font-weight="700" fill="#2e7d32">1 fails</tspan> → problem inside your home    <tspan font-weight="700" fill="#b26a00">1 OK, 2 fails</tspan> → outdoor unit, modem or its cable    <tspan font-weight="700" fill="#1565c0">1 and 2 OK, 3 fails</tspan> → your provider's network</text>
+</svg>
