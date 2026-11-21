@@ -16,9 +16,12 @@
 		Content-Security-Policy "default-src 'self'; img-src 'self' data: https://avatars.githubusercontent.com; connect-src 'self' https://api.github.com; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
 	}
 
-	@static path *.svg *.json
+	# Pages and contact data: always check for a newer version (cheap thanks to ETags),
+	# so visitors see updates as soon as they are deployed.
+	@fresh path / *.html *.json
+	header @fresh Cache-Control "no-cache"
+	@static path *.svg
 	header @static Cache-Control "public, max-age=3600"
-	header /index.html Cache-Control "no-cache"
 
 	handle_errors {
 		rewrite * /index.html
