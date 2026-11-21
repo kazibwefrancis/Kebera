@@ -10,3 +10,6 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+
+# Website images are copied from docs/images at deploy time
+site/images/

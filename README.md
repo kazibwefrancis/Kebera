@@ -15,6 +15,11 @@
   <img alt="Read-only" src="https://img.shields.io/badge/read--only-no%20settings%20changed-blue">
 </p>
 
+<p align="center">
+  🌐 <b>Website:</b> <a href="https://kazibwefrancis.github.io/kebera/">kazibwefrancis.github.io/kebera</a> &nbsp;·&nbsp;
+  📞 <a href="docs/provider-contacts.md">Provider contacts (East Africa)</a>
+</p>
+
 > [!IMPORTANT]
 > **Kebera is not a hacking tool.** Use it only on **your own** internet connection
 > (or one you have permission to check). You may sign in to **your own** router,
@@ -518,6 +523,7 @@ and limitations.
 1. Open `message-to-provider.txt` from your report folder.
 2. Add your **account or line number**, name and area.
 3. Send it by WhatsApp, email or the provider's app. Most Ugandan providers answer on WhatsApp.
+   Customer care numbers for Uganda, Kenya, Tanzania and Rwanda: [provider contacts](docs/provider-contacts.md).
 4. **Always ask for a reference number**, and note the date and the agent's name.
 
 More templates: [WhatsApp](templates/message-whatsapp.md) · [Email](templates/message-email.md).
@@ -670,6 +676,9 @@ kebera/
 │   ├── providers.md                ← Working with your provider
 │   └── devices/                    ← ZTE, Huawei, fibre, other equipment
 ├── templates/                  ← Detailed report, WhatsApp, email and escalation guide
+├── site/                       ← The project website (published to GitHub Pages)
+│   ├── index.html
+│   └── providers.json          ← East African customer care contacts
 ├── examples/                   ← Real, anonymised case studies
 ├── AGENTS.md                   ← Instructions for AI coding agents
 ├── CLAUDE.md                   ← Strict rules for Claude

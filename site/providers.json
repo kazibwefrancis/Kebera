@@ -1,0 +1,121 @@
+{
+  "lastChecked": "2026-11-21",
+  "note": "Numbers change. Always confirm on the provider's official website, app or SIM pack. 'official' = taken from the provider's own website; 'third-party' = from a news site or directory, not yet confirmed by the provider. Corrections welcome via a GitHub issue or pull request.",
+  "safety": "Providers will never ask for your PIN, password or one-time code. Hang up on anyone who does.",
+  "countries": [
+    {
+      "country": "Uganda",
+      "flag": "🇺🇬",
+      "providers": [
+        {
+          "name": "MTN Uganda",
+          "call": "100 (free from an MTN line)",
+          "other": "",
+          "whatsapp": "",
+          "website": "https://www.mtn.co.ug",
+          "status": "official",
+          "source": "https://www.mtn.co.ug/helppersonal/numbers-to-remember/"
+        },
+        {
+          "name": "Airtel Uganda",
+          "call": "100 (free from an Airtel line)",
+          "other": "0752 100 100 (from other networks)",
+          "whatsapp": "",
+          "website": "https://www.airtel.co.ug",
+          "status": "third-party",
+          "source": "https://helloduty.com/country/uganda"
+        }
+      ]
+    },
+    {
+      "country": "Kenya",
+      "flag": "🇰🇪",
+      "providers": [
+        {
+          "name": "Safaricom",
+          "call": "100 prepaid (free), 200 postpaid",
+          "other": "+254 722 002 100 (chargeable)",
+          "whatsapp": "0722 000 100 (Zuri: send \"Hi Zuri\")",
+          "website": "https://www.safaricom.co.ke",
+          "status": "official",
+          "source": "https://www.safaricom.co.ke/about/contact-us"
+        },
+        {
+          "name": "Airtel Kenya",
+          "call": "100 prepaid, 200 postpaid, 400 home broadband (free from Airtel)",
+          "other": "0733 100 100 (from other networks)",
+          "whatsapp": "",
+          "website": "https://www.airtelkenya.com",
+          "status": "third-party",
+          "source": "https://businessradar.co.ke/airtel-kenya-customer-care-number/"
+        }
+      ]
+    },
+    {
+      "country": "Tanzania",
+      "flag": "🇹🇿",
+      "providers": [
+        {
+          "name": "Yas",
+          "call": "100",
+          "other": "+255 714 100 100 (roaming help)",
+          "whatsapp": "",
+          "website": "https://www.yas.co.tz",
+          "status": "official",
+          "source": "https://yas.co.tz/?p=17508"
+        },
+        {
+          "name": "Vodacom Tanzania",
+          "call": "100 (from a Vodacom line)",
+          "other": "",
+          "whatsapp": "",
+          "website": "https://vodacom.co.tz",
+          "status": "third-party",
+          "source": "https://www.jaynevytours.com/how-to-check-your-vodacom-number-in-tanzania..html"
+        },
+        {
+          "name": "Halotel",
+          "call": "",
+          "other": "+255 620 100 000",
+          "whatsapp": "",
+          "website": "https://www.halotel.co.tz",
+          "status": "official-regulator",
+          "source": "https://www.tcra.go.tz/download/sw-1619021405-Application%20Services%20as%20of%20May%202020.pdf"
+        },
+        {
+          "name": "Airtel Tanzania",
+          "call": "Not yet verified: check the official website",
+          "other": "",
+          "whatsapp": "",
+          "website": "https://www.airtel.co.tz",
+          "status": "unverified",
+          "source": ""
+        }
+      ]
+    },
+    {
+      "country": "Rwanda",
+      "flag": "🇷🇼",
+      "providers": [
+        {
+          "name": "MTN Rwanda",
+          "call": "100",
+          "other": "+250 788 310 044",
+          "whatsapp": "",
+          "website": "https://www.mtn.co.rw",
+          "status": "official",
+          "source": "https://www.mtn.co.rw/page-menu/connectivity/"
+        },
+        {
+          "name": "Airtel Rwanda",
+          "call": "100 (customer enquiry code on all networks)",
+          "other": "",
+          "whatsapp": "",
+          "website": "https://www.airtel.co.rw",
+          "status": "official-regulator",
+          "source": "https://rura.rw/fileadmin/Documents/docs/RWANDA_NATIONAL_NUMBERING_PLAN.pdf"
+        }
+      ]
+    }
+  ]
+}
