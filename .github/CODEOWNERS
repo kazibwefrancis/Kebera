@@ -1,0 +1,13 @@
+# Every change to Kebera needs the maintainer's review before it can be merged.
+# (Takes effect when the branch rule "Require review from Code Owners" is on.)
+* @kazibwefrancis
+
+# Safety-critical files: the scripts, the AI-agent rules and the policies.
+/scripts/            @kazibwefrancis
+/AGENTS.md           @kazibwefrancis
+/CLAUDE.md           @kazibwefrancis
+/chat/               @kazibwefrancis
+/ACCEPTABLE_USE.md   @kazibwefrancis
+/CODE_OF_CONDUCT.md  @kazibwefrancis
+/SECURITY.md         @kazibwefrancis
+/LICENSE             @kazibwefrancis
