@@ -132,6 +132,13 @@ need a login, but you can, **after the person signs in**:
    - **Diagnosis**: built-in checks on some ZTE units
    - **Data usage / Statistics**: monthly usage (relevant to fair-usage limits)
    - **Fibre ONT: Optical / PON info**: Rx optical power (dBm)
+   - **Event / key logs** (e.g. ZTE: System Settings > Key Log Information): a week
+     of drops, reboots, cable events and signal history. Summarise it with
+     page JavaScript (counts by type, by day and by hour) rather than copying it
+     out, and never click Restart or Reset on the same page. See
+     `docs/devices/zte.md` for what the lines mean. Look for drops repeating
+     ~24 h apart (provider session reset) and `2000-01-01` lines (unplanned
+     restarts, often power cuts).
 4. If the page has a refreshing table, sample it several times over 1–2 minutes;
    signal quality changes from moment to moment.
 

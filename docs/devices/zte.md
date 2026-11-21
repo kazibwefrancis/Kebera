@@ -49,6 +49,24 @@ also return signal values; many return blanks until you log in.
   (e.g. Bridge Mode), APN and **data used**.
 - **Data Usage:** monthly usage. Useful when asking about fair-usage limits.
 - **Install Helper** (app link on the home page): helps aim the unit.
+- **System > System Settings > Key Log Information**: about a week of events.
+  This is the most useful page for problems that come and go. **Read only**: the
+  same page has Restart and Reset buttons. Don't touch them. What the lines mean:
+
+  | Log line | Meaning |
+  |---|---|
+  | `last_domain 2, cur_domain 0` with `cur_srv 1` and `rsrp= 0` | Lost registration with the network: a real **drop** |
+  | Same drop at the **same clock time ~24 h apart** | The provider resets the data session every 24 hours (common). The time moves after each reboot. |
+  | `[DATA] ... dst_clear_type` about once an hour | Routine data-session housekeeping; usually harmless |
+  | `port[eth0] plug-out` / `plug-in` | The cable link to the indoor router went down and up (after a drop, a reboot, a cable fault or power to the indoor router) |
+  | Lines dated `2000-01-01` | The unit **restarted** and hadn't set its clock yet. If you didn't restart it, suspect a **power cut** or a faulty power adapter or PoE injector. |
+  | `last_srv 13, cur_srv 14` and back | 4G ↔ 5G (NSA) leg added or released. Frequent switching, especially when idle, is mostly normal. |
+  | `stat=..., NSA 4g rsrp=..., rsrq=..., sinr=...` | Periodic signal snapshot: a week of RSRP/RSRQ/SINR history |
+  | `forbid wan ping`, `user login` | Security and admin events; not faults |
+
+  A practical tip: if a 24-hour reset hits at a bad time, a scheduled daily restart
+  at a quiet hour (e.g. 03:00) moves it to night time. Only change this if you
+  want to; it's under Scheduled Restart on the same page.
 
 Leave alone unless you know why: APN, network mode, bridge/router mode, firmware
 update, the connection on/off switch on the home page.
