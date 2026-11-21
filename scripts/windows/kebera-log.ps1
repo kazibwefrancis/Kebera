@@ -1,3 +1,9 @@
+# =============================================================================
+#  KEBERA IS NOT A HACKING TOOL. It only pings your own router, the next private
+#  hop after it (found automatically) and two fixed public test servers. There is
+#  deliberately no option to choose other targets. Misuse is not tolerated.
+#  See ACCEPTABLE_USE.md.
+# =============================================================================
 <#
 .SYNOPSIS
     Kebera long logger: records your connection every few seconds for hours,

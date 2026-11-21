@@ -1,3 +1,14 @@
+# =============================================================================
+#  KEBERA IS NOT A HACKING TOOL.
+#  It diagnoses YOUR OWN internet connection only. It is read-only: it never
+#  logs in, never guesses or tries passwords, never exploits anything and never
+#  changes settings. It only talks to (1) your own local equipment, found
+#  automatically as your default gateway and the next private hop after it, and
+#  (2) fixed public test services listed in $KeberaAllowedPublic.
+#  There is deliberately NO option to point it at other targets.
+#  Misuse or perversion of Kebera is not tolerated. See ACCEPTABLE_USE.md.
+#  Get Kebera only from https://github.com/kazibwefrancis/kebera
+# =============================================================================
 <#
 .SYNOPSIS
     Kebera: a read-only home internet check-up for Windows.
@@ -73,6 +84,25 @@ function Test-PrivateIP([string]$ip) {
             ($o[0] -eq 172 -and $o[1] -ge 16 -and $o[1] -le 31) -or
             ($o[0] -eq 192 -and $o[1] -eq 168) -or
             ($o[0] -eq 100 -and $o[1] -ge 64 -and $o[1] -le 127))
+}
+
+# --- Safety boundary -------------------------------------------------------
+# Every network target passes through Assert-KeberaTarget. Local equipment must
+# be a private address on this connection's path; public targets must be on the
+# fixed list below. Anything else stops the script.
+$KeberaAllowedPublic = @('8.8.8.8', '1.1.1.1')
+$KeberaLocalTargets = New-Object System.Collections.ArrayList
+
+function Register-KeberaLocal([string]$ip) {
+    if (Test-PrivateIP $ip) { [void]$KeberaLocalTargets.Add($ip) }
+}
+
+function Assert-KeberaTarget([string]$ip, [string]$purpose) {
+    if ($KeberaAllowedPublic -contains $ip) { return }
+    if ((Test-PrivateIP $ip) -and ($KeberaLocalTargets -contains $ip)) { return }
+    Write-Host "Kebera safety stop: '$ip' is not your own local equipment or an approved test service ($purpose)." -ForegroundColor Red
+    Write-Host 'Kebera only diagnoses your own connection. See ACCEPTABLE_USE.md.' -ForegroundColor Red
+    exit 2
 }
 
 function Get-Num($text) {
@@ -351,7 +381,8 @@ function Invoke-HuaweiProbe([string]$base) {
 }
 
 function Get-DeviceFingerprint([string]$ip, [string]$label) {
-    $dev = [ordered]@{ ip = $ip; label = $label; webPage = $false; vendor = $null; model = $null; provider = $null; role = $null; firmware = $null; wanIp = $null; evidence = @(); cellular = $null; raw = [ordered]@{} }
+    Assert-KeberaTarget $ip 'equipment identification'
+    $dev =[ordered]@{ ip = $ip; label = $label; webPage = $false; vendor = $null; model = $null; provider = $null; role = $null; firmware = $null; wanIp = $null; evidence = @(); cellular = $null; raw = [ordered]@{} }
     $oldCb = [Net.ServicePointManager]::ServerCertificateValidationCallback
     # Home routers use self-signed certificates. Accept them ONLY for this local device check.
     [Net.ServicePointManager]::ServerCertificateValidationCallback = { $true }
@@ -415,6 +446,7 @@ function Get-DeviceFingerprint([string]$ip, [string]$label) {
 # ---------------------------------------------------------------------------
 
 function Measure-Targets($targets, [int]$rounds, [int]$intervalMs = 500) {
+    foreach ($k in $targets.Keys) { Assert-KeberaTarget $targets[$k] 'stability test' }
     $res = [ordered]@{}
     foreach ($k in $targets.Keys) { $res[$k] = New-Object System.Collections.ArrayList }
     for ($i = 0; $i -lt $rounds; $i++) {
@@ -543,6 +575,7 @@ if (-not $net) {
     exit 1
 }
 $report.connection = $net
+Register-KeberaLocal $net.gateway
 Write-Note ("{0} via {1}, router at {2}" -f $net.connection, $net.adapter, $net.gateway)
 
 $wifi = $null
@@ -572,7 +605,7 @@ $trace = Get-Trace '8.8.8.8'
 $report.traceroute = $trace
 $upstream = $null
 $hop2 = @($trace | Where-Object { $_.hop -eq 2 }) | Select-Object -First 1
-if ($hop2 -and $hop2.ip -and (Test-PrivateIP $hop2.ip) -and $hop2.ip -ne $net.gateway) { $upstream = $hop2.ip }
+if ($hop2 -and $hop2.ip -and (Test-PrivateIP $hop2.ip) -and $hop2.ip -ne $net.gateway) { $upstream = $hop2.ip; Register-KeberaLocal $upstream }
 Write-Note ("{0} hops recorded" -f @($trace).Count)
 
 Write-Step 'Identifying your equipment (reading the pages they already show; no login)'

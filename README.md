@@ -30,8 +30,10 @@ you evidence in plain language:
 …plus the numbers behind it, what you can fix yourself, and a ready-to-send
 WhatsApp or email message for your provider.
 
-It works on its own, and it works even better with an AI coding agent (Claude
-Code, ChatGPT Codex, Gemini CLI, Cursor, Grok and others). The agent follows
+You don't need a paid AI: paste the [free chat guide](chat/KEBERA-CHAT-GUIDE.md)
+into ChatGPT, Claude, Gemini or DeepSeek and it walks you through every step. It
+also works on its own, or with an AI coding agent (Claude Code, Codex, Gemini CLI,
+Cursor and others) that runs everything for you. The agent follows
 [`AGENTS.md`](AGENTS.md) to read your router and outdoor unit pages *after you
 sign in*, explain the signal readings, and talk you through the results.
 
@@ -86,9 +88,33 @@ Every run saves a folder in `reports/` containing:
 Neighbours' Wi-Fi names, MAC addresses, SIM/IMEI numbers and your full public IP
 are **left out**. See [PRIVACY.md](PRIVACY.md).
 
-## Quick start
+## Quick start: choose the way that suits you
 
-### Option A: Windows, no AI needed
+| You have… | Use | Effort |
+|---|---|---|
+| A free AI chat (ChatGPT, Claude, Gemini, DeepSeek, Copilot, Grok…) | **[Option A: free AI chat guide](#option-a-free-ai-chat-chatgpt-claude-gemini-deepseek)**: the AI walks you through every step | Easiest for most people |
+| A Windows laptop, no AI | **[Option B: double-click kebera.bat](#option-b-windows-no-ai-needed)** or the [step-by-step guide](docs/step-by-step-without-ai.md) | Easy |
+| A coding agent (Claude Code, Codex, Gemini CLI, Cursor…) | **[Option C: AI coding agent](#option-c-ai-coding-agent-does-most-of-the-work)**: it runs everything for you | Least effort |
+| A Mac or Linux computer | **[Option D](#option-d-macos-or-linux-beta)** | Easy |
+
+### Option A: free AI chat (ChatGPT, Claude, Gemini, DeepSeek…)
+
+No downloads, no paid plan, works on a laptop **or a phone**.
+
+1. Open [`chat/KEBERA-CHAT-GUIDE.md`](chat/KEBERA-CHAT-GUIDE.md), click the **copy**
+   button (top right of the file on GitHub), and paste it into a new chat in any
+   free AI: ChatGPT, Claude, Gemini, DeepSeek, Microsoft Copilot, Grok or Meta AI.
+   (Or download the file and upload it with "Follow this guide".)
+2. The AI becomes **Kebera Guide**. It asks about your provider and equipment,
+   then gives you **one simple step at a time**: a command to paste, a page to
+   open, a screenshot to take.
+3. You paste back what you see. At the end you get a verdict, what to fix
+   yourself, and a ready-to-send WhatsApp message for your provider.
+
+The guide contains the same rules as the automated version: not a hacking tool,
+never asks for passwords, hides your identifiers.
+
+### Option B: Windows, no AI needed
 
 1. **Download:** click the green **Code** button above, then **Download ZIP**, and unzip it anywhere
    (or `git clone https://github.com/kazibwefrancis/kebera.git`).
@@ -112,7 +138,9 @@ Long log for problems that come and go:
 powershell -ExecutionPolicy Bypass -File .\scripts\windows\kebera-log.ps1 -Hours 3
 ```
 
-### Option B: with an AI coding agent (recommended)
+Prefer to do it by hand? Follow the [step-by-step guide without AI](docs/step-by-step-without-ai.md).
+
+### Option C: AI coding agent (does most of the work)
 
 1. Download Kebera (as above) and open the folder in your agent, for example
    Claude Code, Codex CLI, Gemini CLI, Cursor or VS Code with Copilot agent mode.
@@ -123,7 +151,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\windows\kebera-log.ps1 -Hours
    handles your passwords. It then reads the signal and status, and writes your
    message to the provider.
 
-### Option C: macOS or Linux (beta)
+### Option D: macOS or Linux (beta)
 
 ```bash
 bash scripts/unix/kebera.sh            # add --quick or --no-speedtest
@@ -166,8 +194,12 @@ laptop's delay to the router from up to 58 ms to about 2 ms.
 
 ## FAQ
 
-**Do I need an AI agent?** No. The scripts produce a full report on their own. An
-agent adds the equipment-page readings and a conversation about the results.
+**Do I need a paid AI?** No. Use the [free chat guide](chat/KEBERA-CHAT-GUIDE.md)
+with any free AI chat, or the scripts and the [no-AI guide](docs/step-by-step-without-ai.md).
+A paid coding agent just does more of the steps for you.
+
+**Can I use it on just my phone?** Yes, partly. The free chat guide has a phone-only
+path: router pages, speed test, signal readings and comparing with mobile data.
 
 **Will it use a lot of data?** About 35 MB for the standard check with speed test,
 12 MB in quick mode, or under 1 MB with `-NoSpeedTest`.

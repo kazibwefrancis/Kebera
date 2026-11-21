@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 # Kebera: read-only home internet check-up for macOS and Linux (beta).
 #
+# KEBERA IS NOT A HACKING TOOL. It only contacts your own router, the next
+# private hop after it (found automatically) and fixed public test services.
+# There is deliberately no option to choose other targets. Misuse or perversion
+# of Kebera is not tolerated. See ACCEPTABLE_USE.md.
+#
 # Usage:  bash scripts/unix/kebera.sh [--quick] [--no-speedtest] [--no-internet-services]
 #
 # Runs ping, traceroute, DNS and speed tests, reads the normal web page of your

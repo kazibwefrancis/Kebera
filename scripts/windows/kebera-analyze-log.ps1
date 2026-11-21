@@ -1,3 +1,4 @@
+# KEBERA IS NOT A HACKING TOOL. This script only reads a log file on your computer. See ACCEPTABLE_USE.md.
 <#
 .SYNOPSIS
     Analyses a Kebera log (from kebera-log.ps1) and explains where problems happened.

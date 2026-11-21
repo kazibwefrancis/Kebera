@@ -42,16 +42,58 @@ must never be used or modified to become one.
 ## How this is enforced
 
 - **By design:** Kebera is read-only. It contains no login, password, exploit or
-  traffic-capture code, and contributions adding such code are rejected.
+  traffic-capture code, and contributions adding such code are rejected. The
+  scripts find your own equipment automatically (your default gateway and the next
+  private hop) and **have no option to aim them at anything else**. A built-in
+  safety check stops the script if any target isn't your own local equipment or
+  one of the fixed public test services.
+- **Transparently, not hidden:** the safeguards are written in plain view, on
+  purpose. Hidden or scrambled code would make Kebera look like malware, get it
+  flagged by antivirus software, and break the trust that open source depends on.
+  Anyone *can* change open-source code, so the real protections are: no harmful
+  capability in the first place, a visible safety check, and the official
+  repository as the trusted source. **Download Kebera only from
+  github.com/kazibwefrancis/kebera**; copies elsewhere may have been altered.
 - **For AI agents:** `AGENTS.md` and `CLAUDE.md` instruct agents to refuse
   misuse and to stop when asked to act on networks or devices that aren't the user's.
 - **In the project:** only the maintainer can merge changes into this repository.
   Pull requests, issues or discussions that seek to misuse Kebera are closed,
   and their authors may be blocked.
-- **By law:** unauthorised access to computers and networks is a crime in Uganda
-  (including under the Computer Misuse Act) and in most countries. Kebera's licence
-  gives you no permission to break the law, and the authors accept no
-  responsibility for misuse.
+- **By law:** unauthorised access to computers and networks, interfering with
+  radio signals and misusing personal data are crimes in Uganda and in most
+  countries (see below). Kebera's licence gives you no permission to break the
+  law, and the authors accept no responsibility for misuse.
+
+## Laws that apply, wherever you are
+
+Kebera is used in Uganda and beyond. **You must follow the laws of the country you
+are in**, and those of any country where the equipment or network is located.
+Examples (not a complete list, and not legal advice):
+
+| Where | Examples of laws that make misuse a crime or regulate data and radio |
+|---|---|
+| **Uganda** | Computer Misuse Act, 2011 (as amended); Data Protection and Privacy Act, 2019; Uganda Communications Act, 2013 (radio spectrum and interference) |
+| **Kenya** | Computer Misuse and Cybercrimes Act, 2018; Data Protection Act, 2019 |
+| **Tanzania** | Cybercrimes Act, 2015 |
+| **Rwanda** | Law on the prevention and punishment of cyber crimes, 2018 |
+| **Nigeria** | Cybercrimes (Prohibition, Prevention, etc.) Act, 2015 |
+| **South Africa** | Cybercrimes Act, 2020; Protection of Personal Information Act (POPIA) |
+| **United Kingdom** | Computer Misuse Act 1990; Wireless Telegraphy Act 2006 |
+| **United States** | Computer Fraud and Abuse Act (18 U.S.C. § 1030); federal rules prohibiting signal jammers |
+| **European Union** | Directive 2013/40/EU on attacks against information systems; General Data Protection Regulation (GDPR) |
+| **International** | Council of Europe Convention on Cybercrime (Budapest Convention); African Union Convention on Cyber Security and Personal Data Protection (Malabo Convention); ITU Radio Regulations (harmful interference) |
+
+The principles are the same almost everywhere:
+
+1. **Only access what you own or have clear permission to access.** "It was easy" or
+   "it had a default password" is never permission.
+2. **Don't interfere with radio communications.** Jammers and unapproved signal
+   boosters are illegal in most countries.
+3. **Respect other people's data.** Don't collect, keep or share other people's
+   network names, device identifiers, traffic or locations.
+4. **When in doubt, don't.** Ask the owner, or ask a lawyer.
+
+If any part of this policy conflicts with the law where you are, the stricter rule applies.
 
 ## A note on the licence
 
