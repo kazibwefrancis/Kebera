@@ -28,8 +28,7 @@ user's responsibility. See [ACCEPTABLE_USE.md](ACCEPTABLE_USE.md).
 ## Not affiliated with any provider or manufacturer
 
 Kebera is an independent open-source project. It is **not affiliated with,
-endorsed by or acting for** Airtel, MTN, Lyca, Roke Telkom, Starlink, the Uganda
-Communications Commission, ZTE, Huawei, TP-Link, Nokia, FiberHome, Ubiquiti,
+endorsed by or acting for** Airtel, MTN, Lyca, Roke Telkom, Starlink, ZTE, Huawei, TP-Link, Nokia, FiberHome, Ubiquiti,
 Cambium, MikroTik or any other company or organisation mentioned. All trademarks
 belong to their owners and are used only to identify equipment and services.
 

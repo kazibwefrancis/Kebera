@@ -204,8 +204,26 @@ Give the person:
 5. **What you could not check.**
 
 Offer a WhatsApp-length version; most Ugandan providers handle complaints on WhatsApp.
-If the provider does not resolve it, `templates/escalation-ucc.md` explains
-escalating to the Uganda Communications Commission.
+
+### Step 8: Write the detailed report
+
+Always offer, and write when the person agrees, a **detailed report** that combines
+everything: the script results, the long log, what you read on the equipment pages
+(signal, uptime, logs, data usage) and the person's own description.
+
+1. Copy the structure of `templates/diagnosis-report.md` exactly (all 8 sections).
+2. Save it as `reports/<same folder as the check-up>/kebera-full-report.md`.
+3. Fill it only with measured facts. Write "not checked" for gaps, never invent
+   numbers, and cite the section that holds the evidence for each finding.
+4. Leave out passwords, SIM/phone numbers, IMEI/IMSI, serial numbers, MAC addresses
+   and full public IPs. Mask anything you read on equipment pages that falls into
+   these categories.
+5. Tell the person where the file is, and that it's the document to attach when
+   escalating. Offer an HTML or plain-text version if they want to print or email it.
+
+If the provider does not resolve it, `templates/escalation.md` explains how to
+escalate step by step inside the provider (follow-up, technical team, supervisor,
+service centre, formal written complaint).
 
 ---
 

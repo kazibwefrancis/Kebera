@@ -192,8 +192,14 @@ then gives you **one small step at a time**. A typical exchange looks like this:
 
 **Step 4: Get your results**
 
-At the end you get a one-line verdict, a table of what was checked, what you can fix
-yourself, and a **WhatsApp-ready message** for your provider.
+At the end you get three things:
+
+1. **A quick answer**: a one-line verdict, a table of what was checked, and what you can fix yourself.
+2. **A detailed report**: a full document (summary, setup, every test and result,
+   findings with evidence, conclusion, actions, limitations) that you can save, print
+   or attach to a complaint. Say *"Yes, write the detailed report"* when it asks.
+3. **A WhatsApp-ready message** for your provider, plus step-by-step help to
+   escalate if they don't fix it.
 
 **Tips**
 
@@ -317,7 +323,10 @@ The agent reads [`AGENTS.md`](AGENTS.md) (Claude also reads [`CLAUDE.md`](CLAUDE
    yourself**; the agent never handles your passwords. It then reads the signal,
    uptime, data usage and logs.
 4. Explain everything in plain language and write your message to the provider.
-5. Offer to run the long log if the problem comes and goes.
+5. Write a **detailed report** (`kebera-full-report.md` in your report folder) that
+   combines the tests, the equipment readings and logs, findings with evidence, and
+   recommended actions.
+6. Offer to run the long log if the problem comes and goes.
 
 The agent instructions include strict rules: **no hacking, no password handling, no
 settings changed without your clear yes.**
@@ -346,7 +355,15 @@ next to it. For best results on Linux, install `traceroute` and `dig` (package
 
 Follow **[Diagnose your internet step by step (no AI needed)](docs/step-by-step-without-ai.md)**.
 It gives you each command to copy into PowerShell, and a table that tells you what the
-result means.
+result means. It includes:
+
+- **The basic diagnosis** (Steps 1–7): every device or one? router address, next device,
+  stability test, Wi-Fi, equipment pages
+- **Going deeper** (optional): testing at the bad time, longer tests, the 3-hour log,
+  repeated signal readings, the interference check, reading the equipment's logs, and
+  ruling out a single device
+- **Writing your detailed report** from a fill-in template, then contacting and
+  escalating with your provider
 
 ---
 
@@ -485,6 +502,17 @@ Guides for specific equipment: [ZTE](docs/devices/zte.md) ·
 | Restarts during power cuts | A small **UPS** for the router and outdoor unit keeps you online for hours |
 | Game console far from router | Use a network cable |
 
+### Your detailed report
+
+For a complete document to keep and attach to complaints, use the
+[detailed report template](templates/diagnosis-report.md). It has 8 sections: summary,
+the problem, setup, tests and results, findings with evidence, conclusion, actions,
+and limitations.
+
+- **Free AI chat:** the guide writes it for you at the end.
+- **Coding agent:** it saves `kebera-full-report.md` in your report folder.
+- **By hand:** copy the template and fill in your results.
+
 ### Contacting your provider
 
 1. Open `message-to-provider.txt` from your report folder.
@@ -498,9 +526,10 @@ How to answer "restart your router" and other common replies:
 
 ### Not resolved?
 
-You can escalate to the **Uganda Communications Commission (UCC)**, or your
-country's telecom regulator, with your reference number and Kebera reports:
-[How to escalate](templates/escalation-ucc.md).
+Escalate **step by step with your provider**: follow up in the same chat, ask for
+the technical team, then a supervisor, visit a service centre, and finally send a
+formal written complaint with your detailed report. Each step is explained, with
+ready wording, in [How to escalate](templates/escalation.md).
 
 ---
 
@@ -640,7 +669,7 @@ kebera/
 │   ├── interference-and-jamming.md
 │   ├── providers.md                ← Working with your provider
 │   └── devices/                    ← ZTE, Huawei, fibre, other equipment
-├── templates/                  ← WhatsApp, email and escalation messages
+├── templates/                  ← Detailed report, WhatsApp, email and escalation guide
 ├── examples/                   ← Real, anonymised case studies
 ├── AGENTS.md                   ← Instructions for AI coding agents
 ├── CLAUDE.md                   ← Strict rules for Claude
@@ -672,7 +701,7 @@ Kebera. Use within the Kebera project is governed by the
 [acceptable use policy](ACCEPTABLE_USE.md).
 
 **Disclaimer:** Kebera is independent and **not affiliated with** Airtel, MTN, Lyca, Roke
-Telkom, Starlink, UCC, ZTE, Huawei or any other company mentioned; names are used only to
+Telkom, Starlink, ZTE, Huawei or any other company mentioned; names are used only to
 identify equipment and services. Results describe the moment of the test and are provided
 "as is", without warranty. See [DISCLAIMER.md](DISCLAIMER.md).
 

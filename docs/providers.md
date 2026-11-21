@@ -43,8 +43,10 @@ Satellite: Starlink.
 Most providers take complaints on WhatsApp, by phone, on social media and in
 service centres. Use the official channels listed on your provider's website or SIM pack.
 
-If a complaint isn't resolved in reasonable time, you can escalate to the
-**Uganda Communications Commission (UCC)**. See `../templates/escalation-ucc.md`.
+If a complaint isn't resolved in reasonable time, escalate **within the provider**
+step by step: follow up, ask for the technical team, then a supervisor, visit a
+service centre, then send a formal written complaint. See
+[`../templates/escalation.md`](../templates/escalation.md).
 
 > Kebera is not affiliated with, endorsed by, or acting for any provider or
 > manufacturer. Names are used only to identify equipment and services.

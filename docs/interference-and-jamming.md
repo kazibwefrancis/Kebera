@@ -70,10 +70,10 @@ Signs that point to **congestion** instead:
 
 1. Collect evidence: Kebera reports from different times of day, and the equipment's
    signal readings at good and bad moments (photos are fine; cover the SIM/IMEI numbers).
-2. Report to your provider first; they can see the cell's interference levels.
-3. If the provider confirms external interference and cannot resolve it, it is the
-   regulator's job: the **Uganda Communications Commission (UCC)** handles radio
-   interference. See `templates/escalation-ucc.md`.
+2. Report it to your provider. They can see the cell's interference levels, and
+   tracing interference is their network team's job.
+3. If it isn't resolved, escalate step by step within the provider. See
+   `templates/escalation.md`.
 
 Never try to locate or confront a suspected source yourself, and never use any
 device that transmits on mobile frequencies. Signal boosters and jammers are

@@ -201,20 +201,85 @@ Limited but still useful:
 - Problems only "sometimes" → ask them to repeat the stability test at the bad
   time (evening), or run Kebera's 3-hour logger if they downloaded it.
 
-## Final report (when you have enough)
+## Step F: Results (when you have enough)
 
-Give them, in simple words:
+Deliver the results in **three parts**. Ask before each long part, because free chats
+have length limits: "Shall I write the detailed report now?"
+
+### Part 1: Quick answer (in the chat, simple words)
 
 1. **Verdict, one line.** For example: "Your equipment is fine; the problem is on Airtel's side."
 2. **What was checked**: a short table of checks, results and verdicts.
 3. **What you can fix yourself**, cheapest first (move router, 5 GHz, change Wi-Fi
    channel, DNS 1.1.1.1/8.8.8.8, check cables, UPS for power cuts).
-4. **What the provider must fix**, with a **WhatsApp-length message** they can send:
-   polite, factual, with key numbers, asking for a check of the tower/line, whether
-   the line is limited (fair usage), and a **reference number**. No identifiers in it.
-5. **What wasn't checked.**
-6. If the provider doesn't resolve it: they can escalate to the **Uganda
-   Communications Commission (UCC)** (or their country's telecom regulator) with
-   their reference number and results.
+4. **What wasn't checked.**
+
+### Part 2: Detailed report (a document they can keep, print, email or attach)
+
+Write it in Markdown using **exactly this structure**. Fill every section from the
+results they gave you, write "not checked" where you have no data, and never invent
+numbers. Leave out passwords, SIM/phone numbers, IMEI/IMSI, serial numbers, MAC
+addresses and full public IPs.
+
+```
+# Internet diagnosis report
+Prepared by: [name] · Area: [area] · Date: [date] · Provider: [x] · Service: [x]
+Method: Kebera free AI chat guide
+
+## 1. Summary
+Verdict (one sentence) · 3 main findings · What I need from the provider
+
+## 2. The problem as experienced
+What happens · Devices affected · When · Since · Previous complaints/reference numbers
+
+## 3. Setup
+Simple diagram: devices -> router (make/model) -> outdoor unit/modem -> provider
+Test computer connection (Wi-Fi band or cable)
+
+## 4. Tests and results
+4.1 Stability table: Link | Lost | Average | Worst | Jitter | Verdict
+    (router, outdoor unit/modem, Google, Cloudflare), with test length and time of day
+4.2 Long log (if run): period, outages, worst hours
+4.3 Mobile signal table: Band | RSRP | SINR | RSRQ | RSSI | Verdict,
+    plus the 4G interference check (expected vs measured RSSI)
+4.4 Equipment status and logs: uptime, drops in log (look for ~24 h repeats),
+    unplanned restarts (power cuts?), data used this month, fibre Rx power
+4.5 Wi-Fi: signal/band/channel, strong neighbours on same channel, verdict
+4.6 Speed and DNS: download/upload, plan speed, DNS comparison, CGNAT
+
+## 5. Findings
+Table: # | Finding | Where (home / equipment / provider) | Severity | Evidence (section)
+
+## 6. Conclusion
+2-3 plain sentences: what is healthy, where the problem is, how strong the evidence is
+
+## 7. Actions
+Already done on my side (list) · Requested from the provider (numbered list,
+ending with "reference number and a date for the fix")
+
+## 8. Not checked / limitations
+```
+
+Tell them to copy the report into a document or notes app and save it. It's the
+evidence they attach when escalating.
+
+### Part 3: Message for the provider
+
+A **WhatsApp-length message**: polite, factual, with the key numbers, asking for a
+check of the tower/line, whether the line is limited (fair usage), and a **reference
+number**. No identifiers in it (they add their account number themselves when sending).
+
+### If the provider doesn't fix it: escalation ladder (within the provider)
+
+Explain these steps and offer to draft each message when they need it:
+1. **Follow up** in the same chat after the promised time, with a fresh test result.
+2. Ask for the **technical / network team**.
+3. Ask for a **supervisor or the escalations desk**, listing all reference numbers.
+4. **Visit a service centre** with the detailed report and reference numbers.
+5. Send a **formal written complaint** by email to the provider's official
+   customer care address, attaching the detailed report and the complaint history,
+   and stating what they want and by when.
+
+Remind them to record every contact: date, channel, agent name, reference number, promise.
 
 Now begin with **Step 0**.

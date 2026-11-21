@@ -102,7 +102,67 @@ If 2 or more strong (50%+) networks share your 2.4 GHz channel, change your rout
 
 **Don't** press Restart/Reset or change APN, network mode or firmware.
 
-## Step 8: Contact your provider
+## Going deeper (optional, for the curious)
+
+These extra checks turn "probably" into "certainly". Do any that apply.
+
+**A. Test at the bad time.** Problems often appear in the evening. Repeat Step 5 at
+the time the internet is worst, and compare it with a good time.
+
+**B. Longer stability test.** In the Step 5 command, change `1..60` to `1..600`
+(about 10 minutes). Short tests miss problems that come and go.
+
+**C. The 3-hour log** (if you downloaded Kebera): double-click `kebera.bat` → choose **3**.
+It shows outages and the worst hours.
+
+**D. Check the next device separately.** If Step 5 showed loss to the internet, confirm
+that your outdoor unit or modem was fine at the same moments:
+
+```
+ping -n 200 NEXT_DEVICE_ADDRESS
+```
+
+0% loss there, with loss to the internet, means the problem is beyond your equipment.
+
+**E. Take signal readings several times.** On the equipment's signal page (Step 7),
+note RSRP and SINR **3 times, a minute apart**, and again in the evening. Quality that
+drops in the evening points to a busy tower.
+
+**F. The interference check (4G).** Using one 4G band's numbers:
+
+| Bandwidth | Add to RSRP |
+|---|---|
+| 5 MHz | +24.8 |
+| 10 MHz | +27.8 |
+| 15 MHz | +29.5 |
+| 20 MHz | +30.8 |
+
+Expected RSSI = RSRP + the number above. If the measured RSSI is **6 or more higher**
+than expected, something else may be interfering. If it's about the same or lower,
+the noise is from the tower being busy, not jamming.
+[More detail](interference-and-jamming.md).
+
+**G. Read the equipment's logs.** Many outdoor units keep a week of events (e.g. ZTE:
+*System Settings → Key Log Information*). Look for:
+- the connection dropping at the **same time each day** (the provider resets the session daily)
+- lines dated **2000-01-01** or restarts you didn't do (often **power cuts**: consider a UPS)
+- cable "plug-out" events (check the cable and power to the outdoor unit)
+
+**Don't** press Restart or Reset on that page.
+
+**H. Rule out one device.** Test with a second device (another laptop, or a phone's
+speed test) at the same moment. If both are bad, it isn't the device.
+
+## Step 8: Write your detailed report
+
+Copy [`templates/diagnosis-report.md`](../templates/diagnosis-report.md) into a
+document and fill it in with your results from Steps 1–7 (and "Going deeper" if you
+did it). Replace each [bracket]; write "not checked" where you skipped something.
+
+This report is your evidence. It shows exactly what you tested, what was healthy,
+and where the problem is. Attach it when you contact or escalate with your provider.
+
+## Step 9: Contact your provider
 
 Use the template in `templates/message-whatsapp.md` (or the one below). Fill in your numbers:
 
@@ -112,4 +172,4 @@ Use the template in `templates/message-whatsapp.md` (or the one below). Fill in 
 > Please check the tower/line serving my area, tell me if my line is being limited
 > (I've used [n] GB this month), and send me a reference number. Thank you.
 
-Not resolved? See `templates/escalation-ucc.md`.
+Not resolved? Escalate step by step with your provider: `templates/escalation.md`.
