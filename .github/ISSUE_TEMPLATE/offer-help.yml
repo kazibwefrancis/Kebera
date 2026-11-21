@@ -1,0 +1,47 @@
+name: Offer help
+description: Network, telecom, fibre, translation or other expertise you'd like to contribute
+title: "Offer help: "
+labels: ["help offered"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you! Kebera was built by one systems engineer and needs people with expertise it doesn't have yet.
+        Tell us what you know and how you'd like to help. Please don't include phone numbers or other private details here.
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: Your expertise
+      description: Tick everything that applies.
+      options:
+        - label: Network engineering
+        - label: Telecom / RF engineering (4G/5G, signal, interference)
+        - label: ISP or field technician
+        - label: Fibre (FTTH, ONTs, optical)
+        - label: Translation
+        - label: Software development or testing (Windows, macOS, Linux)
+        - label: Design or writing
+        - label: Other
+  - type: input
+    id: languages
+    attributes:
+      label: Languages you could translate into (if any)
+      placeholder: e.g. Luganda, Swahili, Kinyarwanda
+  - type: textarea
+    id: experience
+    attributes:
+      label: Your experience
+      description: A few lines about your background. Mention providers or equipment you know well, if any.
+    validations:
+      required: true
+  - type: textarea
+    id: ideas
+    attributes:
+      label: What would you improve or work on first?
+  - type: checkboxes
+    id: conduct
+    attributes:
+      label: Agreement
+      options:
+        - label: I have read and agree to the Code of Conduct and the Acceptable Use Policy. Kebera is not a hacking tool.
+          required: true

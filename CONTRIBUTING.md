@@ -3,6 +3,28 @@
 Thank you for helping. Kebera exists so people don't have to be at the mercy of
 "restart your router". Every contribution makes the next diagnosis better.
 
+## Experts wanted
+
+Kebera was built by a systems engineer who has taken it as far as one person can.
+The next step needs people with expertise the project doesn't have yet:
+
+- **Network engineers**: review the diagnosis rules and thresholds in
+  `scripts/windows/kebera.ps1` and `docs/interpreting-results.md`, and improve how
+  failures are located.
+- **Telecom and RF engineers**: sharpen the 4G/5G analysis (RSRP, SINR, RSRQ, NSA
+  anchors, carrier aggregation) and the interference and jamming checks in
+  `docs/interference-and-jamming.md`.
+- **ISP and field technicians**: real fault patterns, equipment quirks, and what a
+  provider's support team needs to see in a customer's report.
+- **Fibre specialists**: ONT optical readings, PON states, fibre fault signatures.
+- **Translators**: Luganda, Swahili, Runyankole, Acholi, Lusoga, Kinyarwanda, French
+  and more, for reports, guides and the chat guide.
+- **Developers and testers**: macOS/Linux, non-English Windows, more equipment probes.
+- **Designers and writers**: clearer reports and guides for non-technical people.
+
+Not sure where to start? **Open an "Offer help" issue** and describe your expertise.
+The maintainer will suggest where it would help most.
+
 ## Ways to help
 
 1. **Device reports (most valuable).** Ran Kebera on equipment it didn't

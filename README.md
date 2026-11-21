@@ -50,7 +50,8 @@
 12. [Frequently asked questions](#12-frequently-asked-questions)
 13. [A real example](#13-a-real-example)
 14. [What's in this repository](#14-whats-in-this-repository)
-15. [Contributing, licence and disclaimer](#15-contributing-licence-and-disclaimer)
+15. [🙌 Help wanted: a note from the maintainer](#-help-wanted-a-note-from-the-maintainer)
+16. [Contributing, licence and disclaimer](#15-contributing-licence-and-disclaimer)
 
 ---
 
@@ -709,6 +710,34 @@ kebera/
 ```
 
 Your own results go into `reports/`, which stays on your computer and is never uploaded.
+
+---
+
+## 🙌 Help wanted: a note from the maintainer
+
+> I built Kebera as a systems engineer, out of my own frustration with "restart your
+> router" and "we'll call you back". I've done all I can on my own: the scripts, the
+> AI guides, the reports and the website.
+>
+> To make it truly reliable for everyone in East Africa and beyond, Kebera needs people
+> who know things I don't. If you're a **network engineer**, a **telecom or RF engineer**,
+> an **ISP or field technician**, a **fibre specialist**, or anyone with expertise that
+> could make this better, your help would make a real difference. Kebera should also
+> speak the languages people actually speak, so **translators** are needed just as much.
+>
+> *Kazibwe Francis, maintainer*
+
+| Expertise | How you can help |
+|---|---|
+| **Network engineers** | Review the diagnosis rules and thresholds; improve how failures are located |
+| **Telecom and RF engineers** | Sharpen the 4G/5G signal analysis and the interference and jamming detection |
+| **ISP and field technicians** | Share real fault patterns, equipment quirks, and what providers need to see in a report |
+| **Fibre specialists** | ONT readings, optical levels, fibre fault signatures |
+| **Translators** | Luganda, Swahili, Runyankole, Acholi, Lusoga, Kinyarwanda, French and more |
+| **Developers and testers** | macOS and Linux support, more routers and outdoor units, testing on real equipment |
+| **Designers and writers** | Clearer reports, guides and diagrams for people who aren't technical |
+
+👉 **[Offer your help](../../issues/new?template=offer-help.yml)**: tell us your expertise and how you'd like to contribute.
 
 ---
 
