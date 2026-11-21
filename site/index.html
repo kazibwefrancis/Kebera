@@ -57,12 +57,12 @@ button{font:inherit}
 .nav .wrap{display:flex;align-items:center;height:56px;gap:28px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:-.02em;text-decoration:none}
 .logo svg{width:28px;height:28px}
-.menu{display:flex;gap:26px;font-size:14px;margin-left:auto}
-.menu a{text-decoration:none;color:var(--on-dark-2);transition:color .2s}.menu a:hover{color:var(--on-dark)}
+.menu{display:flex;gap:22px;font-size:14px;margin-left:auto}
+.menu a{white-space:nowrap;text-decoration:none;color:var(--on-dark-2);transition:color .2s}.menu a:hover{color:var(--on-dark)}
 .star{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:var(--on-dark);color:var(--ink);font-size:13px;font-weight:600;text-decoration:none}
 .star svg{width:15px;height:15px}
 .burger{display:none;background:none;border:1px solid var(--hair-dark);color:var(--on-dark);border-radius:10px;width:38px;height:38px;cursor:pointer}
-@media (max-width:860px){.menu{display:none}.star{margin-left:auto}.burger{display:grid;place-items:center}
+@media (max-width:1040px){.menu{display:none}.star{margin-left:auto}.burger{display:grid;place-items:center}
   .menu.open{display:flex;position:absolute;top:56px;left:0;right:0;flex-direction:column;gap:0;background:rgba(11,12,15,.97);border-bottom:1px solid var(--hair-dark);padding:8px 20px 16px}
   .menu.open a{padding:12px 0;font-size:17px;border-bottom:1px solid var(--hair-dark)}}
 
@@ -369,6 +369,31 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
 .wfix>div{padding:20px 22px;border-radius:var(--r-lg);box-shadow:inset 0 0 0 1px var(--hair-dark)}
 .wfix h3{font-size:17px;margin:0 0 8px}
 .wfix p{margin:6px 0 0;font-size:15px;color:var(--on-dark-2)}
+/* Mac and Linux */
+.os2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:56px}
+@media (max-width:860px){.os2{grid-template-columns:minmax(0,1fr)}}
+.oscard{border-radius:var(--r-lg);padding:clamp(22px,3vw,32px);background:var(--ink-2);box-shadow:inset 0 0 0 1px var(--hair-dark)}
+.oscard>h3{font-size:clamp(24px,3vw,30px);letter-spacing:-.03em;margin:0}
+.oscard>.sub{margin:6px 0 0;color:var(--on-dark-2);font-size:15px}
+.mini{list-style:none;margin:20px 0 0;padding:0;counter-reset:mi;display:grid;gap:18px}
+.mini>li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:14px}
+.mini>li:before{counter-increment:mi;content:counter(mi);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--ink);font:600 14px var(--mono)}
+.mini h4{margin:3px 0 4px;font-size:17px}
+.mini p,.mini li li{margin:6px 0 0;font-size:15px;color:var(--on-dark-2)}
+.mini ul{margin:6px 0 0;padding-left:18px}
+.mini b{color:var(--on-dark)}
+.cmd{position:relative;margin-top:10px;border-radius:10px;background:#000;box-shadow:inset 0 0 0 1px var(--hair-dark)}
+.cmd code{display:block;padding:12px 84px 12px 14px;font:13px/1.55 var(--mono);color:var(--gold);white-space:pre-wrap;word-break:break-word}
+.cmd button{position:absolute;top:7px;right:7px;border:0;border-radius:7px;padding:5px 10px;font:600 12px var(--font);background:rgba(255,255,255,.12);color:var(--on-dark);cursor:pointer}
+.cmd button:hover{background:rgba(255,255,255,.2)}
+.distro{width:100%;border-collapse:collapse;margin-top:10px;font-size:13.5px}
+.distro td{padding:7px 0;border-top:1px solid var(--hair-dark);vertical-align:top;color:var(--on-dark-2)}
+.distro td:first-child{padding-right:12px;color:var(--on-dark);white-space:nowrap}
+.distro code{font:12.5px var(--mono);color:var(--gold);word-break:break-word}
+@media (max-width:480px){.distro td{display:block;padding:8px 0 0}.distro td+td{border-top:0;padding:2px 0 8px}.cmd code{padding:38px 14px 12px}}
+.opts{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.opts span{font-size:13px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--hair-dark);color:var(--on-dark-2)}
+.opts code{font:12.5px var(--mono);color:var(--gold)}
 .legal{margin-top:48px;padding-top:24px;border-top:1px solid var(--hair-dark);font-size:12px;line-height:1.6}
 </style>
 </head>
@@ -383,7 +408,7 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
     </a>
     <div class="menu" id="menu">
       <a href="#paths">Get started</a>
-      <a href="#windows">Windows steps</a>
+      <a href="#windows">Install</a>
       <a href="#who">Who it's for</a>
       <a href="#setup">Your setup</a>
       <a href="#how">How it works</a>
@@ -465,7 +490,7 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
   <div class="wrap">
     <p class="label reveal"><b></b>LINK 02 · Windows, step by step</p>
     <h2 class="reveal">From download<br>to report.</h2>
-    <p class="lede reveal">You only need one file: <b>kebera.bat</b>. It finds everything else by itself, so you never need to open the other folders. About three minutes the first time.</p>
+    <p class="lede reveal">You only need one file: <b>kebera.bat</b>. It finds everything else by itself, so you never need to open the other folders. About three minutes the first time. On a Mac or Linux? <a class="textlink" href="#mac-linux">See those steps</a></p>
     <ol class="wsteps">
       <li class="ws reveal"><div>
         <h3>Download Kebera</h3>
@@ -536,8 +561,90 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
     <div class="wfix">
       <div class="reveal"><h3>"Kebera can't find its files"</h3><p>You opened kebera.bat from inside the ZIP. Close the window and do step 3, then run it from the extracted folder.</p></div>
       <div class="reveal"><h3>Antivirus moved it away</h3><p>Some antivirus tools flag scripts they don't know. Restore it only if you downloaded it from the official page.</p></div>
-      <div class="reveal"><h3>No Windows laptop?</h3><p>Use the <a class="textlink" href="#paths">free AI chat guide</a> on any phone, or the Mac and Linux steps in the <a class="textlink" id="w-unix" href="#">user guide</a>.</p></div>
+      <div class="reveal"><h3>No Windows laptop?</h3><p>Use the <a class="textlink" href="#paths">free AI chat guide</a> on any phone, or <a class="textlink" href="#mac-linux">the Mac and Linux steps</a>.</p></div>
       <div class="reveal"><h3>Still stuck?</h3><p>Paste what you see into the free AI chat guide, or <a class="textlink" id="w-bug" href="#">tell us what happened</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== MAC AND LINUX =============================== -->
+<section class="sec" id="mac-linux" style="padding-top:0">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 03 · Mac and Linux</p>
+    <h2 class="reveal">One line in<br>the Terminal.</h2>
+    <p class="lede reveal">No technical skills needed: copy one line, paste it, press Enter. Same check-up, same report and provider message. The Mac and Linux version is in beta.</p>
+    <div class="os2">
+      <div class="oscard reveal">
+        <h3>On a Mac</h3>
+        <p class="sub">Everything Kebera needs is already built into macOS.</p>
+        <ol class="mini">
+          <li><div>
+            <h4>Download Kebera</h4>
+            <a class="btn btn-gold" id="m-zip" href="#" style="margin-top:6px">Download · ZIP, 130 KB</a>
+            <p><b>Safari</b> unzips it for you. With <b>Chrome</b> or others, open <b>Finder → Downloads</b> and double-click <b>Kebera-main.zip</b>. You get one <b>Kebera-main</b> folder. No need to open it.</p>
+          </div></li>
+          <li><div>
+            <h4>Open Terminal</h4>
+            <p>Press <span class="ui">Cmd</span> + <span class="ui">Space</span>, type <b>Terminal</b>, press <span class="ui">Return</span>.</p>
+          </div></li>
+          <li><div>
+            <h4>Paste this line and press Return</h4>
+            <div class="cmd"><code>cd ~/Downloads/Kebera-main &amp;&amp; bash scripts/unix/kebera.sh</code><button type="button" class="copy">Copy</button></div>
+            <ul>
+              <li>Paste with <span class="ui">Cmd</span> + <span class="ui">V</span>. If macOS asks to let Terminal access Downloads, click <span class="ui">Allow</span>.</li>
+              <li><b>"No such file or directory"?</b> Type <b>cd</b> and a space, drag the Kebera-main folder from Finder into Terminal, press Return, then run <b>bash scripts/unix/kebera.sh</b>.</li>
+              <li>Kebera never needs <b>sudo</b> or your Mac password. If anything asks, stop.</li>
+            </ul>
+          </div></li>
+          <li><div>
+            <h4>Read your report</h4>
+            <p>Wait about 5 minutes for the yellow <b>VERDICT</b>. Finder then opens the report folder: <b>Downloads › Kebera-main › reports</b>. Open <b>report.md</b> with TextEdit (right-click → Open With) and <b>message-to-provider.txt</b> with a double-click.</p>
+          </div></li>
+        </ol>
+      </div>
+      <div class="oscard reveal">
+        <h3>On Linux</h3>
+        <p class="sub">Ubuntu, Mint, Debian, Fedora, Arch and others.</p>
+        <ol class="mini">
+          <li><div>
+            <h4>Download and extract</h4>
+            <a class="btn btn-gold" id="x-zip" href="#" style="margin-top:6px">Download · ZIP, 130 KB</a>
+            <p>In your file manager, open <b>Downloads</b>, right-click <b>Kebera-main.zip</b> → <b>Extract Here</b>. The right folder is the one containing <b>README.md</b> and <b>scripts</b>.</p>
+          </div></li>
+          <li><div>
+            <h4>Install the helper tools (once)</h4>
+            <p>Open a terminal (<span class="ui">Ctrl</span> + <span class="ui">Alt</span> + <span class="ui">T</span> on Ubuntu) and run the line for your system. It asks for your password because it installs software. Kebera itself never needs sudo.</p>
+            <table class="distro">
+              <tr><td>Ubuntu, Debian, Mint</td><td><code>sudo apt install traceroute dnsutils curl</code></td></tr>
+              <tr><td>Fedora, Rocky</td><td><code>sudo dnf install traceroute bind-utils curl</code></td></tr>
+              <tr><td>Arch, Manjaro</td><td><code>sudo pacman -S traceroute bind curl</code></td></tr>
+              <tr><td>openSUSE</td><td><code>sudo zypper install traceroute bind-utils curl</code></td></tr>
+            </table>
+          </div></li>
+          <li><div>
+            <h4>Paste this line and press Enter</h4>
+            <div class="cmd"><code>cd ~/Downloads/Kebera-main &amp;&amp; bash scripts/unix/kebera.sh</code><button type="button" class="copy">Copy</button></div>
+            <p>Paste with <span class="ui">Ctrl</span> + <span class="ui">Shift</span> + <span class="ui">V</span>. <b>"No such file or directory"?</b> Right-click inside the Kebera-main folder → <b>Open in Terminal</b>, then run <b>bash scripts/unix/kebera.sh</b>.</p>
+          </div></li>
+          <li><div>
+            <h4>Read your report</h4>
+            <p>Your file manager opens <b>Downloads › Kebera-main › reports</b>. Open <b>report.md</b> and <b>message-to-provider.txt</b> in your text editor.</p>
+          </div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="opts reveal" aria-label="Options">
+      <span>Add after the command:</span>
+      <span><code>--quick</code> about 2 minutes</span>
+      <span><code>--no-speedtest</code> saves about 35 MB</span>
+      <span><code>--no-open</code> don't open the folder</span>
+    </div>
+    <div class="tech reveal" style="background:var(--ink-2);box-shadow:inset 4px 0 0 var(--gold),inset 0 0 0 1px var(--hair-dark)">
+      <span class="ti" aria-hidden="true">🧪</span>
+      <div>
+        <h3>What the beta doesn't do yet</h3>
+        <p style="color:var(--on-dark-2)">There's no 3-hour long log or HTML report on Mac and Linux yet. For problems that come and go, run it a few times when it's bad (say 8 pm and 10 pm). Each run keeps its own report. To run it again, open Terminal and press the up arrow.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -545,7 +652,7 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
 <!-- =============================== WHO IT'S FOR =============================== -->
 <section class="sec light" id="who">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 03 · Who it's for</p>
+    <p class="label reveal"><b></b>LINK 04 · Who it's for</p>
     <h2 class="reveal">Beyond "restart<br>your router."</h2>
     <p class="lede reveal">Whether you love the technical detail or just want your internet fixed, Kebera meets you where you are.</p>
     <div class="who">
@@ -585,7 +692,7 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
 <!-- =============================== SETUP =============================== -->
 <section class="sec light" id="setup" style="padding-top:0">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 04 · Your setup</p>
+    <p class="label reveal"><b></b>LINK 05 · Your setup</p>
     <h2 class="reveal">Works with what's<br>on your wall.</h2>
     <p class="lede reveal">5G outdoor units, 4G routers, pocket MiFis, fibre, rooftop antennas, satellite. Pick yours to see what Kebera looks at.</p>
     <div class="picker reveal">
@@ -598,7 +705,7 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
 <!-- =============================== HOW =============================== -->
 <section class="sec light" id="how" style="padding-top:0">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 05 · How it works</p>
+    <p class="label reveal"><b></b>LINK 06 · How it works</p>
     <h2 class="reveal">Three steps.<br>One honest answer.</h2>
     <div class="steps3">
       <div class="step reveal"><div class="big">1</div><h3>Check every link at once</h3><p>Twice a second, Kebera pings your router, your outdoor unit or modem, and two internet servers, all at the same moment.</p></div>
@@ -618,7 +725,7 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
 <section class="sec band" id="result">
   <div class="wrap result">
     <div>
-      <p class="label reveal"><b></b>LINK 06 · The result</p>
+      <p class="label reveal"><b></b>LINK 07 · The result</p>
       <h2 class="reveal">Facts they can't brush off.</h2>
       <p class="lede reveal">Not just numbers. A verdict in plain words, the evidence behind it, and a message ready to send.</p>
       <div class="files reveal">
@@ -648,7 +755,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== FEATURES =============================== -->
 <section class="sec white" id="checks">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 07 · What it checks</p>
+    <p class="label reveal"><b></b>LINK 08 · What it checks</p>
     <h2 class="reveal">Everything a good<br>technician looks at.</h2>
     <div class="features reveal">
       <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/></svg></div><h3>Wi-Fi</h3><p>Signal, 2.4 vs 5 GHz, neighbours crowding your channel, and the best channel to use.</p></div>
@@ -667,7 +774,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== SAFETY =============================== -->
 <section class="sec" id="safe">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 08 · Is it safe?</p>
+    <p class="label reveal"><b></b>LINK 09 · Is it safe?</p>
     <h2 class="reveal">A diagnostic tool.<br><span class="gold">Not a hacking tool.</span></h2>
     <div class="trust">
       <div class="tcard reveal"><div class="ti">🛡️</div><h3>Your connection only</h3><p>It finds your own router and outdoor unit automatically and has no way to aim anywhere else. A built-in safety check stops it if it tries.</p></div>
@@ -682,7 +789,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== STATS =============================== -->
 <section class="sec" id="stats" style="padding-top:0">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 09 · Live from GitHub</p>
+    <p class="label reveal"><b></b>LINK 10 · Live from GitHub</p>
     <h2 class="reveal">Built in the open.</h2>
     <div class="stats reveal">
       <div class="stat"><b id="s-stars">–</b><span>Stars</span></div>
@@ -699,7 +806,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== CASE =============================== -->
 <section class="sec light" id="case">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 10 · A real case</p>
+    <p class="label reveal"><b></b>LINK 11 · A real case</p>
     <h2 class="reveal">"It must be the router."<br>It wasn't.</h2>
     <div class="case">
       <blockquote class="reveal">"My Xbox, my laptop, my phone: sometimes the internet just gives up."<cite>KAMPALA · NOVEMBER 2026 · AIRTEL 5G HOME</cite></blockquote>
@@ -719,7 +826,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== CONTACTS =============================== -->
 <section class="sec light" id="contacts" style="padding-top:0">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 11 · Customer care</p>
+    <p class="label reveal"><b></b>LINK 12 · Customer care</p>
     <h2 class="reveal">Then tell them.</h2>
     <p class="lede reveal">Customer care contacts across East Africa. Send your report, ask for a reference number, and <a class="textlink" id="l-escalate" href="#">escalate step by step</a> if it isn't fixed.</p>
     <div class="tabs reveal" role="tablist" id="ctabs"></div>
@@ -765,7 +872,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== COMMUNITY + FAQ =============================== -->
 <section class="sec white" id="faq">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 12 · Community</p>
+    <p class="label reveal"><b></b>LINK 13 · Community</p>
     <h2 class="reveal">Make the next answer better.</h2>
     <p class="lede reveal">Every router, outdoor unit and fibre modem you report makes Kebera smarter. Translations into Luganda, Swahili, Runyankole, Acholi and Lusoga are especially welcome.</p>
     <div class="comm">
@@ -827,7 +934,7 @@ the connection beyond them dropped or lagged.</span></pre>
     ghlink: gh, 'hero-gh': gh, 'final-gh': gh,
     'l-chat': blob + 'chat/KEBERA-CHAT-GUIDE.md', 'f-chat': blob + 'chat/KEBERA-CHAT-GUIDE.md',
     'f-zip': zip,
-    'w-unix': gh + '#d-mac-or-linux-beta', 'w-bug': gh + '/issues/new?template=bug-report.md',
+    'w-bug': gh + '/issues/new?template=bug-report.md',
     'l-agents': blob + 'AGENTS.md', 'f-agents': blob + 'AGENTS.md',
     'l-steps': blob + 'docs/step-by-step-without-ai.md', 'f-steps': blob + 'docs/step-by-step-without-ai.md',
     aup0: blob + 'ACCEPTABLE_USE.md', aup1: blob + 'ACCEPTABLE_USE.md', 'f-aup': blob + 'ACCEPTABLE_USE.md',
@@ -845,7 +952,22 @@ the connection beyond them dropped or lagged.</span></pre>
     el.href = L[id]; el.target = '_blank'; el.rel = 'noopener';
   });
 
-  document.getElementById('w-zip').href = zip;
+  ['w-zip', 'm-zip', 'x-zip'].forEach(function (id) { var el = document.getElementById(id); if (el) el.href = zip; });
+
+  /* ---- Copy buttons ---- */
+  document.querySelectorAll('.cmd .copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.parentNode.querySelector('code').textContent;
+      var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1800); };
+      var fallback = function () {
+        var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { if (document.execCommand('copy')) done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+    });
+  });
 
   /* ---- Mobile menu ---- */
   var burger = document.getElementById('burger'), menu = document.getElementById('menu');

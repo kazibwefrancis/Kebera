@@ -457,30 +457,134 @@ settings changed without your clear yes.**
 
 ### D. Mac or Linux (beta)
 
-1. Download Kebera: **[Kebera-main.zip](https://github.com/kazibwefrancis/Kebera/archive/refs/heads/main.zip)**
-   (or the green **<> Code** button → **Download ZIP**).
-2. Unzip it:
-   - **Mac:** open **Downloads** in Finder and double-click `Kebera-main.zip`. A
-     `Kebera-main` folder appears.
-   - **Linux:** right-click → **Extract Here**, or run `unzip ~/Downloads/Kebera-main.zip -d ~/Downloads`.
-3. Open a terminal in that folder (the one that contains `README.md` and `scripts`):
-   - **Mac:** open **Terminal** (press **Cmd + Space**, type *Terminal*, press Enter), type
-     `cd ` (with a space), drag the `Kebera-main` folder from Finder into the Terminal
-     window, and press **Enter**.
-   - **Linux:** right-click inside the folder → **Open in Terminal**, or run
-     `cd ~/Downloads/Kebera-main`.
-   - If there is another `Kebera-main` folder inside it, go into that one (`cd Kebera-main`).
-4. Run:
+On a Mac or Linux computer, Kebera runs from the **Terminal** with one command. You
+don't need to be technical: you copy one line, paste it and press Enter. It takes
+about 3 minutes to set up the first time and 5 minutes to run.
+
+> **Beta:** the Mac/Linux version does the main check-up (stability on every link,
+> route, Wi-Fi, DNS, speed and equipment identification) and writes the same report
+> and provider message. It doesn't have the 3-hour long log yet, and its HTML report
+> is Windows-only for now. Please [report problems](../../issues/new?template=bug-report.md).
+
+#### On a Mac
+
+**Step 1: Download Kebera**
+
+1. Click **[Download Kebera (ZIP, about 130 KB)](https://github.com/kazibwefrancis/Kebera/archive/refs/heads/main.zip)**
+   (or the green **<> Code** button at the top of this page → **Download ZIP**).
+2. **Safari** usually unzips it for you, leaving a **`Kebera-main`** folder in your
+   **Downloads** folder. **Chrome, Firefox and others** leave `Kebera-main.zip` there:
+   open **Finder**, click **Downloads** in the sidebar, and **double-click
+   `Kebera-main.zip`**. A `Kebera-main` folder appears next to it.
+3. On a Mac there is only **one** `Kebera-main` folder (no folder inside a folder).
+   You don't need to open it.
+
+**Step 2: Open Terminal**
+
+Press **Cmd + Space**, type **Terminal**, and press **Return**. A window with a text
+prompt opens. (It's also in **Finder → Applications → Utilities → Terminal**.)
+
+**Step 3: Copy, paste and run this line**
 
 ```bash
-bash scripts/unix/kebera.sh            # standard check
-bash scripts/unix/kebera.sh --quick    # quick check
-bash scripts/unix/kebera.sh --no-speedtest
+cd ~/Downloads/Kebera-main && bash scripts/unix/kebera.sh
 ```
 
-Your report is saved in `reports/<date_time>/report.md`, with `message-to-provider.txt`
-next to it. For best results on Linux, install `traceroute` and `dig` (package
-`dnsutils` or `bind-tools`). The Mac/Linux version is newer; please report problems.
+Copy the whole line (the copy button is at its right on GitHub), click in the Terminal
+window, press **Cmd + V** to paste, then press **Return**.
+
+- If macOS asks *"Terminal would like to access files in your Downloads folder"*,
+  click **Allow**. Kebera only reads and writes inside its own folder.
+- If you see **"No such file or directory"**, the folder is somewhere else or has
+  another name (for example `Kebera-main 2` if you downloaded it twice). Type `cd `
+  (with a space after it), **drag the `Kebera-main` folder from Finder into the Terminal
+  window**, press **Return**, then run `bash scripts/unix/kebera.sh`.
+- You **never** need `sudo` or your Mac password for Kebera. If anything asks for your
+  password, stop.
+
+**Step 4: Wait for it to finish**
+
+Leave Terminal open. You'll see progress lines starting with `==>`, then a
+**VERDICT** line in yellow. Stay on your home internet (not a phone hotspot).
+
+**Step 5: Read your report**
+
+When it finishes, **Finder opens the report folder** by itself
+(**Downloads › Kebera-main › reports › *date_time***). Inside:
+
+| File | What it's for | How to open |
+|---|---|---|
+| `report.md` | The full report | Right-click → **Open With → TextEdit** |
+| `message-to-provider.txt` | Complaint message with your results filled in | Double-click (opens in TextEdit) |
+
+Tip: copy everything in `report.md` and paste it into a free AI chat
+([option A](#a-free-ai-chat-chatgpt-claude-gemini-deepseek)) to have it explained.
+
+#### On Linux
+
+**Step 1: Download and extract Kebera**
+
+1. Click **[Download Kebera (ZIP, about 130 KB)](https://github.com/kazibwefrancis/Kebera/archive/refs/heads/main.zip)**.
+   It's saved as `Kebera-main.zip` in your **Downloads** folder.
+2. Open your file manager, go to **Downloads**, right-click `Kebera-main.zip` and
+   choose **Extract Here**. You get a **`Kebera-main`** folder.
+   - Or in a terminal: `cd ~/Downloads && unzip Kebera-main.zip`
+   - If your extractor made a folder inside a folder (`Kebera-main/Kebera-main`), use
+     the inner one: the right folder contains `README.md` and `scripts`.
+
+**Step 2: Open a terminal and install the helper tools (once)**
+
+Open a terminal (**Ctrl + Alt + T** on Ubuntu and Mint, or search for *Terminal* in your
+apps). Kebera uses `ping`, `curl`, `traceroute` and `dig`. Most systems have the first
+two; install the others with the line for your system (it asks for **your** computer
+password, because it installs software):
+
+| Your Linux | Command |
+|---|---|
+| Ubuntu, Debian, Mint, Pop!_OS | `sudo apt install traceroute dnsutils curl` |
+| Fedora, RHEL, Rocky, Alma | `sudo dnf install traceroute bind-utils curl` |
+| Arch, Manjaro | `sudo pacman -S traceroute bind curl` |
+| openSUSE | `sudo zypper install traceroute bind-utils curl` |
+
+This is the only step that uses `sudo`. Kebera itself never needs it. If you skip it,
+Kebera still runs and just leaves out the route or DNS timing. Wi-Fi details come from
+NetworkManager (`nmcli`), which most desktop Linux systems already have.
+
+**Step 3: Run Kebera**
+
+```bash
+cd ~/Downloads/Kebera-main && bash scripts/unix/kebera.sh
+```
+
+Paste it in the terminal with **Ctrl + Shift + V** and press **Enter**.
+If you see "No such file or directory", right-click inside the `Kebera-main` folder in
+your file manager → **Open in Terminal**, then run `bash scripts/unix/kebera.sh`.
+
+**Step 4: Read your report**
+
+When it finishes, your file manager opens the report folder
+(**Downloads › Kebera-main › reports › *date_time***). Open `report.md` and
+`message-to-provider.txt` with your text editor.
+
+#### Options (Mac and Linux)
+
+Add these after `kebera.sh`, for example `bash scripts/unix/kebera.sh --quick`:
+
+| Option | What it does |
+|---|---|
+| `--quick` | Shorter test (about 2 minutes) |
+| `--no-speedtest` | Skip the speed test (saves about 35 MB of data) |
+| `--no-internet-services` | Skip the speed test and the public-address check |
+| `--no-open` | Don't open the report folder at the end |
+| `--help` | Show the options |
+
+**Running it again later:** open Terminal and run the same line again
+(`cd ~/Downloads/Kebera-main && bash scripts/unix/kebera.sh`). On a Mac, pressing the
+**up arrow** in Terminal brings back the last command.
+
+**Problems that come and go?** Until the long log comes to Mac/Linux, run the check
+**several times at the times it's bad** (for example 8 pm and 10 pm) and keep each
+report folder. Each one is saved separately with its date and time.
 
 ---
 
@@ -705,6 +809,10 @@ Full details: [PRIVACY.md](PRIVACY.md) · [ACCEPTABLE_USE.md](ACCEPTABLE_USE.md)
 | *"The publisher could not be verified"* | Click **Run** (only for Kebera from the official page). |
 | *"Running scripts is disabled on this system"* | Use `kebera.bat`, or the full command with `-ExecutionPolicy Bypass`. It applies only to that run and doesn't change your settings. |
 | The window opens and closes immediately | Run the PowerShell command from section B ("Advanced") to see the error, and [report a bug](../../issues/new?template=bug-report.md). |
+| Mac/Linux: *"No such file or directory"* | The folder isn't at `~/Downloads/Kebera-main`. Type `cd ` and drag the Kebera folder into the Terminal window, press Enter, then run `bash scripts/unix/kebera.sh` (section D). |
+| Mac/Linux: *"Permission denied"* | Start the command with `bash` as shown (`bash scripts/unix/kebera.sh`). Don't use `sudo`. |
+| Mac: Wi-Fi name shows as *redacted* or is missing | Newer macOS hides the Wi-Fi name from Terminal unless it has Location access. The rest of the check-up still works. |
+| Linux: *"traceroute not installed"* or no DNS timing | Install the helper tools for your system (section D, Linux step 2), then run it again. |
 | My antivirus moved `kebera.bat` away | Antivirus tools sometimes flag scripts they don't know. Restore it only if you downloaded it from the official page. |
 | *"No active network connection was found"* | Connect to your Wi-Fi or plug in the cable, then try again. |
 | *"0 access points visible"* / no Wi-Fi list | Windows 11: *Settings → Privacy & security → Location* → turn **Location services** on (Windows needs it for Wi-Fi scanning). |

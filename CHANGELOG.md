@@ -7,6 +7,11 @@
   and where reports are saved.
 - `kebera.bat` explains what to do when it's opened from inside the ZIP, and
   shows where the reports were saved when it finishes.
+- Detailed Mac and Linux steps in the README and on the website: downloading and
+  unzipping, opening Terminal, a one-line command with a copy button, helper tools
+  for each Linux family, and where reports are saved.
+- `kebera.sh` opens the report folder when it finishes (Finder on macOS, the file
+  manager on Linux desktops). New `--no-open` option.
 
 ## 0.1.0 (2026-11-21)
 

@@ -6,7 +6,7 @@
 # There is deliberately no option to choose other targets. Misuse or perversion
 # of Kebera is not tolerated. See ACCEPTABLE_USE.md.
 #
-# Usage:  bash scripts/unix/kebera.sh [--quick] [--no-speedtest] [--no-internet-services]
+# Usage:  bash scripts/unix/kebera.sh [--quick] [--no-speedtest] [--no-internet-services] [--no-open]
 #
 # Runs ping, traceroute, DNS and speed tests, reads the normal web page of your
 # router / outdoor unit (no login), and writes reports/<date>/report.md plus a
@@ -14,10 +14,11 @@
 
 set -u
 VERSION="0.1.0"
-QUICK=0; SPEED=1; NETSVC=1
+QUICK=0; SPEED=1; NETSVC=1; OPEN=1
 for a in "$@"; do
   case "$a" in
     --quick) QUICK=1 ;;
+    --no-open) OPEN=0 ;;
     --no-speedtest) SPEED=0 ;;
     --no-internet-services) NETSVC=0; SPEED=0 ;;
     -h|--help) sed -n '2,10p' "$0"; exit 0 ;;
@@ -252,3 +253,13 @@ printf '\n\033[33mVERDICT: %s\033[0m\n' "$VERDICT"
 echo "Reports saved in: $OUT"
 echo "  report.md                - the full report"
 echo "  message-to-provider.txt  - ready-to-send complaint draft"
+echo "Open them with any text editor (on a Mac: right-click > Open With > TextEdit)."
+
+# Show the report folder (Finder on macOS, the file manager on Linux desktops).
+if [ "$OPEN" = 1 ]; then
+  if [ "$OS" = "Darwin" ]; then
+    open "$OUT" 2>/dev/null
+  elif have xdg-open && [ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]; then
+    xdg-open "$OUT" >/dev/null 2>&1 &
+  fi
+fi
