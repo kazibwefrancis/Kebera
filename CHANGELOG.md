@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Detailed Windows steps in the README and on the website: download, extract,
+  the folder inside a folder, where `kebera.bat` sits, Windows security prompts,
+  and where reports are saved.
+- `kebera.bat` explains what to do when it's opened from inside the ZIP, and
+  shows where the reports were saved when it finishes.
+
 ## 0.1.0 (2026-11-21)
 
 First release.

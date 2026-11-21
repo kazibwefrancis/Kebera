@@ -16,9 +16,17 @@ home internet doesn't, the problem is in the home equipment or home service.
 
 ## Step 2: Easiest: run the Kebera check-up (Windows)
 
-1. Download Kebera: **github.com/kazibwefrancis/Kebera**, then green **Code** → **Download ZIP**, and unzip it.
-2. Double-click **kebera.bat** and choose **1** (standard) or **2** (quick).
-3. Read the **Verdict** at the top of the report that opens. It tells you where the
+1. Download Kebera: **github.com/kazibwefrancis/Kebera**, then green **Code** → **Download ZIP**.
+   It saves `Kebera-main.zip` in your **Downloads** folder.
+2. Open **Downloads** (press **Windows key + E**, click **Downloads**), right-click
+   `Kebera-main.zip` → **Extract All…** → **Extract**. Don't run Kebera from inside the ZIP.
+3. Open the **Kebera-main** folder, then the **Kebera-main** folder inside it.
+4. Scroll past the folders to the files and double-click **kebera.bat** (between
+   `DISCLAIMER` and `LICENSE`; it may show as just `kebera`). If Windows warns you, click
+   **Run**, or **More info → Run anyway**. Choose **1** (standard) or **2** (quick).
+
+   Full illustrated steps: [README, section B](../README.md#b-windows-double-click-no-ai-needed).
+5. Read the **Verdict** at the top of the report that opens. It tells you where the
    problem is and what to do. `message-to-provider.txt` is ready to send.
 
 If you can't download it, do Steps 3–6 by hand.

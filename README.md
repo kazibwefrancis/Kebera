@@ -238,21 +238,97 @@ At the end you get three things:
 
 ### B. Windows: double-click, no AI needed
 
+You only need **one file**: `kebera.bat`. It sits in the main Kebera folder, and it
+finds everything else by itself, so you never need to open the other folders.
+The steps below take about 3 minutes the first time.
+
 **Step 1: Download Kebera**
 
-1. At the top of this page, click the green **Code** button, then **Download ZIP**.
-2. Open your **Downloads** folder, right-click `kebera-main.zip`, and choose **Extract All…** → **Extract**.
-3. Open the extracted **kebera-main** folder.
+Do this on the Windows laptop you want to test, connected to your home internet.
 
-(If you use git: `git clone https://github.com/kazibwefrancis/Kebera.git`)
+1. Click this link: **[Download Kebera for Windows (ZIP, about 130 KB)](https://github.com/kazibwefrancis/Kebera/archive/refs/heads/main.zip)**.
+   - Or, at the top of this GitHub page, click the green **<> Code** button, then **Download ZIP**.
+2. Your browser saves a file called **`Kebera-main.zip`** in your **Downloads** folder.
+   If the browser asks, choose **Keep** or **Save**.
+3. Only download Kebera from `github.com/kazibwefrancis/Kebera` or the Kebera website,
+   never from a copy someone sends you.
 
-**Step 2: Run it**
+**Step 2: Open your Downloads folder**
 
-1. Double-click **`kebera.bat`**.
-   - If Windows shows *"Windows protected your PC"*, click **More info** → **Run anyway**.
-     This appears for any downloaded script. Only do this for Kebera downloaded from
-     the official page: `github.com/kazibwefrancis/Kebera`.
-2. A black window opens. Type a number and press **Enter**:
+1. Press the **Windows key + E** together. This opens **File Explorer** (the yellow folder icon).
+2. Click **Downloads** in the list on the left.
+   - Shortcut: in your browser's download list, click **Show in folder** next to `Kebera-main.zip`.
+
+**Step 3: Extract (unzip) the ZIP file**
+
+1. **Right-click** `Kebera-main.zip` and choose **Extract All…**
+   - Windows 11: if you don't see it, click **Show more options** first.
+2. In the window that opens, click **Extract**. Leave the folder it suggests as it is.
+3. A new folder called **`Kebera-main`** appears in Downloads, and usually opens by itself.
+
+> ⚠️ **Don't skip this step.** Windows lets you open a ZIP file like a folder, and you
+> will even see `kebera.bat` inside it, but Kebera **won't work from inside the ZIP**.
+> If you double-click it there, it tells you to extract first.
+
+**Step 4: Open the Kebera folder (it's a folder inside a folder)**
+
+The download contains a folder with the same name inside it, so you open **two**
+folders called `Kebera-main`:
+
+1. Double-click the **`Kebera-main`** folder.
+2. Inside it, double-click the **`Kebera-main`** folder again.
+3. You're in the right place when the address bar at the top shows
+   **Downloads › Kebera-main › Kebera-main** and you can see folders called
+   `chat`, `docs` and `scripts`.
+
+(If you downloaded Kebera more than once, the folder may be called `Kebera-main (1)`.
+That's fine.)
+
+**Step 5: Find `kebera.bat`**
+
+File Explorer lists the **folders first**, then the **files** below them. Scroll down
+past the folders. `kebera.bat` is in the files, between `DISCLAIMER` and `LICENSE`:
+
+```text
+Downloads › Kebera-main › Kebera-main
+  📁 .github
+  📁 chat
+  📁 deploy
+  📁 docs
+  📁 examples
+  📁 scripts                ← no need to open this; kebera.bat uses it for you
+  📁 site
+  📁 templates
+  📄 ...
+  📄 DISCLAIMER.md
+  ⚙️ kebera.bat              ← THIS ONE   Type: Windows Batch File
+  📄 LICENSE
+  📄 ...
+  📄 README.md
+```
+
+- Its icon looks like a small window with gears.
+- If Windows hides file endings, it shows as just **`kebera`**. Check the **Type**
+  column says **Windows Batch File** (in **View → Details**).
+- Can't see it? Type `kebera.bat` in the **search box** at the top right of the folder.
+
+**Step 6: Double-click `kebera.bat` and allow it to run**
+
+Windows shows a warning for any file downloaded from the internet. You may see one of these:
+
+| You see | Click |
+|---|---|
+| *"Open File – Security Warning: The publisher could not be verified"* | **Run** |
+| *"Windows protected your PC"* (blue window) | **More info**, then **Run anyway** |
+| Nothing | Nothing to do, carry on |
+
+Only allow it for Kebera downloaded from the official page. Kebera is plain text: you can
+right-click `kebera.bat` → **Edit** (or open any `.ps1` file in Notepad) to read exactly
+what it does.
+
+**Step 7: Choose a check**
+
+1. A black window opens. Type a number and press **Enter**:
 
    | Choose | What it does | Time | Data used |
    |---|---|---|---|
@@ -260,7 +336,10 @@ At the end you get three things:
    | **2** | Quick check | about 2 min | about 12 MB |
    | **3** | Long log, to catch problems that come and go ([section 6](#6-catching-problems-that-come-and-go-the-long-log)) | 3 hours | under 5 MB |
 
-3. Keep the window open while it works. You'll see progress like this:
+   Not sure? Choose **1**. If you're on limited mobile data, choose **2**.
+
+2. Keep the window open, and keep the laptop on and connected to your **home internet**
+   (not a phone hotspot) until it finishes. You'll see progress like this:
 
    ```text
    Kebera 0.1.0 - home internet check-up (read-only)
@@ -285,10 +364,13 @@ At the end you get three things:
    ==================================================================
    ```
 
-**Step 3: Read your report**
+**Step 8: Read your report**
 
-When it finishes, the report **opens in your browser** automatically. It's also saved in
-the `reports` folder inside Kebera, in a folder named with the date and time:
+1. When it finishes, the report **opens in your browser** automatically.
+2. The black window shows where everything was saved. Press any key to close it.
+3. To find the files later, open File Explorer and go to
+   **Downloads › Kebera-main › Kebera-main › reports**. Each check-up gets its own
+   folder, named with the date and time (for example `2026-11-21_1430`). Open it to see:
 
 | File | What it's for |
 |---|---|
@@ -297,12 +379,25 @@ the `reports` folder inside Kebera, in a folder named with the date and time:
 | `message-to-provider.txt` | A complaint message with your results already filled in. Add your account number and send. |
 | `report.json` | All the data, for AI agents and tools |
 
+The long log (choice **3**) saves a file called `kebera-log_<date>-report.md` straight
+in the `reports` folder instead.
+
 See [section 7](#7-understanding-your-report) for how to read it.
+
+**Running it again later**
+
+Open **Downloads › Kebera-main › Kebera-main** and double-click `kebera.bat`. You only
+download and extract once.
+
+> 💡 **Tip:** to find it more easily, move the inner `Kebera-main` folder to your
+> **Desktop** or **Documents** (drag it there). Or right-click `kebera.bat` →
+> **Show more options** → **Send to** → **Desktop (create shortcut)**.
 
 **Advanced: run from PowerShell**
 
-Open PowerShell in the Kebera folder (in File Explorer, click the address bar, type
-`powershell`, press Enter) and run:
+Open PowerShell in the Kebera folder: in File Explorer, go to
+**Downloads › Kebera-main › Kebera-main**, click the address bar at the top, type
+`powershell` and press **Enter**. A blue window opens, already in the right folder. Run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\windows\kebera.ps1
@@ -327,9 +422,11 @@ If you have a coding agent such as **Claude Code**, **OpenAI Codex CLI**, **Gemi
 **Cursor** or **VS Code with Copilot agent mode**, it can run everything for you and
 explain the results.
 
-**Step 1:** Download Kebera (see [B, step 1](#b-windows-double-click-no-ai-needed)).
+**Step 1:** Download and extract Kebera (see [B, steps 1–4](#b-windows-double-click-no-ai-needed)).
+The folder to use is the **inner** one: **Downloads › Kebera-main › Kebera-main** (the one
+that contains `AGENTS.md`).
 
-**Step 2:** Open the Kebera folder in your agent:
+**Step 2:** Open that Kebera folder in your agent:
 
 | Agent | How |
 |---|---|
@@ -360,9 +457,20 @@ settings changed without your clear yes.**
 
 ### D. Mac or Linux (beta)
 
-1. Download Kebera (green **Code** button → **Download ZIP**, then unzip it).
-2. Open **Terminal** in the Kebera folder.
-3. Run:
+1. Download Kebera: **[Kebera-main.zip](https://github.com/kazibwefrancis/Kebera/archive/refs/heads/main.zip)**
+   (or the green **<> Code** button → **Download ZIP**).
+2. Unzip it:
+   - **Mac:** open **Downloads** in Finder and double-click `Kebera-main.zip`. A
+     `Kebera-main` folder appears.
+   - **Linux:** right-click → **Extract Here**, or run `unzip ~/Downloads/Kebera-main.zip -d ~/Downloads`.
+3. Open a terminal in that folder (the one that contains `README.md` and `scripts`):
+   - **Mac:** open **Terminal** (press **Cmd + Space**, type *Terminal*, press Enter), type
+     `cd ` (with a space), drag the `Kebera-main` folder from Finder into the Terminal
+     window, and press **Enter**.
+   - **Linux:** right-click inside the folder → **Open in Terminal**, or run
+     `cd ~/Downloads/Kebera-main`.
+   - If there is another `Kebera-main` folder inside it, go into that one (`cd Kebera-main`).
+4. Run:
 
 ```bash
 bash scripts/unix/kebera.sh            # standard check
@@ -591,9 +699,13 @@ Full details: [PRIVACY.md](PRIVACY.md) · [ACCEPTABLE_USE.md](ACCEPTABLE_USE.md)
 
 | Problem | Solution |
 |---|---|
+| I can't find `kebera.bat` | Make sure you extracted the ZIP (section B, step 3) and opened **both** `Kebera-main` folders (step 4). It's in the files list, between `DISCLAIMER` and `LICENSE`, and may show as just `kebera`. |
+| *"Kebera can't find its files"* | You opened `kebera.bat` from inside the ZIP. Close the window, extract the ZIP (section B, step 3) and run it from the extracted folder. |
 | *"Windows protected your PC"* | Click **More info → Run anyway** (only for Kebera from the official page). |
+| *"The publisher could not be verified"* | Click **Run** (only for Kebera from the official page). |
 | *"Running scripts is disabled on this system"* | Use `kebera.bat`, or the full command with `-ExecutionPolicy Bypass`. It applies only to that run and doesn't change your settings. |
-| The window opens and closes immediately | Right-click `kebera.bat` → **Edit** to check it's intact, or run the PowerShell command from section B to see the error. |
+| The window opens and closes immediately | Run the PowerShell command from section B ("Advanced") to see the error, and [report a bug](../../issues/new?template=bug-report.md). |
+| My antivirus moved `kebera.bat` away | Antivirus tools sometimes flag scripts they don't know. Restore it only if you downloaded it from the official page. |
 | *"No active network connection was found"* | Connect to your Wi-Fi or plug in the cable, then try again. |
 | *"0 access points visible"* / no Wi-Fi list | Windows 11: *Settings → Privacy & security → Location* → turn **Location services** on (Windows needs it for Wi-Fi scanning). |
 | My router wasn't identified | Check the label under it for the make and model. The report still works; please [send a device report](../../issues/new?template=device-report.md). |

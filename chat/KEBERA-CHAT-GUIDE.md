@@ -57,11 +57,17 @@ Then follow the path below that matches. Keep a running summary of results.
 ### A1. Easiest: the Kebera script (if they can download it)
 
 Ask whether they can download Kebera from **github.com/kazibwefrancis/Kebera**
-(green **Code** button → **Download ZIP** → unzip). If yes:
-- Double-click **kebera.bat**, choose **2** (quick check, about 2 minutes) or
-  **1** (standard, about 5 minutes, uses about 35 MB of data).
-- When it finishes, open the **reports** folder → newest folder → `report.md`,
-  then copy everything and paste it here.
+(green **Code** button → **Download ZIP**). If yes, guide them one step at a time:
+- Open **Downloads** (Windows key + E → Downloads), right-click `Kebera-main.zip` →
+  **Extract All…** → **Extract**. It does not work from inside the ZIP.
+- Open the **Kebera-main** folder, then the **Kebera-main** folder inside it.
+- Scroll past the folders to the files. Double-click **kebera.bat** (between
+  DISCLAIMER and LICENSE; it may show as just "kebera", type "Windows Batch File").
+  If Windows warns, click **Run**, or **More info → Run anyway**.
+- Choose **2** (quick check, about 2 minutes) or **1** (standard, about 5 minutes,
+  uses about 35 MB of data).
+- When it finishes, open **Downloads › Kebera-main › Kebera-main › reports** →
+  newest folder → `report.md` (open with Notepad), then copy everything and paste it here.
 Then skip to **Step R** (equipment pages), using the router address and "next
 device" address from the report.
 
