@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  🌐 <b>Website:</b> <a href="https://kazibwefrancis.github.io/kebera/">kazibwefrancis.github.io/kebera</a> &nbsp;·&nbsp;
+  🌐 <b>Website:</b> coming soon (hosted on Railway; see <a href="docs/hosting-website.md">hosting</a>) &nbsp;·&nbsp;
   📞 <a href="docs/provider-contacts.md">Provider contacts (East Africa)</a>
 </p>
 
@@ -71,10 +71,29 @@ You also get:
 - **What you can fix yourself**, cheapest first, often free and quick.
 - **A ready-to-send message** for your provider (WhatsApp or email), already filled in.
 
-**Who is it for?** Anyone with home internet: 5G or 4G home broadband (outdoor unit
-plus indoor router), an indoor 4G router, a MiFi, fibre, a wireless ISP or Starlink.
-It was built in Uganda (Airtel, MTN and others) but works anywhere. **No technical
-knowledge needed**, and **no paid AI needed**.
+**What does it work with?** Any home internet:
+
+- 5G or 4G home broadband with an **outdoor unit plus indoor router**
+- An **indoor unit only**: a 4G/5G router with a SIM inside, no outdoor box
+- **Pocket routers and MiFis**
+- **Fibre** (it checks the fibre modem's light level)
+- **Any Wi-Fi router** (TP-Link, Tenda, Huawei, Netgear and others)
+- **Rooftop antennas** from local ISPs, and **Starlink**
+
+It was built in Uganda (Airtel, MTN and others) but works anywhere. **No paid AI
+needed.**
+
+**Who is it for?**
+
+| If you're… | Kebera helps you… |
+|---|---|
+| **Tech-savvy** | Break the problem down and diagnose it yourself: every link measured at once, signal quality, interference checks, long logs and equipment event logs. Then fix what's yours. |
+| **Not tech-savvy** | Get a **clear report** your provider can't brush off, when all you hear is "restart your router", "switch it off and on" and "we'll call you back". Plus a ready message and step-by-step escalation. |
+
+> 🧰 **Kebera doesn't replace a technician.** Some faults need hands on equipment: a
+> damaged roof cable, a failing outdoor unit, a fibre fault or a problem at the tower.
+> Kebera tells you **which part is failing**, so you know when to ask for a technician
+> and exactly what to tell them.
 
 **What does it cost?** Nothing. Kebera is free and open source. The optional speed
 test uses about 30 MB of data.
@@ -676,7 +695,8 @@ kebera/
 │   ├── providers.md                ← Working with your provider
 │   └── devices/                    ← ZTE, Huawei, fibre, other equipment
 ├── templates/                  ← Detailed report, WhatsApp, email and escalation guide
-├── site/                       ← The project website (published to GitHub Pages)
+├── deploy/ · railway.json      ← Hosting the website on Railway
+├── site/                       ← The project website
 │   ├── index.html
 │   └── providers.json          ← East African customer care contacts
 ├── examples/                   ← Real, anonymised case studies

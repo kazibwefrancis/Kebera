@@ -32,6 +32,14 @@ endorsed by or acting for** Airtel, MTN, Lyca, Roke Telkom, Starlink, ZTE, Huawe
 Cambium, MikroTik or any other company or organisation mentioned. All trademarks
 belong to their owners and are used only to identify equipment and services.
 
+## Not a replacement for a technician
+
+Kebera helps you find **which part** of your connection is failing and gives you the
+evidence to act on it. It does not replace a qualified technician. Faults such as
+damaged outdoor cabling, failing equipment, fibre faults or problems at the tower need
+hands-on work by your provider or a technician. Don't climb onto roofs, open sealed
+equipment or work on power or fibre yourself.
+
 ## Results are indicative, not guaranteed
 
 Network conditions change from minute to minute. A Kebera report describes what

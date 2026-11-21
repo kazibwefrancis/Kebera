@@ -115,6 +115,27 @@ h3{font-size:21px;line-height:1.25;font-weight:600;letter-spacing:-.015em}
 .myths s{font-size:14px;color:var(--on-dark-2);text-decoration-color:var(--red);text-decoration-thickness:2px}
 .safe-line{margin-top:26px;font-size:14px;color:var(--on-dark-2);display:flex;gap:8px;align-items:center}
 .safe-line a{color:var(--on-dark)}
+.works{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:28px}
+.works span{font-size:13px;color:var(--on-dark);padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px var(--hair-dark)}
+.works .works-label{background:none;box-shadow:none;padding-left:0;color:var(--on-dark-2);font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.06em}
+
+/* who it's for */
+.who{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
+@media (max-width:860px){.who{grid-template-columns:1fr}}
+.wcard{border-radius:var(--r-lg);padding:clamp(26px,3.5vw,40px);background:var(--white);box-shadow:0 0 0 1px var(--hair)}
+.wcard.dark{background:var(--ink);color:var(--on-dark);box-shadow:none}
+.wcard .who-tag{display:inline-block;font:600 12px var(--mono);letter-spacing:.04em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--paper);color:var(--text-2);margin-bottom:18px}
+.wcard.dark .who-tag{background:rgba(255,255,255,.08);color:var(--on-dark-2)}
+.wcard h3{font-size:clamp(24px,2.8vw,30px);letter-spacing:-.03em;line-height:1.15}
+.wcard p{margin:12px 0 0;color:var(--text-2)}
+.wcard.dark p{color:var(--on-dark-2)}
+.wcard ul{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.wcard li{display:flex;gap:12px;font-size:15px}
+.wcard li:before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--gold-deep);margin-top:9px}
+.tech{margin-top:16px;display:flex;gap:18px;align-items:flex-start;border-radius:var(--r-lg);padding:clamp(22px,3vw,32px);background:var(--white);box-shadow:inset 4px 0 0 var(--gold),0 0 0 1px var(--hair)}
+.tech .ti{font-size:28px;line-height:1}
+.tech h3{font-size:20px}
+.tech p{margin:8px 0 0;color:var(--text-2)}
 
 /* the chain demo */
 .demo{margin-top:clamp(48px,7vw,80px);background:linear-gradient(180deg,var(--ink-2),var(--ink));border-radius:var(--r-lg);box-shadow:inset 0 0 0 1px var(--hair-dark),0 40px 80px rgba(0,0,0,.45);padding:clamp(20px,3.5vw,36px)}
@@ -316,6 +337,7 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
     </a>
     <div class="menu" id="menu">
       <a href="#paths">Get started</a>
+      <a href="#who">Who it's for</a>
       <a href="#setup">Your setup</a>
       <a href="#how">How it works</a>
       <a href="#safe">Safety</a>
@@ -346,6 +368,10 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
       <a class="btn btn-ghost" id="hero-gh" href="#" target="_blank" rel="noopener">View on GitHub</a>
     </div>
     <p class="safe-line">🛡️ Read-only and for your own connection only. <a id="aup0" href="#">Not a hacking tool.</a></p>
+    <div class="works" aria-label="Works with">
+      <span class="works-label">Works with</span>
+      <span>5G/4G outdoor + indoor units</span><span>Indoor 4G/5G routers</span><span>Pocket routers and MiFi</span><span>Fibre</span><span>Any Wi-Fi router</span><span>Rooftop antennas</span><span>Starlink</span>
+    </div>
 
     <!-- Interactive chain -->
     <div class="demo reveal" aria-label="Interactive example: where does it break?">
@@ -386,10 +412,50 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
   </div>
 </section>
 
-<!-- =============================== SETUP =============================== -->
-<section class="sec light" id="setup">
+<!-- =============================== WHO IT'S FOR =============================== -->
+<section class="sec light" id="who">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 02 · Your setup</p>
+    <p class="label reveal"><b></b>LINK 02 · Who it's for</p>
+    <h2 class="reveal">Beyond "restart<br>your router."</h2>
+    <p class="lede reveal">Whether you love the technical detail or just want your internet fixed, Kebera meets you where you are.</p>
+    <div class="who">
+      <div class="wcard reveal">
+        <span class="who-tag">If you're tech-savvy</span>
+        <h3>Break it down and diagnose it yourself.</h3>
+        <p>See every link measured at the same moment, read your equipment's signal and logs, and find the exact point of failure.</p>
+        <ul>
+          <li>Loss, jitter and lag spikes on every link</li>
+          <li>RSRP, SINR, RSRQ and the interference check</li>
+          <li>Long logs, hour-by-hour patterns and event logs</li>
+          <li>Fix what's yours: Wi-Fi channel, 5 GHz, DNS, cabling</li>
+        </ul>
+      </div>
+      <div class="wcard dark reveal">
+        <span class="who-tag">If you're not</span>
+        <h3>Get a report your provider can't ignore.</h3>
+        <p>When all you hear is "restart your router", "switch it off and on" and "we'll call you back", Kebera writes it up for you.</p>
+        <ul>
+          <li>A plain-language verdict: home, equipment or provider</li>
+          <li>A detailed report with the evidence attached</li>
+          <li>A WhatsApp-ready message with your numbers filled in</li>
+          <li>Step-by-step escalation if they still don't act</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tech reveal">
+      <span class="ti" aria-hidden="true">🧰</span>
+      <div>
+        <h3>It doesn't replace a technician.</h3>
+        <p>Some faults need hands on equipment: a damaged cable on the roof, a failing outdoor unit, a fibre fault or a problem at the tower. Kebera tells you which part is failing, so you know when to ask for a technician and exactly what to tell them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== SETUP =============================== -->
+<section class="sec light" id="setup" style="padding-top:0">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 03 · Your setup</p>
     <h2 class="reveal">Works with what's<br>on your wall.</h2>
     <p class="lede reveal">5G outdoor units, 4G routers, pocket MiFis, fibre, rooftop antennas, satellite. Pick yours to see what Kebera looks at.</p>
     <div class="picker reveal">
@@ -402,7 +468,7 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
 <!-- =============================== HOW =============================== -->
 <section class="sec light" id="how" style="padding-top:0">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 03 · How it works</p>
+    <p class="label reveal"><b></b>LINK 04 · How it works</p>
     <h2 class="reveal">Three steps.<br>One honest answer.</h2>
     <div class="steps3">
       <div class="step reveal"><div class="big">1</div><h3>Check every link at once</h3><p>Twice a second, Kebera pings your router, your outdoor unit or modem, and two internet servers, all at the same moment.</p></div>
@@ -422,7 +488,7 @@ footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}fo
 <section class="sec band" id="result">
   <div class="wrap result">
     <div>
-      <p class="label reveal"><b></b>LINK 04 · The result</p>
+      <p class="label reveal"><b></b>LINK 05 · The result</p>
       <h2 class="reveal">Facts they can't brush off.</h2>
       <p class="lede reveal">Not just numbers. A verdict in plain words, the evidence behind it, and a message ready to send.</p>
       <div class="files reveal">
@@ -452,7 +518,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== FEATURES =============================== -->
 <section class="sec white" id="checks">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 05 · What it checks</p>
+    <p class="label reveal"><b></b>LINK 06 · What it checks</p>
     <h2 class="reveal">Everything a good<br>technician looks at.</h2>
     <div class="features reveal">
       <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/></svg></div><h3>Wi-Fi</h3><p>Signal, 2.4 vs 5 GHz, neighbours crowding your channel, and the best channel to use.</p></div>
@@ -471,7 +537,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== SAFETY =============================== -->
 <section class="sec" id="safe">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 06 · Is it safe?</p>
+    <p class="label reveal"><b></b>LINK 07 · Is it safe?</p>
     <h2 class="reveal">A diagnostic tool.<br><span class="gold">Not a hacking tool.</span></h2>
     <div class="trust">
       <div class="tcard reveal"><div class="ti">🛡️</div><h3>Your connection only</h3><p>It finds your own router and outdoor unit automatically and has no way to aim anywhere else. A built-in safety check stops it if it tries.</p></div>
@@ -486,7 +552,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== STATS =============================== -->
 <section class="sec" id="stats" style="padding-top:0">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 07 · Live from GitHub</p>
+    <p class="label reveal"><b></b>LINK 08 · Live from GitHub</p>
     <h2 class="reveal">Built in the open.</h2>
     <div class="stats reveal">
       <div class="stat"><b id="s-stars">–</b><span>Stars</span></div>
@@ -503,7 +569,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== CASE =============================== -->
 <section class="sec light" id="case">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 08 · A real case</p>
+    <p class="label reveal"><b></b>LINK 09 · A real case</p>
     <h2 class="reveal">"It must be the router."<br>It wasn't.</h2>
     <div class="case">
       <blockquote class="reveal">"My Xbox, my laptop, my phone: sometimes the internet just gives up."<cite>KAMPALA · NOVEMBER 2026 · AIRTEL 5G HOME</cite></blockquote>
@@ -523,7 +589,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== CONTACTS =============================== -->
 <section class="sec light" id="contacts" style="padding-top:0">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 09 · Customer care</p>
+    <p class="label reveal"><b></b>LINK 10 · Customer care</p>
     <h2 class="reveal">Then tell them.</h2>
     <p class="lede reveal">Customer care contacts across East Africa. Send your report, ask for a reference number, and <a class="textlink" id="l-escalate" href="#">escalate step by step</a> if it isn't fixed.</p>
     <div class="tabs reveal" role="tablist" id="ctabs"></div>
@@ -537,7 +603,7 @@ the connection beyond them dropped or lagged.</span></pre>
 <!-- =============================== COMMUNITY + FAQ =============================== -->
 <section class="sec white" id="faq">
   <div class="wrap">
-    <p class="label reveal"><b></b>LINK 10 · Community</p>
+    <p class="label reveal"><b></b>LINK 11 · Community</p>
     <h2 class="reveal">Make the next answer better.</h2>
     <p class="lede reveal">Every router, outdoor unit and fibre modem you report makes Kebera smarter. Translations into Luganda, Swahili, Runyankole, Acholi and Lusoga are especially welcome.</p>
     <div class="comm">
@@ -548,6 +614,8 @@ the connection beyond them dropped or lagged.</span></pre>
 
     <div class="faq">
       <details><summary>Do I need a paid AI or technical skills?</summary><p>No. Paste the free chat guide into any free AI chat, double-click the Windows check-up, or follow the step-by-step guide. A paid coding agent just does more of the steps for you.</p></details>
+      <details><summary>Does it replace a technician?</summary><p>No. Some faults need hands on equipment: a damaged roof cable, a failing outdoor unit, a fibre fault or a tower problem. Kebera helps you find which part is failing, fix what's yours, and, when a technician is needed, ask for one with clear evidence of what's wrong.</p></details>
+      <details><summary>Does it work with fibre, pocket routers and indoor-only units?</summary><p>Yes. Kebera works with 5G/4G outdoor plus indoor units, indoor-only 4G/5G routers, pocket routers and MiFis, fibre (it checks the fibre modem's light level), any Wi-Fi router, rooftop antennas and Starlink.</p></details>
       <details><summary>Can I use only my phone?</summary><p>Yes, partly. The chat guide has a phone-only path covering router pages, signal readings, a speed test and comparing Wi-Fi with mobile data.</p></details>
       <details><summary>Will it change anything on my router?</summary><p>No. Kebera is read-only. If you later decide to change something, such as your Wi-Fi channel, you do it yourself, knowing how to undo it.</p></details>
       <details><summary>Is it legal?</summary><p>Yes, on your own connection. Kebera only does what your computer and browser already do. Using it on other people's networks is not allowed.</p></details>
@@ -668,12 +736,15 @@ the connection beyond them dropped or lagged.</span></pre>
     { k: 'odu', em: '📡', t: '5G or 4G outdoor unit', d: 'A box outside, cable to a router inside',
       h: 'Kebera checks both boxes.', p: 'It tests your indoor router and the outdoor unit separately, so you know which one is failing.',
       li: ['Signal strength and quality on 4G and 5G (RSRP, SINR, RSRQ)', 'Whether the cable and the unit drop data', 'Connection uptime and the unit\'s logs: daily resets, restarts, power cuts', 'Data used this month, for fair-usage questions'] },
-    { k: 'router', em: '📶', t: 'Indoor 4G/5G router', d: 'One router with a SIM inside',
-      h: 'Kebera reads the router\'s signal.', p: 'Placement matters most here, and Kebera shows whether it\'s placement or the tower.',
+    { k: 'router', em: '📶', t: 'Indoor unit only', d: 'One 4G/5G router with a SIM inside, no outdoor box',
+      h: 'Kebera reads the indoor unit\'s signal.', p: 'With no outdoor unit, placement matters most, and Kebera shows whether it\'s placement or the tower.',
       li: ['Signal strength vs quality: placement or a busy tower', 'Wi-Fi crowding and the best channel', 'Stability to the router and beyond', 'Speed, DNS and shared-address (CGNAT) checks'] },
-    { k: 'mifi', em: '🔋', t: 'Pocket MiFi', d: 'A small battery hotspot',
-      h: 'Kebera works on MiFis too.', p: 'Small devices drop when they overheat or run low on battery. Kebera helps separate that from network trouble.',
-      li: ['Stability to the MiFi and to the internet', 'Signal readings from its status page', 'Wi-Fi signal and crowding', 'Speed test (optional, uses data)'] },
+    { k: 'mifi', em: '🔋', t: 'Pocket router or MiFi', d: 'A small battery-powered hotspot',
+      h: 'Kebera works on pocket routers too.', p: 'Small devices drop when they overheat or run low on battery. Kebera helps separate that from network trouble.',
+      li: ['Stability to the pocket router and to the internet', 'Signal readings from its status page', 'Wi-Fi signal and crowding', 'Speed test (optional, uses data)'] },
+    { k: 'wifi', em: '🛜', t: 'Any Wi-Fi router', d: 'Your own TP-Link, Tenda, Huawei, Netgear…',
+      h: 'Kebera checks your Wi-Fi first.', p: 'Many problems start inside the home. Kebera shows whether your Wi-Fi or the connection behind it is the weak link.',
+      li: ['Wi-Fi signal, band (2.4 or 5 GHz) and channel crowding', 'Your router and the device behind it, tested separately', 'Double-router (double NAT) and Strict NAT detection', 'DNS and speed checks'] },
     { k: 'fibre', em: '💡', t: 'Fibre', d: 'A fibre box (ONT), often with a Wi-Fi router',
       h: 'Kebera checks the light.', p: 'Fibre problems show up in the ONT\'s optical power and its LOS light.',
       li: ['Optical receive power (below −27 dBm means a line fault)', 'Stability to the ONT and the router separately', 'Wi-Fi inside the home', 'Evening congestion with the long log'] },
