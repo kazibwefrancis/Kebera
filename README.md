@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  🌐 <b>Website:</b> coming soon (hosted on Railway; see <a href="docs/hosting-website.md">hosting</a>) &nbsp;·&nbsp;
+  🌐 <b>Website:</b> <a href="https://kebera-production.up.railway.app/">kebera-production.up.railway.app</a> &nbsp;·&nbsp;
   📞 <a href="docs/provider-contacts.md">Provider contacts (East Africa)</a>
 </p>
 
