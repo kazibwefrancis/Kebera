@@ -3,349 +3,550 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kebera: find out where your internet problem really is</title>
-<meta name="description" content="Kebera is a free, open-source, read-only check-up for home internet. It shows whether the problem is your device, Wi-Fi, router, outdoor unit or your provider, and writes a report you can send them. Works with free AI chats.">
-<meta property="og:title" content="Kebera: find out where your internet problem really is">
-<meta property="og:description" content="Free, open-source internet check-up. Know whether it's your Wi-Fi, your router or your provider, with a ready-to-send report.">
-<meta property="og:image" content="images/banner.svg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='28' cy='28' r='18' fill='none' stroke='%23d4a017' stroke-width='6'/%3E%3Cpath d='M41 41l14 14' stroke='%23d4a017' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+<title>Kebera: know where your internet breaks</title>
+<meta name="description" content="Kebera is a free, open-source, read-only check-up for home internet. It shows whether the problem is your device, Wi-Fi, router, outdoor unit or your provider, and writes the report you send them. Works with free AI chats.">
+<meta property="og:title" content="Kebera: know where your internet breaks">
+<meta property="og:description" content="Free, open-source internet check-up. Your Wi-Fi, your router or your provider? Find out in minutes, with a ready-to-send report.">
+<meta name="theme-color" content="#0b0c0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c0f'/%3E%3Ccircle cx='28' cy='28' r='15' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Cpath d='M39 39l13 13' stroke='%23f5c400' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
+/* =====================================================================
+   Kebera website. Own identity: black, gold and red, with Apple-style
+   simplicity (large type, lots of space, calm surfaces, gentle motion).
+   ===================================================================== */
 :root{
-  --bg:#f7f6f2; --bg2:#efede6; --card:#ffffff; --ink:#1b2130; --muted:#5a6273; --line:#e2dfd6;
-  --accent:#c99400; --accent-ink:#1b2130; --red:#c62828; --amber:#b26a00; --blue:#1565c0; --green:#2e7d32;
-  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.04),0 6px 24px rgba(0,0,0,.05);
-  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#11141a; --bg2:#171b23; --card:#1b2029; --ink:#e9ecf2; --muted:#a2aaba; --line:#2a313d;
-    --accent:#f2c230; --accent-ink:#11141a; --red:#ef5350; --amber:#ffb74d; --blue:#64b5f6; --green:#81c784;
-    --shadow:none;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#11141a; --bg2:#171b23; --card:#1b2029; --ink:#e9ecf2; --muted:#a2aaba; --line:#2a313d;
-  --accent:#f2c230; --accent-ink:#11141a; --red:#ef5350; --amber:#ffb74d; --blue:#64b5f6; --green:#81c784;
-  --shadow:none;
+  --ink:#0b0c0f;          /* near-black */
+  --ink-2:#14161b;
+  --ink-3:#1d2027;
+  --paper:#f5f5f7;        /* Apple-style light grey */
+  --white:#ffffff;
+  --gold:#f5c400;         /* Kebera gold */
+  --gold-deep:#d9a900;
+  --red:#e0242b;          /* Kebera red */
+  --green:#34c759;
+  --amber:#ff9f0a;
+  --blue:#0a84ff;
+  --text:#1d1d1f;         /* text on light */
+  --text-2:#6e6e73;
+  --on-dark:#f5f5f7;
+  --on-dark-2:#a1a1a6;
+  --hair:rgba(0,0,0,.08);
+  --hair-dark:rgba(255,255,255,.1);
+  --r-sm:12px; --r:20px; --r-lg:28px;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI Variable Display","Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:"SF Mono",ui-monospace,"Cascadia Code",Consolas,"Liberation Mono",monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--on-dark);font:17px/1.55 var(--font);-webkit-font-smoothing:antialiased;letter-spacing:-.003em}
 a{color:inherit}
-img{max-width:100%;height:auto}
-.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
-.flag{height:6px;display:flex}.flag i{flex:1}.flag i:nth-child(1){background:#000}.flag i:nth-child(2){background:#fcdc04}.flag i:nth-child(3){background:#d90000}
+img{max-width:100%;height:auto;display:block}
+button{font:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.narrow{max-width:760px}
+.mono{font-family:var(--mono)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
-/* nav */
-nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;gap:20px;height:60px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;text-decoration:none}
-.brand svg{width:26px;height:26px}
-.navlinks{display:flex;gap:18px;margin-left:auto;font-size:15px}
-.navlinks a{text-decoration:none;color:var(--muted)}.navlinks a:hover{color:var(--ink)}
-.gh{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;text-decoration:none;font-size:14px;font-weight:600;background:var(--card)}
-.gh svg{width:16px;height:16px}
-@media (max-width:760px){.navlinks{display:none}.gh{margin-left:auto}}
+/* flag stripe */
+.stripe{display:flex;height:4px}.stripe i{flex:1}.stripe i:nth-child(1){background:#000}.stripe i:nth-child(2){background:var(--gold)}.stripe i:nth-child(3){background:var(--red)}
 
-/* hero */
-.hero{padding:64px 0 40px}
-.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
-.hero h1 span{color:var(--accent)}
-.lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:720px;margin:0 0 28px}
-.quotes{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
-.quotes s{font-size:14px;color:var(--muted);background:var(--bg2);border-radius:999px;padding:4px 12px;text-decoration-color:var(--red)}
-.ctas{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid var(--line);background:var(--card);font-size:15px}
-.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}
-.btn:hover{transform:translateY(-1px)}
-.notice{margin-top:28px;display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted);max-width:760px}
-.notice b{color:var(--ink)}
+/* navigation: frosted glass */
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,12,15,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--hair-dark)}
+.nav .wrap{display:flex;align-items:center;height:56px;gap:28px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:-.02em;text-decoration:none}
+.logo svg{width:28px;height:28px}
+.menu{display:flex;gap:26px;font-size:14px;margin-left:auto}
+.menu a{text-decoration:none;color:var(--on-dark-2);transition:color .2s}.menu a:hover{color:var(--on-dark)}
+.star{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:var(--on-dark);color:var(--ink);font-size:13px;font-weight:600;text-decoration:none}
+.star svg{width:15px;height:15px}
+.burger{display:none;background:none;border:1px solid var(--hair-dark);color:var(--on-dark);border-radius:10px;width:38px;height:38px;cursor:pointer}
+@media (max-width:860px){.menu{display:none}.star{margin-left:auto}.burger{display:grid;place-items:center}
+  .menu.open{display:flex;position:absolute;top:56px;left:0;right:0;flex-direction:column;gap:0;background:rgba(11,12,15,.97);border-bottom:1px solid var(--hair-dark);padding:8px 20px 16px}
+  .menu.open a{padding:12px 0;font-size:17px;border-bottom:1px solid var(--hair-dark)}}
+
+/* labels: each section is a "link" in the chain */
+.label{display:inline-flex;align-items:center;gap:10px;font:500 13px/1 var(--mono);letter-spacing:.02em;color:var(--gold);margin:0 0 18px}
+.label b{display:inline-block;width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 22%,transparent)}
+.light .label{color:#a07800}
+h1,h2,h3{letter-spacing:-.025em;margin:0}
+h1{font-size:clamp(44px,8vw,96px);line-height:1.02;font-weight:700}
+h2{font-size:clamp(34px,5.4vw,64px);line-height:1.05;font-weight:700}
+h3{font-size:21px;line-height:1.25;font-weight:600;letter-spacing:-.015em}
+.lede{font-size:clamp(19px,2.3vw,24px);line-height:1.45;color:var(--on-dark-2);margin:22px 0 0;max-width:720px}
+.light .lede{color:var(--text-2)}
+.gold{color:var(--gold)}
 
 /* sections */
-section{padding:56px 0;border-top:1px solid var(--line)}
-.kicker{font:700 12px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
-h2{font-size:clamp(26px,3.6vw,36px);line-height:1.15;margin:0 0 14px;letter-spacing:-.01em}
-.sub{color:var(--muted);max-width:720px;margin:0 0 28px}
-.grid{display:grid;gap:16px}
-.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
-.card h3{margin:0 0 6px;font-size:18px}
-.card p{margin:0;color:var(--muted);font-size:15px}
-.card .tag{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px;margin-bottom:10px;background:var(--bg2);color:var(--muted)}
-.card a.more{display:inline-block;margin-top:12px;font-weight:700;font-size:14px;text-decoration:none;color:var(--accent)}
+.sec{padding:clamp(80px,12vw,140px) 0}
+.light{background:var(--paper);color:var(--text)}
+.white{background:var(--white);color:var(--text)}
+.band{background:var(--gold);color:var(--ink)}
+.band .label{color:var(--ink)}
+.band .lede{color:rgba(11,12,15,.72)}
+.center{text-align:center}.center .lede{margin-left:auto;margin-right:auto}
 
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
-.stat b{display:block;font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
-.stat span{color:var(--muted);font-size:14px}
-.statnote{font-size:13px;color:var(--muted);margin-top:10px}
-.avatars{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.avatars a img{width:40px;height:40px;border-radius:50%;border:2px solid var(--card);box-shadow:0 0 0 1px var(--line)}
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
 
-/* steps */
-.steps{counter-reset:s;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.step{position:relative;padding-top:44px}
-.step:before{counter-increment:s;content:counter(s);position:absolute;top:18px;left:20px;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:800;display:grid;place-items:center;font-size:14px}
-.diagram{background:#fff;border-radius:var(--radius);border:1px solid var(--line);padding:8px}
-table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:13px;color:var(--muted);font-weight:700}
-.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
-.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:middle}
-code,kbd{font-family:var(--mono);font-size:.9em;background:var(--bg2);padding:2px 6px;border-radius:6px}
-pre{font-family:var(--mono);font-size:13px;background:#12161d;color:#e6e9ef;border-radius:12px;padding:16px;overflow-x:auto;margin:0}
+/* buttons */
+.btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;transition:transform .2s var(--ease),background .2s,box-shadow .2s;border:0;cursor:pointer}
+.btn:hover{transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{box-shadow:0 8px 30px rgba(245,196,0,.35)}
+.btn-ghost{color:var(--on-dark);box-shadow:inset 0 0 0 1px var(--hair-dark)}
+.btn-ghost:hover{background:rgba(255,255,255,.06)}
+.btn-dark{background:var(--ink);color:var(--white)}
+.light .btn-ghost,.white .btn-ghost{color:var(--text);box-shadow:inset 0 0 0 1px var(--hair)}
+.textlink{font-weight:600;text-decoration:none;color:var(--gold)}
+.light .textlink,.white .textlink{color:#8a6700}
+.textlink:after{content:" \203A"}
 
-/* providers */
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.tabs button{font:600 14px var(--font);border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 14px;cursor:pointer}
-.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.badge{font-size:11px;font-weight:700;border-radius:999px;padding:2px 8px;white-space:nowrap}
-.b-official{background:color-mix(in srgb,var(--green) 18%,transparent);color:var(--green)}
-.b-third{background:color-mix(in srgb,var(--amber) 18%,transparent);color:var(--amber)}
-.b-unverified{background:color-mix(in srgb,var(--red) 15%,transparent);color:var(--red)}
-.warn{border-left:4px solid var(--amber);background:var(--card);padding:12px 16px;border-radius:8px;font-size:14px;color:var(--muted);margin-top:14px}
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;padding:clamp(72px,11vw,128px) 0 clamp(64px,9vw,110px)}
+.hero:before{content:"";position:absolute;inset:-30% -10% auto;height:680px;background:radial-gradient(600px 320px at 70% 30%,rgba(245,196,0,.14),transparent 70%),radial-gradient(500px 300px at 15% 10%,rgba(224,36,43,.10),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative}
+.kicker{font:500 13px/1 var(--mono);color:var(--on-dark-2);margin:0 0 26px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.kicker span{padding:6px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--hair-dark)}
+.myths{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0}
+.myths s{font-size:14px;color:var(--on-dark-2);text-decoration-color:var(--red);text-decoration-thickness:2px}
+.safe-line{margin-top:26px;font-size:14px;color:var(--on-dark-2);display:flex;gap:8px;align-items:center}
+.safe-line a{color:var(--on-dark)}
 
-/* faq */
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
-summary{cursor:pointer;font-weight:700}
-details p{color:var(--muted);margin:10px 0 0}
+/* the chain demo */
+.demo{margin-top:clamp(48px,7vw,80px);background:linear-gradient(180deg,var(--ink-2),var(--ink));border-radius:var(--r-lg);box-shadow:inset 0 0 0 1px var(--hair-dark),0 40px 80px rgba(0,0,0,.45);padding:clamp(20px,3.5vw,36px)}
+.demo-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.demo-head h3{font-size:18px}
+.demo-head p{margin:2px 0 0;color:var(--on-dark-2);font-size:14px}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:rgba(255,255,255,.06);gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:none;color:var(--on-dark-2);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:background .25s,color .25s}
+.seg button[aria-pressed="true"]{background:var(--on-dark);color:var(--ink)}
+.chain{display:grid;grid-template-columns:repeat(6,1fr);gap:0;align-items:start;position:relative}
+.node{position:relative;text-align:center;padding:0 4px}
+.node .ic{width:64px;height:64px;margin:0 auto 12px;border-radius:20px;display:grid;place-items:center;background:var(--ink-3);box-shadow:inset 0 0 0 1px var(--hair-dark);transition:background .4s,box-shadow .4s,transform .4s;position:relative;z-index:2}
+.node .ic svg{width:28px;height:28px;stroke:var(--on-dark);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.node b{display:block;font-size:14px;font-weight:600}
+.node small{display:block;font:500 12px/1.3 var(--mono);color:var(--on-dark-2);margin-top:4px;min-height:16px}
+.node:not(:last-child):after{content:"";position:absolute;top:32px;left:calc(50% + 36px);right:calc(-50% + 36px);height:2px;background:var(--hair-dark);z-index:1}
+.node.ok .ic{background:color-mix(in srgb,var(--green) 18%,var(--ink-3));box-shadow:inset 0 0 0 1.5px var(--green)}
+.node.ok small{color:var(--green)}
+.node.ok:not(:last-child):after{background:linear-gradient(90deg,var(--green),var(--green));}
+.node.flow:not(:last-child):after{background:repeating-linear-gradient(90deg,var(--green) 0 8px,transparent 8px 16px);background-size:32px 2px;animation:flow 1s linear infinite}
+@keyframes flow{to{background-position:32px 0}}
+.node.bad .ic{background:color-mix(in srgb,var(--red) 22%,var(--ink-3));box-shadow:inset 0 0 0 1.5px var(--red);animation:pulse 1.6s var(--ease) infinite}
+.node.bad small{color:#ff6b6b}
+.node.off{opacity:.38}
+@keyframes pulse{0%{box-shadow:inset 0 0 0 1.5px var(--red),0 0 0 0 rgba(224,36,43,.5)}70%{box-shadow:inset 0 0 0 1.5px var(--red),0 0 0 14px rgba(224,36,43,0)}100%{box-shadow:inset 0 0 0 1.5px var(--red),0 0 0 0 rgba(224,36,43,0)}}
+.verdict{margin-top:30px;display:flex;gap:16px;align-items:flex-start;padding:18px 20px;border-radius:var(--r);background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--hair-dark)}
+.verdict .dot{flex:none;width:12px;height:12px;border-radius:50%;margin-top:7px;background:var(--green)}
+.verdict b{display:block;font-size:17px}
+.verdict span{color:var(--on-dark-2);font-size:15px}
+@media (max-width:760px){
+  .chain{grid-template-columns:1fr;gap:10px}
+  .node{display:grid;grid-template-columns:52px 1fr;grid-template-areas:"ic name" "ic val";align-items:center;text-align:left;column-gap:14px;padding:0}
+  .node .ic{grid-area:ic;width:52px;height:52px;margin:0;border-radius:16px}
+  .node .ic svg{width:24px;height:24px}
+  .node b{grid-area:name;align-self:end}
+  .node small{grid-area:val;align-self:start;margin-top:2px}
+  .node:not(:last-child):after{top:52px;left:25px;right:auto;width:2px;height:10px}
+  .node.flow:not(:last-child):after{background:var(--green);animation:none}
+}
 
-footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--muted);font-size:14px}
-footer .cols{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-footer h4{color:var(--ink);margin:0 0 8px;font-size:14px}
-footer a{display:block;text-decoration:none;margin:4px 0}footer a:hover{color:var(--ink)}
-.theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px 10px;cursor:pointer;font:inherit}
+/* ---------- PATHS ---------- */
+.paths{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
+@media (max-width:760px){.paths{grid-template-columns:1fr}}
+.path{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:260px;padding:28px;border-radius:var(--r-lg);text-decoration:none;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.path:hover{transform:translateY(-4px)}
+.path .n{font:500 13px var(--mono);opacity:.7}
+.path h3{font-size:clamp(26px,3.2vw,34px);line-height:1.1;margin:10px 0 10px;letter-spacing:-.03em}
+.path p{margin:0;font-size:16px;opacity:.78;max-width:420px}
+.path .go{margin-top:22px;font-weight:600;font-size:15px}
+.path .go:after{content:" \2192";transition:margin .25s}
+.path:hover .go:after{margin-left:6px}
+.p1{background:var(--gold);color:var(--ink)}
+.p2{background:var(--white);color:var(--ink)}
+.p3{background:var(--red);color:var(--white)}
+.p4{background:var(--ink-2);color:var(--on-dark);box-shadow:inset 0 0 0 1px var(--hair-dark)}
+.path .tag{position:absolute;top:24px;right:24px;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,.08)}
+.p3 .tag,.p4 .tag{background:rgba(255,255,255,.14)}
+
+/* ---------- SETUP PICKER ---------- */
+.picker{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px;margin-top:56px;align-items:stretch}
+@media (max-width:860px){.picker{grid-template-columns:1fr}}
+.chips{display:flex;flex-direction:column;gap:10px}
+.chip{display:flex;align-items:center;gap:14px;text-align:left;border:0;background:var(--white);color:var(--text);border-radius:var(--r);padding:16px 18px;cursor:pointer;box-shadow:0 0 0 1px var(--hair);transition:box-shadow .25s,transform .25s}
+.chip:hover{transform:translateX(3px)}
+.chip[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+.chip .em{font-size:24px;width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--paper)}
+.chip b{display:block;font-size:16px}
+.chip span{display:block;font-size:13px;color:var(--text-2)}
+.answer{background:var(--ink);color:var(--on-dark);border-radius:var(--r-lg);padding:32px;display:flex;flex-direction:column}
+.answer .yes{display:inline-flex;align-items:center;gap:8px;font:600 13px var(--mono);color:var(--green);margin-bottom:14px}
+.answer h3{font-size:28px;letter-spacing:-.03em}
+.answer p{color:var(--on-dark-2);margin:12px 0 0}
+.answer ul{margin:20px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.answer li{display:flex;gap:12px;font-size:15px}
+.answer li:before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:9px}
+.answer .foot{margin-top:auto;padding-top:24px;font-size:14px;color:var(--on-dark-2)}
+
+/* ---------- HOW ---------- */
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:64px}
+@media (max-width:860px){.steps3{grid-template-columns:1fr;gap:32px}}
+.step .big{font-size:64px;font-weight:700;letter-spacing:-.05em;line-height:1;background:linear-gradient(180deg,var(--text) 30%,rgba(0,0,0,.25));-webkit-background-clip:text;background-clip:text;color:transparent}
+.step h3{margin:16px 0 8px}
+.step p{margin:0;color:var(--text-2)}
+.figure{margin-top:64px;background:var(--white);border-radius:var(--r-lg);padding:clamp(10px,2vw,24px);box-shadow:0 1px 2px rgba(0,0,0,.04),0 20px 60px rgba(0,0,0,.06)}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+@media (max-width:860px){.legend{grid-template-columns:1fr}}
+.legend div{background:var(--white);border-radius:var(--r);padding:20px;box-shadow:0 0 0 1px var(--hair)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+.legend p{margin:6px 0 0;color:var(--text-2);font-size:15px}
+
+/* ---------- RESULT (gold band) ---------- */
+.result{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+@media (max-width:900px){.result{grid-template-columns:1fr}}
+.term{background:var(--ink);color:#e6e6e6;border-radius:var(--r);box-shadow:0 30px 70px rgba(0,0,0,.3);overflow:hidden}
+.term .bar{display:flex;align-items:center;gap:8px;padding:12px 14px;background:#1a1c21}
+.term .bar i{width:12px;height:12px;border-radius:50%}
+.term .bar i:nth-child(1){background:#ff5f57}.term .bar i:nth-child(2){background:#febc2e}.term .bar i:nth-child(3){background:#28c840}
+.term .bar span{margin-left:8px;font:12px var(--mono);color:#8e8e93}
+.term pre{margin:0;padding:20px 22px;font:13px/1.65 var(--mono);overflow-x:auto;white-space:pre}
+.t-dim{color:#8e8e93}.t-ok{color:#30d158}.t-bad{color:#ff6961}.t-gold{color:var(--gold)}.t-b{color:#fff;font-weight:600}
+.files{display:grid;gap:10px;margin-top:28px}
+.files div{display:flex;gap:14px;align-items:baseline}
+.files code{font:600 14px var(--mono);background:rgba(11,12,15,.08);padding:3px 8px;border-radius:8px;flex:none}
+.files span{font-size:15px;color:rgba(11,12,15,.75)}
+
+/* ---------- FEATURES ---------- */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);border-radius:var(--r-lg);overflow:hidden;margin-top:56px;box-shadow:0 0 0 1px var(--hair)}
+@media (max-width:900px){.features{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.features{grid-template-columns:1fr}}
+.feat{background:var(--white);padding:30px 28px}
+.feat .fi{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--paper);margin-bottom:18px}
+.feat .fi svg{width:22px;height:22px;stroke:var(--text);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:18px}
+.feat p{margin:6px 0 0;color:var(--text-2);font-size:15px}
+
+/* ---------- SAFETY ---------- */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+@media (max-width:960px){.trust{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.trust{grid-template-columns:1fr}}
+.tcard{background:var(--ink-2);border-radius:var(--r);padding:26px;box-shadow:inset 0 0 0 1px var(--hair-dark)}
+.tcard .ti{font-size:26px;margin-bottom:14px}
+.tcard p{margin:8px 0 0;color:var(--on-dark-2);font-size:15px}
+.policy{margin-top:20px;border-radius:var(--r);padding:22px 24px;background:color-mix(in srgb,var(--red) 12%,var(--ink));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--red) 45%,transparent);display:flex;gap:16px;align-items:flex-start}
+.policy b{color:#fff}
+.policy p{margin:0;color:var(--on-dark-2);font-size:15px}
+.policy a{color:#fff}
+
+/* ---------- STATS ---------- */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:56px;border-top:1px solid var(--hair-dark)}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:28px 20px 28px 0;border-bottom:1px solid var(--hair-dark)}
+.stat b{display:block;font-size:clamp(40px,5vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:10px;color:var(--on-dark-2);font-size:14px}
+.note{font-size:13px;color:var(--on-dark-2);margin-top:18px}
+.avatars{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.avatars img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 2px var(--ink),0 0 0 3px var(--hair-dark)}
+
+/* ---------- CASE ---------- */
+.case{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;margin-top:56px;align-items:start}
+@media (max-width:900px){.case{grid-template-columns:1fr}}
+blockquote{margin:0;font-size:clamp(24px,3vw,34px);line-height:1.25;letter-spacing:-.02em;font-weight:600}
+blockquote cite{display:block;margin-top:18px;font:500 14px var(--mono);color:var(--text-2);font-style:normal}
+.rows{background:var(--white);border-radius:var(--r-lg);box-shadow:0 0 0 1px var(--hair);overflow:hidden}
+.row{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:16px 20px;border-bottom:1px solid var(--hair)}
+.row:last-child{border-bottom:0}
+.row p{margin:0;font-size:15px}.row p small{display:block;color:var(--text-2);font-size:14px;margin-top:2px}
+
+/* ---------- CONTACTS ---------- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:44px}
+.tabs button{border:0;background:var(--white);color:var(--text);border-radius:999px;padding:10px 18px;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 0 0 1px var(--hair)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--white);box-shadow:none}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:20px}
+.ccard{background:var(--white);border-radius:var(--r);padding:22px;box-shadow:0 0 0 1px var(--hair);display:flex;flex-direction:column;gap:10px}
+.ccard h3{font-size:19px}
+.ccard .num{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.ccard dl{margin:0;display:grid;gap:6px;font-size:14px}
+.ccard dt{color:var(--text-2);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.ccard dd{margin:0}
+.ccard .src{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px}
+.pill{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;text-decoration:none}
+.pill.ok{background:rgba(52,199,89,.14);color:#1e7f3a}
+.pill.mid{background:rgba(255,159,10,.16);color:#9a5b00}
+.pill.no{background:rgba(224,36,43,.12);color:#b3161c}
+.warnline{margin-top:20px;padding:16px 20px;border-radius:var(--r);background:var(--white);box-shadow:inset 4px 0 0 var(--amber),0 0 0 1px var(--hair);font-size:15px}
+.small{font-size:13px;color:var(--text-2);margin-top:14px}
+
+/* ---------- COMMUNITY + FAQ ---------- */
+.comm{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+@media (max-width:860px){.comm{grid-template-columns:1fr}}
+.comm a{display:block;text-decoration:none;background:var(--paper);border-radius:var(--r);padding:26px;transition:transform .3s var(--ease)}
+.comm a:hover{transform:translateY(-3px)}
+.comm p{margin:8px 0 14px;color:var(--text-2);font-size:15px}
+.faq{margin-top:56px;border-top:1px solid var(--hair)}
+.faq details{border-bottom:1px solid var(--hair);padding:22px 0}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:19px;font-weight:600;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-weight:400;font-size:26px;line-height:1;color:var(--text-2);transition:transform .3s var(--ease)}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq p{margin:12px 0 0;color:var(--text-2);max-width:760px}
+
+/* ---------- CTA + FOOTER ---------- */
+.final h2{font-size:clamp(40px,7vw,84px)}
+footer{background:var(--ink);color:var(--on-dark-2);font-size:14px;padding:64px 0 48px;border-top:1px solid var(--hair-dark)}
+.fcols{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px}
+@media (max-width:860px){.fcols{grid-template-columns:1fr 1fr}}
+footer h4{color:var(--on-dark);margin:0 0 12px;font-size:13px;font-weight:600}
+footer a{display:block;text-decoration:none;margin:8px 0;transition:color .2s}footer a:hover{color:var(--on-dark)}
+.legal{margin-top:48px;padding-top:24px;border-top:1px solid var(--hair-dark);font-size:12px;line-height:1.6}
 </style>
 </head>
 <body>
-<div class="flag" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="stripe" aria-hidden="true"><i></i><i></i><i></i></div>
 
-<nav>
+<nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Kebera home">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="28" cy="28" r="18" fill="none" stroke="currentColor" stroke-width="6"/><path d="M41 41l14 14" stroke="var(--accent)" stroke-width="7" stroke-linecap="round"/><path d="M19 30a13 13 0 0 1 18 0M23.5 34.5a7 7 0 0 1 9 0" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round"/></svg>
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1d2027"/><circle cx="28" cy="28" r="15" fill="none" stroke="#fff" stroke-width="5"/><path d="M39 39l13 13" stroke="#f5c400" stroke-width="6" stroke-linecap="round"/><path d="M21 30a10 10 0 0 1 14 0M24.5 33.5a5 5 0 0 1 7 0" fill="none" stroke="#f5c400" stroke-width="3" stroke-linecap="round"/></svg>
       Kebera
     </a>
-    <div class="navlinks">
-      <a href="#start">Get started</a>
+    <div class="menu" id="menu">
+      <a href="#paths">Get started</a>
+      <a href="#setup">Your setup</a>
       <a href="#how">How it works</a>
-      <a href="#safe">Is it safe?</a>
-      <a href="#contacts">Provider contacts</a>
-      <a href="#community">Community</a>
+      <a href="#safe">Safety</a>
+      <a href="#contacts">Customer care</a>
       <a href="#faq">FAQ</a>
     </div>
-    <a class="gh" id="ghlink" href="#" target="_blank" rel="noopener">
+    <a class="star" id="ghlink" href="#" target="_blank" rel="noopener">
       <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-      GitHub <span id="navstars"></span>
+      <span id="navstars">Star on GitHub</span>
     </a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
   </div>
 </nav>
 
 <main id="top">
-  <header class="hero">
-    <div class="wrap">
-      <p class="kicker">Free · Open source · Made in Uganda</p>
-      <h1>Find out where your internet problem <span>really</span> is.</h1>
-      <p class="lede">Kebera checks every part of your home internet (your device, Wi-Fi, router, outdoor unit or fibre modem, and your provider) and tells you in plain language where it breaks. Then it writes the report and the message to send them.</p>
-      <div class="quotes" aria-label="Things providers often say">
-        <s>"Restart your router."</s><s>"Switch it off and on."</s><s>"We'll call you back."</s>
-      </div>
-      <div class="ctas">
-        <a class="btn primary" id="cta-chat" href="#start">Start with a free AI chat</a>
-        <a class="btn" id="cta-zip" href="#">Download for Windows</a>
-        <a class="btn" id="cta-steps" href="#">Step-by-step guide</a>
-        <a class="btn" id="cta-agents" href="#">For coding agents</a>
-      </div>
-      <p class="notice">🛡️ <span><b>Kebera is not a hacking tool.</b> It's read-only, for your own connection only. You sign in to your own router yourself. Misuse is not tolerated. <a id="aup1" href="#">Acceptable use policy</a>.</span></p>
-    </div>
-  </header>
 
-  <!-- Live stats -->
-  <section id="stats" aria-labelledby="stats-h">
-    <div class="wrap">
-      <p class="kicker">Live from GitHub</p>
-      <h2 id="stats-h">Built in the open, by the community</h2>
-      <div class="stats">
-        <div class="stat"><b id="s-stars">–</b><span>Stars</span></div>
-        <div class="stat"><b id="s-forks">–</b><span>Forks</span></div>
-        <div class="stat"><b id="s-contrib">–</b><span>Contributors</span></div>
-        <div class="stat"><b id="s-issues">–</b><span>Open issues and ideas</span></div>
-        <div class="stat"><b id="s-release">–</b><span>Latest release</span></div>
-      </div>
-      <p class="statnote" id="s-note">Loading live numbers from GitHub…</p>
+<!-- =============================== HERO =============================== -->
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker"><span>Free and open source</span><span>Made in Kampala</span><span>Luganda: <i>kebera</i>, to examine</span></p>
+    <h1>Know where your<br>internet <span class="gold">breaks.</span></h1>
+    <p class="lede">Kebera checks every link between your phone and the internet (your Wi-Fi, your router, your outdoor unit, your provider) and tells you, in plain words, which one is failing. Then it writes the report you send them.</p>
+    <div class="myths" aria-label="What providers often say"><s>"Restart your router."</s><s>"Switch it off and on."</s><s>"We'll call you back."</s></div>
+    <div class="btns">
+      <a class="btn btn-gold" href="#paths">Diagnose my internet, free</a>
+      <a class="btn btn-ghost" id="hero-gh" href="#" target="_blank" rel="noopener">View on GitHub</a>
     </div>
-  </section>
+    <p class="safe-line">🛡️ Read-only and for your own connection only. <a id="aup0" href="#">Not a hacking tool.</a></p>
 
-  <!-- Choose your way -->
-  <section id="start" aria-labelledby="start-h">
-    <div class="wrap">
-      <p class="kicker">Get started</p>
-      <h2 id="start-h">Pick the way that suits you</h2>
-      <p class="sub">No paid AI needed and no technical knowledge needed. Every way ends with a clear verdict, a detailed report and a message for your provider.</p>
-      <div class="grid g2">
-        <div class="card">
-          <span class="tag">Easiest · laptop or phone</span>
-          <h3>💬 Free AI chat</h3>
-          <p>Copy the Kebera chat guide into ChatGPT, Claude, Gemini, DeepSeek, Copilot or Grok. It becomes "Kebera Guide" and walks you through one simple step at a time, then writes your report.</p>
-          <a class="more" id="l-chat" href="#">Open the chat guide →</a>
-        </div>
-        <div class="card">
-          <span class="tag">Windows · about 5 minutes</span>
-          <h3>🖱️ Double-click check-up</h3>
-          <p>Download Kebera, double-click <code>kebera.bat</code>, choose a check. Your report opens in the browser with the verdict, the evidence and a ready-to-send message.</p>
-          <a class="more" id="l-zip" href="#">Download ZIP →</a>
-        </div>
-        <div class="card">
-          <span class="tag">Least effort</span>
-          <h3>🤖 AI coding agent</h3>
-          <p>Open the folder in Claude Code, Codex, Gemini CLI or Cursor and say "Diagnose my internet". It runs the tests, reads your equipment pages after you sign in, and writes a detailed report.</p>
-          <a class="more" id="l-agents" href="#">Read AGENTS.md →</a>
-        </div>
-        <div class="card">
-          <span class="tag">No AI, no download</span>
-          <h3>📋 Step by step, by hand</h3>
-          <p>Copy-paste commands with tables that tell you what each result means, an optional "going deeper" section, and a fill-in report template.</p>
-          <a class="more" id="l-steps" href="#">Open the guide →</a>
+    <!-- Interactive chain -->
+    <div class="demo reveal" aria-label="Interactive example: where does it break?">
+      <div class="demo-head">
+        <div><h3>Where does it break?</h3><p>Kebera tests every link at the same moment. The first link that fails is the answer.</p></div>
+        <div class="seg" role="group" aria-label="Example scenarios">
+          <button type="button" data-s="ok" aria-pressed="true">All good</button>
+          <button type="button" data-s="wifi" aria-pressed="false">Wi-Fi</button>
+          <button type="button" data-s="odu" aria-pressed="false">Outdoor unit</button>
+          <button type="button" data-s="isp" aria-pressed="false">Provider</button>
         </div>
       </div>
+      <div class="chain" id="chain">
+        <div class="node"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><b>Your devices</b><small></small></div>
+        <div class="node"><div class="ic"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r=".6" fill="currentColor"/></svg></div><b>Wi-Fi</b><small></small></div>
+        <div class="node"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="12" width="18" height="7" rx="2"/><path d="M7 12V8M17 12V8M7 15.5h.01M11 15.5h.01"/></svg></div><b>Router</b><small></small></div>
+        <div class="node"><div class="ic"><svg viewBox="0 0 24 24"><rect x="8" y="3" width="8" height="12" rx="1.5"/><path d="M12 15v6M9 21h6M4 6a9 9 0 0 0 0 6M20 6a9 9 0 0 1 0 6"/></svg></div><b>Outdoor unit</b><small></small></div>
+        <div class="node"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M8 21l4-18 4 18M9.5 14h5M10.5 9h3M5 6a9 9 0 0 0 0 8M19 6a9 9 0 0 1 0 8"/></svg></div><b>Provider</b><small></small></div>
+        <div class="node"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><b>Internet</b><small></small></div>
+      </div>
+      <div class="verdict" id="verdict" aria-live="polite"><i class="dot"></i><div><b></b><span></span></div></div>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- How it works -->
-  <section id="how" aria-labelledby="how-h">
-    <div class="wrap">
-      <p class="kicker">How it works</p>
-      <h2 id="how-h">Every link checked at the same moment</h2>
-      <p class="sub">Your internet is a chain. Kebera pings every link of it twice a second, all at once. When something fails, the first link that fails is where the problem is.</p>
-      <div class="diagram"><img src="images/how-it-works.svg" alt="Your devices, Wi-Fi, router, outdoor unit or modem, provider and internet. If the router fails first, the problem is in your home; if the outdoor unit fails, it's that unit or its cable; if only the internet fails, it's the provider." width="1200" height="420"></div>
-      <div class="grid g3" style="margin-top:16px">
-        <div class="card"><h3><span class="dot" style="background:var(--green)"></span>Router fails first</h3><p>The problem is inside your home: Wi-Fi or router. Usually free and quick to fix yourself.</p></div>
-        <div class="card"><h3><span class="dot" style="background:var(--amber)"></span>Outdoor unit fails</h3><p>That unit, its cable or its power. Check connections and power; the provider replaces faulty units.</p></div>
-        <div class="card"><h3><span class="dot" style="background:var(--blue)"></span>Only the internet fails</h3><p>The provider's network: tower, fibre line or congestion. Send them your report.</p></div>
+<!-- =============================== PATHS =============================== -->
+<section class="sec" id="paths" style="padding-top:clamp(40px,6vw,80px)">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 01 · Get started</p>
+    <h2 class="reveal">Pick your path.</h2>
+    <p class="lede reveal">No paid AI. No technical skills. Every path ends with a clear verdict, a detailed report and a message for your provider.</p>
+    <div class="paths">
+      <a class="path p1 reveal" id="l-chat" href="#"><span class="tag">Most popular</span><div><span class="n">01</span><h3>Free AI chat</h3><p>Paste the Kebera guide into ChatGPT, Claude, Gemini or DeepSeek. It walks you through one simple step at a time, even on a phone.</p></div><span class="go">Open the chat guide</span></a>
+      <a class="path p2 reveal" id="l-zip" href="#"><span class="tag">Windows</span><div><span class="n">02</span><h3>Double-click check-up</h3><p>Download, double-click <b>kebera.bat</b>, and get a full report in about five minutes.</p></div><span class="go">Download ZIP</span></a>
+      <a class="path p3 reveal" id="l-agents" href="#"><span class="tag">Least effort</span><div><span class="n">03</span><h3>AI coding agent</h3><p>Open the folder in Claude Code, Codex, Gemini CLI or Cursor and say "Diagnose my internet."</p></div><span class="go">Read AGENTS.md</span></a>
+      <a class="path p4 reveal" id="l-steps" href="#"><span class="tag">No AI</span><div><span class="n">04</span><h3>Step by step, by hand</h3><p>Copy-paste commands, plain explanations, an optional deep dive and a fill-in report.</p></div><span class="go">Open the guide</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== SETUP =============================== -->
+<section class="sec light" id="setup">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 02 · Your setup</p>
+    <h2 class="reveal">Works with what's<br>on your wall.</h2>
+    <p class="lede reveal">5G outdoor units, 4G routers, pocket MiFis, fibre, rooftop antennas, satellite. Pick yours to see what Kebera looks at.</p>
+    <div class="picker reveal">
+      <div class="chips" role="group" aria-label="Choose your setup" id="chips"></div>
+      <div class="answer" id="answer" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== HOW =============================== -->
+<section class="sec light" id="how" style="padding-top:0">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 03 · How it works</p>
+    <h2 class="reveal">Three steps.<br>One honest answer.</h2>
+    <div class="steps3">
+      <div class="step reveal"><div class="big">1</div><h3>Check every link at once</h3><p>Twice a second, Kebera pings your router, your outdoor unit or modem, and two internet servers, all at the same moment.</p></div>
+      <div class="step reveal"><div class="big">2</div><h3>Read your equipment</h3><p>It recognises your router and outdoor unit, and reads their signal quality, uptime and logs after you sign in yourself.</p></div>
+      <div class="step reveal"><div class="big">3</div><h3>Get a verdict and a report</h3><p>Home, equipment or provider: you'll know which, what to fix yourself, and what to send them.</p></div>
+    </div>
+    <div class="figure reveal"><img src="images/how-it-works.svg" alt="Devices, Wi-Fi, router, outdoor unit or modem, provider and internet. Router fails first: inside your home. Outdoor unit fails: that unit or its cable. Only the internet fails: the provider." width="1200" height="420" loading="lazy"></div>
+    <div class="legend">
+      <div class="reveal"><h3><i style="background:var(--green)"></i>Router fails first</h3><p>The problem is inside your home. Often free and quick to fix.</p></div>
+      <div class="reveal"><h3><i style="background:var(--amber)"></i>Outdoor unit fails</h3><p>That unit, its cable or its power. Check them, or ask for a replacement.</p></div>
+      <div class="reveal"><h3><i style="background:var(--red)"></i>Only the internet fails</h3><p>Your provider's network. Send them your report.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== RESULT (gold band) =============================== -->
+<section class="sec band" id="result">
+  <div class="wrap result">
+    <div>
+      <p class="label reveal"><b></b>LINK 04 · The result</p>
+      <h2 class="reveal">Facts they can't brush off.</h2>
+      <p class="lede reveal">Not just numbers. A verdict in plain words, the evidence behind it, and a message ready to send.</p>
+      <div class="files reveal">
+        <div><code>report.html</code><span>The full report, in your browser</span></div>
+        <div><code>kebera-full-report.md</code><span>A detailed 8-section report to attach to complaints</span></div>
+        <div><code>message-to-provider.txt</code><span>A WhatsApp-ready complaint with your numbers filled in</span></div>
       </div>
     </div>
-  </section>
+    <div class="term reveal" role="img" aria-label="Example Kebera output showing the router and outdoor unit healthy and the internet losing packets, with the verdict that the problem is on the provider's side.">
+      <div class="bar"><i></i><i></i><i></i><span>kebera — check-up</span></div>
+<pre><span class="t-dim">==> Measuring every link at the same moment</span>
+    router      <span class="t-ok">loss 0%  </span>  avg   2 ms   worst  14 ms
+    outdoor     <span class="t-ok">loss 0%  </span>  avg   3 ms   worst  12 ms
+    google      <span class="t-bad">loss 4.4%</span>  avg  71 ms   worst <span class="t-bad">567 ms</span>
+    cloudflare  <span class="t-bad">loss 4.0%</span>  avg  69 ms   worst <span class="t-bad">498 ms</span>
 
-  <!-- What it checks -->
-  <section id="checks" aria-labelledby="checks-h">
-    <div class="wrap">
-      <p class="kicker">What it checks</p>
-      <h2 id="checks-h">Everything a good technician would look at</h2>
-      <div class="grid g3">
-        <div class="card"><h3>📶 Wi-Fi</h3><p>Signal, 2.4 vs 5 GHz, neighbours crowding your channel, and the best channel to use.</p></div>
-        <div class="card"><h3>🔎 Your equipment</h3><p>Recognises ZTE, Huawei, TP-Link, MikroTik, Nokia, FiberHome and more from the pages they already show.</p></div>
-        <div class="card"><h3>📉 Stability</h3><p>Loss, delay, lag spikes and jitter on every link at once, and where each failure happened.</p></div>
-        <div class="card"><h3>📡 Mobile signal</h3><p>Strength (RSRP) and quality (SINR, RSRQ). Tells a busy tower apart from a badly placed unit.</p></div>
-        <div class="card"><h3>🧲 Interference and jamming</h3><p>Wi-Fi crowding, plus the 4G check that separates real interference from congestion.</p></div>
-        <div class="card"><h3>⏱️ Long log</h3><p>Records every 5 seconds for hours to catch drops that come and go, and shows the worst hours.</p></div>
-        <div class="card"><h3>🚀 Speed and DNS</h3><p>Real download and upload, and whether a faster DNS would open sites quicker.</p></div>
-        <div class="card"><h3>🎮 Strict NAT</h3><p>Detects when your provider shares one public address between customers (CGNAT).</p></div>
-        <div class="card"><h3>📝 Reports</h3><p>An HTML report, a detailed 8-section report, and a WhatsApp-ready message, with your private details left out.</p></div>
+<span class="t-dim">==> Mobile signal at your outdoor unit</span>
+    RSRP <span class="t-ok">-66 dBm (excellent)</span>   SINR <span class="t-gold">7 dB (fair)</span>
+
+<span class="t-gold">VERDICT</span> <span class="t-b">The main problem is on your provider's side.</span>
+<span class="t-dim">Your devices, Wi-Fi and router stayed healthy while
+the connection beyond them dropped or lagged.</span></pre>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== FEATURES =============================== -->
+<section class="sec white" id="checks">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 05 · What it checks</p>
+    <h2 class="reveal">Everything a good<br>technician looks at.</h2>
+    <div class="features reveal">
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/></svg></div><h3>Wi-Fi</h3><p>Signal, 2.4 vs 5 GHz, neighbours crowding your channel, and the best channel to use.</p></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></div><h3>Your equipment</h3><p>Recognises ZTE, Huawei, TP-Link, MikroTik, Nokia, FiberHome and more.</p></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-9"/><path d="M14 7h6v6"/></svg></div><h3>Stability</h3><p>Loss, delay, lag spikes and jitter on every link at once, and where each failure happened.</p></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M5 20V14M10 20V10M15 20V6M20 20V3"/></svg></div><h3>Mobile signal</h3><p>Strength (RSRP) and quality (SINR, RSRQ), to tell a busy tower apart from a badly placed unit.</p></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg></div><h3>Interference and jamming</h3><p>Wi-Fi crowding, plus the check that separates real interference from congestion.</p></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Long log</h3><p>Records every 5 seconds for hours to catch drops that come and go.</p></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M13 3L4 14h7l-1 7 9-11h-7z"/></svg></div><h3>Speed and DNS</h3><p>Real download and upload, and whether a faster DNS would open sites quicker.</p></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 12h3M8.5 10.5v3M15.5 11h.01M17.5 13h.01"/></svg></div><h3>Strict NAT</h3><p>Detects when your provider shares one public address between customers.</p></div>
+      <div class="feat"><div class="fi"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg></div><h3>Reports</h3><p>HTML, a detailed report and a WhatsApp message, with private details left out.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== SAFETY =============================== -->
+<section class="sec" id="safe">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 06 · Is it safe?</p>
+    <h2 class="reveal">A diagnostic tool.<br><span class="gold">Not a hacking tool.</span></h2>
+    <div class="trust">
+      <div class="tcard reveal"><div class="ti">🛡️</div><h3>Your connection only</h3><p>It finds your own router and outdoor unit automatically and has no way to aim anywhere else. A built-in safety check stops it if it tries.</p></div>
+      <div class="tcard reveal"><div class="ti">👀</div><h3>Read-only</h3><p>Never changes settings, never logs in, never guesses passwords. You sign in to your own equipment yourself.</p></div>
+      <div class="tcard reveal"><div class="ti">🔒</div><h3>Private</h3><p>Everything stays on your computer. Reports leave out neighbours' Wi-Fi names, MAC and IMEI numbers, and your full IP.</p></div>
+      <div class="tcard reveal"><div class="ti">📖</div><h3>Read every line</h3><p>Open source under the MIT licence: plain scripts, safeguards in plain view, and changes reviewed by the maintainer.</p></div>
+    </div>
+    <div class="policy reveal"><span style="font-size:22px">⚠️</span><p><b>Misuse or perversion of Kebera is not tolerated.</b> Using it on networks you don't own or aren't permitted to test may be a crime under Uganda's Computer Misuse Act and similar laws worldwide. <a id="aup1" href="#">Read the acceptable use policy</a>.</p></div>
+  </div>
+</section>
+
+<!-- =============================== STATS =============================== -->
+<section class="sec" id="stats" style="padding-top:0">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 07 · Live from GitHub</p>
+    <h2 class="reveal">Built in the open.</h2>
+    <div class="stats reveal">
+      <div class="stat"><b id="s-stars">–</b><span>Stars</span></div>
+      <div class="stat"><b id="s-forks">–</b><span>Forks</span></div>
+      <div class="stat"><b id="s-contrib">–</b><span>Contributors</span></div>
+      <div class="stat"><b id="s-issues">–</b><span>Open issues and ideas</span></div>
+      <div class="stat"><b id="s-release">v0.1.0</b><span>Latest release</span></div>
+    </div>
+    <p class="note" id="s-note">Loading live numbers from GitHub…</p>
+    <div class="avatars" id="avatars"></div>
+  </div>
+</section>
+
+<!-- =============================== CASE =============================== -->
+<section class="sec light" id="case">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 08 · A real case</p>
+    <h2 class="reveal">"It must be the router."<br>It wasn't.</h2>
+    <div class="case">
+      <blockquote class="reveal">"My Xbox, my laptop, my phone: sometimes the internet just gives up."<cite>KAMPALA · NOVEMBER 2026 · AIRTEL 5G HOME</cite></blockquote>
+      <div class="rows reveal">
+        <div class="row"><span>✅</span><p>Devices, Wi-Fi and indoor router<small>All healthy</small></p></div>
+        <div class="row"><span>✅</span><p>Outdoor 5G unit and cable<small>0 lost out of 350 stress tests</small></p></div>
+        <div class="row"><span>❌</span><p>4G signal the 5G depends on<small>Strong but noisy: quality averaged 6 dB all week</small></p></div>
+        <div class="row"><span>✅</span><p>Interference check<small>No jamming: a busy tower</small></p></div>
+        <div class="row"><span>🕘</span><p>Outdoor unit logs<small>Reset about every 24 hours; restarts matched power cuts</small></p></div>
+        <div class="row"><span>⚡</span><p>Wi-Fi fix<small>Moving to 5 GHz cut delay from up to 58 ms to about 2 ms</small></p></div>
       </div>
     </div>
-  </section>
+    <p style="margin-top:28px"><a class="textlink" id="l-case" href="#">Read the full case study</a></p>
+  </div>
+</section>
 
-  <!-- Report preview -->
-  <section id="report" aria-labelledby="report-h">
-    <div class="wrap">
-      <p class="kicker">The result</p>
-      <h2 id="report-h">A verdict you can act on</h2>
-      <p class="sub">Not just numbers: Kebera says where the problem is, what you can fix yourself, and what the provider must fix, with the evidence attached.</p>
-      <div class="grid g2" style="align-items:center">
-        <img src="images/report-preview.svg" alt="Example report: the main problem is on your internet provider's side, with findings and a stability table." width="900" height="620" loading="lazy">
-        <div>
-          <pre>==> Measuring stability at the same moment on every link
-    router     loss  0%   avg   2 ms   worst  14 ms
-    upstream   loss  0%   avg   3 ms   worst  12 ms
-    google     loss  4.4% avg  71 ms   worst 567 ms
-    cloudflare loss  4.0% avg  69 ms   worst 498 ms
+<!-- =============================== CONTACTS =============================== -->
+<section class="sec light" id="contacts" style="padding-top:0">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 09 · Customer care</p>
+    <h2 class="reveal">Then tell them.</h2>
+    <p class="lede reveal">Customer care contacts across East Africa. Send your report, ask for a reference number, and <a class="textlink" id="l-escalate" href="#">escalate step by step</a> if it isn't fixed.</p>
+    <div class="tabs reveal" role="tablist" id="ctabs"></div>
+    <div class="cgrid" id="cgrid"></div>
+    <div class="warnline" id="csafety"></div>
+    <p class="small" id="cnote"></p>
+    <p class="small">Know a missing or changed number? <a id="l-contacts" href="#">Suggest a correction</a>.</p>
+  </div>
+</section>
 
- VERDICT: The main problem is on your internet
- provider's side. Your devices, Wi-Fi and router
- stayed healthy while the connection beyond them
- dropped or lagged.</pre>
-        </div>
-      </div>
+<!-- =============================== COMMUNITY + FAQ =============================== -->
+<section class="sec white" id="faq">
+  <div class="wrap">
+    <p class="label reveal"><b></b>LINK 10 · Community</p>
+    <h2 class="reveal">Make the next answer better.</h2>
+    <p class="lede reveal">Every router, outdoor unit and fibre modem you report makes Kebera smarter. Translations into Luganda, Swahili, Runyankole, Acholi and Lusoga are especially welcome.</p>
+    <div class="comm">
+      <a class="reveal" id="l-device" href="#"><h3>📟 Report your device</h3><p>Your equipment, and where its signal page lives.</p><span class="textlink">Open a device report</span></a>
+      <a class="reveal" id="l-contributing" href="#"><h3>🌍 Translate</h3><p>Help people read reports in their own language.</p><span class="textlink">How to contribute</span></a>
+      <a class="reveal" id="l-bug" href="#"><h3>🐞 Report a bug</h3><p>Something didn't work? Tell us what happened.</p><span class="textlink">Report a bug</span></a>
     </div>
-  </section>
 
-  <!-- Safety -->
-  <section id="safe" aria-labelledby="safe-h">
-    <div class="wrap">
-      <p class="kicker">Is it safe?</p>
-      <h2 id="safe-h">A diagnostic tool, not a hacking tool</h2>
-      <div class="grid g4">
-        <div class="card"><h3>🛡️ Your connection only</h3><p>It finds your own router and outdoor unit automatically and has no option to aim it anywhere else. A built-in safety check stops it if it tries.</p></div>
-        <div class="card"><h3>👀 Read-only</h3><p>It never changes settings, never logs in, never guesses passwords. You sign in to your own equipment yourself.</p></div>
-        <div class="card"><h3>🔒 Private</h3><p>Everything stays on your computer. Reports leave out neighbours' Wi-Fi names, MAC and IMEI numbers, and your full public IP.</p></div>
-        <div class="card"><h3>📖 Read every line</h3><p>Open source under the MIT licence. Plain, readable scripts, safeguards in plain view, and changes reviewed by the maintainer.</p></div>
-      </div>
-      <p class="warn"><b>Misuse or perversion of Kebera is not tolerated.</b> Using it on networks you don't own or aren't permitted to test may be a crime under laws such as Uganda's Computer Misuse Act and equivalents worldwide. <a id="aup2" href="#">Read the acceptable use policy</a>.</p>
-    </div>
-  </section>
-
-  <!-- Real example -->
-  <section id="example" aria-labelledby="example-h">
-    <div class="wrap">
-      <p class="kicker">Real case · Kampala, November 2026</p>
-      <h2 id="example-h">"It must be the router."</h2>
-      <p class="sub">Every device was slow, and the router got the blame. Kebera showed that the home equipment was fine and found the real causes.</p>
-      <div class="tablewrap">
-        <table>
-          <thead><tr><th>Check</th><th>Result</th></tr></thead>
-          <tbody>
-            <tr><td>Xbox, laptop, phone, indoor router</td><td>✅ Healthy</td></tr>
-            <tr><td>Outdoor 5G unit and cable</td><td>✅ 0 lost out of 350 stress tests</td></tr>
-            <tr><td>4G anchor signal (5G depends on it)</td><td>❌ Strong but noisy: quality 6 dB on average all week</td></tr>
-            <tr><td>Interference check</td><td>✅ No jamming: a busy tower</td></tr>
-            <tr><td>Outdoor unit logs</td><td>Reset about every 24 hours; restarts matched power cuts</td></tr>
-            <tr><td>Wi-Fi</td><td>⚠️ Crowded 2.4 GHz. Moving to 5 GHz cut delay from up to 58 ms to about 2 ms</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <a class="more" id="l-case" href="#" style="display:inline-block;margin-top:14px;font-weight:700;color:var(--accent);text-decoration:none">Read the full case study →</a>
-    </div>
-  </section>
-
-  <!-- Provider contacts -->
-  <section id="contacts" aria-labelledby="contacts-h">
-    <div class="wrap">
-      <p class="kicker">Provider contacts · East Africa</p>
-      <h2 id="contacts-h">Customer care numbers</h2>
-      <p class="sub">Report your findings, ask for a reference number, and escalate step by step if it isn't fixed. Numbers change, so confirm on the provider's official site.</p>
-      <div class="tabs" role="tablist" id="ctabs"></div>
-      <div class="tablewrap"><table id="ctable"><thead><tr><th>Provider</th><th>Call</th><th>Other numbers</th><th>WhatsApp</th><th>Checked</th></tr></thead><tbody></tbody></table></div>
-      <p class="warn" id="csafety"></p>
-      <p class="statnote" id="cnote"></p>
-      <p class="statnote">Know a missing or changed number? <a id="l-contrib-contacts" href="#">Suggest a correction</a>. Next: <a id="l-escalate" href="#">how to escalate with your provider</a>.</p>
-    </div>
-  </section>
-
-  <!-- Community -->
-  <section id="community" aria-labelledby="community-h">
-    <div class="wrap">
-      <p class="kicker">Community</p>
-      <h2 id="community-h">Help the next person get a better answer</h2>
-      <p class="sub">Every router, outdoor unit and fibre modem you report makes Kebera smarter. Translations into Luganda, Swahili, Runyankole, Acholi and Lusoga are especially welcome.</p>
-      <div class="grid g3">
-        <div class="card"><h3>📟 Report your device</h3><p>Tell us what equipment you have and where its signal page lives (with identifiers removed).</p><a class="more" id="l-device" href="#">Open a device report →</a></div>
-        <div class="card"><h3>🌍 Translate</h3><p>Help people read their reports in their own language.</p><a class="more" id="l-contributing" href="#">How to contribute →</a></div>
-        <div class="card"><h3>🐞 Report a bug</h3><p>Something didn't work? Tell us what happened and on which system.</p><a class="more" id="l-bug" href="#">Report a bug →</a></div>
-      </div>
-      <h3 style="margin:32px 0 0;font-size:18px">Contributors</h3>
-      <div class="avatars" id="avatars"><span class="statnote">Contributors appear here once the repository is public.</span></div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" aria-labelledby="faq-h">
-    <div class="wrap">
-      <p class="kicker">FAQ</p>
-      <h2 id="faq-h">Questions people ask</h2>
+    <div class="faq">
       <details><summary>Do I need a paid AI or technical skills?</summary><p>No. Paste the free chat guide into any free AI chat, double-click the Windows check-up, or follow the step-by-step guide. A paid coding agent just does more of the steps for you.</p></details>
       <details><summary>Can I use only my phone?</summary><p>Yes, partly. The chat guide has a phone-only path covering router pages, signal readings, a speed test and comparing Wi-Fi with mobile data.</p></details>
       <details><summary>Will it change anything on my router?</summary><p>No. Kebera is read-only. If you later decide to change something, such as your Wi-Fi channel, you do it yourself, knowing how to undo it.</p></details>
@@ -353,123 +554,204 @@ footer a{display:block;text-decoration:none;margin:4px 0}footer a:hover{color:va
       <details><summary>Does it work with Airtel, MTN, Safaricom, fibre, Starlink…?</summary><p>Yes. It tests the connection itself, so it works with any provider, and it recognises ZTE and Huawei equipment (common with mobile providers) most completely.</p></details>
       <details><summary>How much data does it use?</summary><p>About 35 MB for the standard check, 12 MB for the quick check, under 1 MB without the speed test.</p></details>
       <details><summary>Can Kebera prove my provider is at fault?</summary><p>It gives strong evidence of where the problem was during the test. It isn't a certified measurement, but it turns "my internet is bad" into specific facts that are hard to dismiss.</p></details>
-      <details><summary>What does "Kebera" mean?</summary><p>"Examine" or "inspect" in Luganda.</p></details>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- =============================== FINAL CTA =============================== -->
+<section class="sec final center">
+  <div class="wrap narrow">
+    <h2 class="reveal">Stop guessing.<br><span class="gold">Kebera.</span></h2>
+    <p class="lede reveal">Examine your connection, know the facts, get it fixed.</p>
+    <div class="btns reveal" style="justify-content:center">
+      <a class="btn btn-gold" href="#paths">Diagnose my internet</a>
+      <a class="btn btn-ghost" id="final-gh" href="#" target="_blank" rel="noopener">Star on GitHub</a>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="cols">
+    <div class="fcols">
       <div>
-        <h4>Kebera</h4>
-        <p style="margin:0">Free, open-source internet check-up. Examine your connection, know the facts, get it fixed.</p>
-        <p style="margin:12px 0 0"><button class="theme" id="themebtn" type="button">Toggle dark mode</button></p>
+        <a class="logo" href="#top" style="color:var(--on-dark)"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1d2027"/><circle cx="28" cy="28" r="15" fill="none" stroke="#fff" stroke-width="5"/><path d="M39 39l13 13" stroke="#f5c400" stroke-width="6" stroke-linecap="round"/></svg>Kebera</a>
+        <p style="margin:14px 0 0;max-width:300px">A free, open-source internet check-up. Read-only, private, and for your own connection.</p>
       </div>
-      <div><h4>Use it</h4><a id="f-chat" href="#">Free AI chat guide</a><a id="f-zip" href="#">Download (Windows)</a><a id="f-steps" href="#">Step-by-step guide</a><a id="f-agents" href="#">For coding agents</a></div>
-      <div><h4>Learn</h4><a id="f-readme" href="#">Full user guide (README)</a><a id="f-interpret" href="#">What the numbers mean</a><a id="f-jam" href="#">Interference and jamming</a><a id="f-escalate" href="#">Escalating with your provider</a></div>
+      <div><h4>Use it</h4><a id="f-chat" href="#">Free AI chat guide</a><a id="f-zip" href="#">Download for Windows</a><a id="f-steps" href="#">Step-by-step guide</a><a id="f-agents" href="#">For coding agents</a></div>
+      <div><h4>Learn</h4><a id="f-readme" href="#">Full user guide</a><a id="f-interpret" href="#">What the numbers mean</a><a id="f-jam" href="#">Interference and jamming</a><a id="f-escalate" href="#">Escalating with your provider</a></div>
       <div><h4>Project</h4><a id="f-aup" href="#">Acceptable use</a><a id="f-privacy" href="#">Privacy</a><a id="f-disclaimer" href="#">Disclaimer</a><a id="f-license" href="#">MIT licence</a><a id="f-contrib" href="#">Contributing</a></div>
     </div>
-    <p style="margin-top:28px">© 2026 Kazibwe Francis · MIT licence. Kebera is independent and not affiliated with any provider or manufacturer mentioned; names are used only to identify equipment and services. Results describe the moment of the test and are provided as is.</p>
+    <p class="legal">© 2026 Kazibwe Francis. Released under the MIT licence. Kebera is an independent project and is not affiliated with, endorsed by or acting for any internet provider or equipment maker mentioned; names are used only to identify equipment and services. Results describe the moment of the test and are provided as is, without warranty.</p>
   </div>
 </footer>
 
 <script>
-(function(){
-  // ---- Configure the repository here ----
+(function () {
+  'use strict';
+  /* ---- Repository settings ---- */
   var OWNER = 'kazibwefrancis', REPO = 'kebera', BRANCH = 'main';
-  var gh = 'https://github.com/' + OWNER + '/' + REPO;
-  var blob = gh + '/blob/' + BRANCH + '/';
-
-  var links = {
-    ghlink: gh,
-    'cta-zip': gh + '/archive/refs/heads/' + BRANCH + '.zip', 'l-zip': gh + '/archive/refs/heads/' + BRANCH + '.zip', 'f-zip': gh + '/archive/refs/heads/' + BRANCH + '.zip',
+  var gh = 'https://github.com/' + OWNER + '/' + REPO, blob = gh + '/blob/' + BRANCH + '/';
+  var zip = gh + '/archive/refs/heads/' + BRANCH + '.zip';
+  var L = {
+    ghlink: gh, 'hero-gh': gh, 'final-gh': gh,
     'l-chat': blob + 'chat/KEBERA-CHAT-GUIDE.md', 'f-chat': blob + 'chat/KEBERA-CHAT-GUIDE.md',
-    'cta-steps': blob + 'docs/step-by-step-without-ai.md', 'l-steps': blob + 'docs/step-by-step-without-ai.md', 'f-steps': blob + 'docs/step-by-step-without-ai.md',
-    'cta-agents': blob + 'AGENTS.md', 'l-agents': blob + 'AGENTS.md', 'f-agents': blob + 'AGENTS.md',
-    aup1: blob + 'ACCEPTABLE_USE.md', aup2: blob + 'ACCEPTABLE_USE.md', 'f-aup': blob + 'ACCEPTABLE_USE.md',
+    'l-zip': zip, 'f-zip': zip,
+    'l-agents': blob + 'AGENTS.md', 'f-agents': blob + 'AGENTS.md',
+    'l-steps': blob + 'docs/step-by-step-without-ai.md', 'f-steps': blob + 'docs/step-by-step-without-ai.md',
+    aup0: blob + 'ACCEPTABLE_USE.md', aup1: blob + 'ACCEPTABLE_USE.md', 'f-aup': blob + 'ACCEPTABLE_USE.md',
     'l-case': blob + 'examples/case-study-kampala-5g.md',
     'l-escalate': blob + 'templates/escalation.md', 'f-escalate': blob + 'templates/escalation.md',
-    'l-contrib-contacts': gh + '/issues/new?title=Provider%20contact%20correction&labels=contacts',
+    'l-contacts': gh + '/issues/new?title=Provider%20contact%20correction&labels=contacts',
     'l-device': gh + '/issues/new?template=device-report.md', 'l-bug': gh + '/issues/new?template=bug-report.md',
     'l-contributing': blob + 'CONTRIBUTING.md', 'f-contrib': blob + 'CONTRIBUTING.md',
     'f-readme': gh + '#readme', 'f-interpret': blob + 'docs/interpreting-results.md', 'f-jam': blob + 'docs/interference-and-jamming.md',
     'f-privacy': blob + 'PRIVACY.md', 'f-disclaimer': blob + 'DISCLAIMER.md', 'f-license': blob + 'LICENSE'
   };
-  Object.keys(links).forEach(function(id){
+  Object.keys(L).forEach(function (id) {
     var el = document.getElementById(id); if (!el) return;
-    el.href = links[id];
-    if (/^https?:/.test(links[id])) { el.target = '_blank'; el.rel = 'noopener'; }
+    el.href = L[id]; el.target = '_blank'; el.rel = 'noopener';
   });
 
-  // ---- Theme toggle (remembered per viewer; works without storage too) ----
-  var root = document.documentElement;
-  try { var saved = localStorage.getItem('kebera-theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
-  document.getElementById('themebtn').addEventListener('click', function(){
-    var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme') === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-    var next = dark ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('kebera-theme', next); } catch (e) {}
+  /* ---- Mobile menu ---- */
+  var burger = document.getElementById('burger'), menu = document.getElementById('menu');
+  burger.addEventListener('click', function () {
+    var open = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', String(open));
   });
+  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); } });
 
-  // ---- Live GitHub stats (cached for an hour to respect GitHub's rate limit) ----
-  function fmt(n){ return n >= 1000 ? (n/1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/,'') + 'k' : String(n); }
-  function cacheGet(k){ try { var v = JSON.parse(localStorage.getItem(k)); if (v && Date.now() - v.t < 3600000) return v.d; } catch (e) {} return null; }
-  function cacheSet(k,d){ try { localStorage.setItem(k, JSON.stringify({t: Date.now(), d: d})); } catch (e) {} }
-  function getJSON(url, key){
-    var c = cacheGet(key); if (c) return Promise.resolve(c);
-    return fetch(url, {headers: {Accept: 'application/vnd.github+json'}}).then(function(r){
-      if (!r.ok) throw new Error(r.status);
-      return r.json().then(function(j){ cacheSet(key, j); return j; });
+  /* ---- Reveal on scroll ---- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealEls = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) { revealEls.forEach(function (el) { el.classList.add('in'); }); }
+  else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---- Interactive chain ---- */
+  var S = {
+    ok:   { fail: -1, labels: ['ok', '87%', '2 ms', '3 ms', '44 ms', '0% loss'], color: 'var(--green)',
+            title: 'Everything is healthy right now.', text: 'If it still misbehaves at times, run the long log to catch it in the act.' },
+    wifi: { fail: 1, labels: ['ok', '31% · busy', '—', '—', '—', '—'], color: 'var(--red)',
+            title: 'The problem is inside your home: your Wi-Fi.', text: 'Move closer, switch to 5 GHz, or change channel. Free, and fixed in minutes.' },
+    odu:  { fail: 3, labels: ['ok', '87%', '2 ms', 'no reply', '—', '—'], color: 'var(--amber)',
+            title: 'The outdoor unit or its cable is failing.', text: 'Check the cable and power adapter, look for water damage. If it continues, ask for a replacement.' },
+    isp:  { fail: 4, labels: ['ok', '87%', '2 ms', '3 ms', '4.4% loss', '567 ms'], color: 'var(--red)',
+            title: "The main problem is on your provider's side.", text: 'Your equipment stayed healthy while the connection beyond it dropped. Send them your report.' }
+  };
+  var nodes = document.querySelectorAll('#chain .node'), segBtns = document.querySelectorAll('.seg button');
+  var vEl = document.getElementById('verdict'), vDot = vEl.querySelector('.dot'), vT = vEl.querySelector('b'), vX = vEl.querySelector('span');
+  var order = ['ok', 'wifi', 'odu', 'isp'], cur = 0, timer = null;
+  function show(key) {
+    var s = S[key];
+    nodes.forEach(function (n, i) {
+      n.classList.remove('ok', 'bad', 'off', 'flow');
+      if (s.fail === -1 || i < s.fail) { n.classList.add('ok'); if (i < nodes.length - 1 && (s.fail === -1 || i < s.fail - 1)) n.classList.add('flow'); }
+      else if (i === s.fail) n.classList.add('bad');
+      else n.classList.add('off');
+      n.querySelector('small').textContent = s.labels[i];
+    });
+    vDot.style.background = s.color; vT.textContent = s.title; vX.textContent = s.text;
+    segBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.s === key)); });
+  }
+  segBtns.forEach(function (b) {
+    b.addEventListener('click', function () { if (timer) { clearInterval(timer); timer = null; } show(b.dataset.s); });
+  });
+  show('ok');
+  if (!reduce) { timer = setInterval(function () { cur = (cur + 1) % order.length; show(order[cur]); }, 3600); }
+
+  /* ---- Setup picker ---- */
+  var setups = [
+    { k: 'odu', em: '📡', t: '5G or 4G outdoor unit', d: 'A box outside, cable to a router inside',
+      h: 'Kebera checks both boxes.', p: 'It tests your indoor router and the outdoor unit separately, so you know which one is failing.',
+      li: ['Signal strength and quality on 4G and 5G (RSRP, SINR, RSRQ)', 'Whether the cable and the unit drop data', 'Connection uptime and the unit\'s logs: daily resets, restarts, power cuts', 'Data used this month, for fair-usage questions'] },
+    { k: 'router', em: '📶', t: 'Indoor 4G/5G router', d: 'One router with a SIM inside',
+      h: 'Kebera reads the router\'s signal.', p: 'Placement matters most here, and Kebera shows whether it\'s placement or the tower.',
+      li: ['Signal strength vs quality: placement or a busy tower', 'Wi-Fi crowding and the best channel', 'Stability to the router and beyond', 'Speed, DNS and shared-address (CGNAT) checks'] },
+    { k: 'mifi', em: '🔋', t: 'Pocket MiFi', d: 'A small battery hotspot',
+      h: 'Kebera works on MiFis too.', p: 'Small devices drop when they overheat or run low on battery. Kebera helps separate that from network trouble.',
+      li: ['Stability to the MiFi and to the internet', 'Signal readings from its status page', 'Wi-Fi signal and crowding', 'Speed test (optional, uses data)'] },
+    { k: 'fibre', em: '💡', t: 'Fibre', d: 'A fibre box (ONT), often with a Wi-Fi router',
+      h: 'Kebera checks the light.', p: 'Fibre problems show up in the ONT\'s optical power and its LOS light.',
+      li: ['Optical receive power (below −27 dBm means a line fault)', 'Stability to the ONT and the router separately', 'Wi-Fi inside the home', 'Evening congestion with the long log'] },
+    { k: 'wisp', em: '🛰️', t: 'Rooftop antenna or Starlink', d: 'A local ISP\'s antenna, or a satellite dish',
+      h: 'Kebera tests the radio link.', p: 'Alignment, obstructions and power adapters are the usual suspects.',
+      li: ['Stability to the antenna and beyond', 'Signal, noise and link quality from its page', 'Short drops from obstructions or weather', 'Wi-Fi inside the home'] }
+  ];
+  var chips = document.getElementById('chips'), ans = document.getElementById('answer');
+  function esc(s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function pick(i) {
+    [].forEach.call(chips.children, function (c, j) { c.setAttribute('aria-pressed', String(i === j)); });
+    var s = setups[i];
+    ans.innerHTML = '<span class="yes">● Works with your setup</span><h3>' + esc(s.h) + '</h3><p>' + esc(s.p) + '</p><ul>' +
+      s.li.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul><p class="foot">Not sure what you have? Look at the label under your router for the make and model.</p>';
+  }
+  setups.forEach(function (s, i) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'chip';
+    b.innerHTML = '<span class="em" aria-hidden="true">' + s.em + '</span><span><b>' + esc(s.t) + '</b><span>' + esc(s.d) + '</span></span>';
+    b.addEventListener('click', function () { pick(i); });
+    chips.appendChild(b);
+  });
+  pick(0);
+
+  /* ---- Live GitHub stats (cached for an hour) ---- */
+  function fmt(n) { return n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '') + 'k' : String(n); }
+  function cget(k) { try { var v = JSON.parse(localStorage.getItem(k)); if (v && Date.now() - v.t < 36e5) return v.d; } catch (e) {} return null; }
+  function cset(k, d) { try { localStorage.setItem(k, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {} }
+  function get(url, key) {
+    var c = cget(key); if (c) return Promise.resolve(c);
+    return fetch(url, { headers: { Accept: 'application/vnd.github+json' } }).then(function (r) {
+      if (!r.ok) throw new Error(r.status); return r.json().then(function (j) { cset(key, j); return j; });
     });
   }
   var api = 'https://api.github.com/repos/' + OWNER + '/' + REPO;
-  getJSON(api, 'kb-repo').then(function(r){
+  get(api, 'kb2-repo').then(function (r) {
     document.getElementById('s-stars').textContent = fmt(r.stargazers_count);
     document.getElementById('s-forks').textContent = fmt(r.forks_count);
     document.getElementById('s-issues').textContent = fmt(r.open_issues_count);
-    document.getElementById('navstars').textContent = '· ★ ' + fmt(r.stargazers_count);
+    document.getElementById('navstars').textContent = '★ ' + fmt(r.stargazers_count);
     document.getElementById('s-note').textContent = 'Live from github.com/' + OWNER + '/' + REPO + ', refreshed hourly.';
-  }).catch(function(){
-    document.getElementById('s-note').textContent = 'Live numbers appear here once the repository is public on GitHub.';
-  });
-  getJSON(api + '/contributors?per_page=100', 'kb-contrib').then(function(list){
+  }).catch(function () { document.getElementById('s-note').textContent = 'Live numbers appear here once the repository is public on GitHub.'; });
+  get(api + '/contributors?per_page=100', 'kb2-contrib').then(function (list) {
     document.getElementById('s-contrib').textContent = fmt(list.length);
-    var box = document.getElementById('avatars'); box.innerHTML = '';
-    list.forEach(function(c){
+    var box = document.getElementById('avatars');
+    list.forEach(function (c) {
       var a = document.createElement('a'); a.href = c.html_url; a.target = '_blank'; a.rel = 'noopener'; a.title = c.login + ' · ' + c.contributions + ' contributions';
-      var img = document.createElement('img'); img.src = c.avatar_url + '&s=80'; img.alt = c.login; img.loading = 'lazy'; img.width = 40; img.height = 40;
+      var img = document.createElement('img'); img.src = c.avatar_url + '&s=88'; img.alt = c.login; img.width = 44; img.height = 44; img.loading = 'lazy';
       a.appendChild(img); box.appendChild(a);
     });
-  }).catch(function(){});
-  getJSON(api + '/releases/latest', 'kb-release').then(function(r){
-    document.getElementById('s-release').textContent = r.tag_name || '–';
-  }).catch(function(){ document.getElementById('s-release').textContent = 'v0.1.0'; });
+  }).catch(function () {});
+  get(api + '/releases/latest', 'kb2-release').then(function (r) { if (r.tag_name) document.getElementById('s-release').textContent = r.tag_name; }).catch(function () {});
 
-  // ---- Provider contacts ----
-  var badge = { 'official': ['b-official','Official site'], 'official-regulator': ['b-official','Regulator list'], 'third-party': ['b-third','Third-party source'], 'unverified': ['b-unverified','Not verified'] };
-  function esc(s){ return String(s || '').replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  fetch('providers.json').then(function(r){ return r.json(); }).then(function(data){
-    var tabs = document.getElementById('ctabs'), body = document.querySelector('#ctable tbody');
+  /* ---- Provider contacts ---- */
+  var badge = { 'official': ['ok', 'Official site'], 'official-regulator': ['ok', 'Regulator list'], 'third-party': ['mid', 'Third-party source'], 'unverified': ['no', 'Not verified'] };
+  fetch('providers.json').then(function (r) { return r.json(); }).then(function (data) {
+    var tabs = document.getElementById('ctabs'), grid = document.getElementById('cgrid');
     document.getElementById('csafety').innerHTML = '⚠️ <b>' + esc(data.safety) + '</b>';
     document.getElementById('cnote').textContent = 'Last checked ' + data.lastChecked + '. ' + data.note;
-    function show(i){
-      [].forEach.call(tabs.children, function(b, j){ b.setAttribute('aria-selected', String(i === j)); });
-      body.innerHTML = data.countries[i].providers.map(function(p){
+    function showC(i) {
+      [].forEach.call(tabs.children, function (b, j) { b.setAttribute('aria-selected', String(i === j)); });
+      grid.innerHTML = data.countries[i].providers.map(function (p) {
         var b = badge[p.status] || badge.unverified;
-        return '<tr><td><a href="' + esc(p.website) + '" target="_blank" rel="noopener"><b>' + esc(p.name) + '</b></a></td>' +
-          '<td>' + (esc(p.call) || '–') + '</td><td>' + (esc(p.other) || '–') + '</td><td>' + (esc(p.whatsapp) || '–') + '</td>' +
-          '<td>' + (p.source ? '<a href="' + esc(p.source) + '" target="_blank" rel="noopener"><span class="badge ' + b[0] + '">' + b[1] + '</span></a>' : '<span class="badge ' + b[0] + '">' + b[1] + '</span>') + '</td></tr>';
+        var rows = '';
+        if (p.other) rows += '<div><dt>Other numbers</dt><dd>' + esc(p.other) + '</dd></div>';
+        if (p.whatsapp) rows += '<div><dt>WhatsApp</dt><dd>' + esc(p.whatsapp) + '</dd></div>';
+        var pill = p.source ? '<a class="pill ' + b[0] + '" href="' + esc(p.source) + '" target="_blank" rel="noopener">' + b[1] + '</a>' : '<span class="pill ' + b[0] + '">' + b[1] + '</span>';
+        return '<article class="ccard"><h3>' + esc(p.name) + '</h3><div class="num">' + (esc(p.call) || '–') + '</div>' +
+          (rows ? '<dl>' + rows + '</dl>' : '') +
+          '<div class="src"><a class="textlink" href="' + esc(p.website) + '" target="_blank" rel="noopener">Website</a>' + pill + '</div></article>';
       }).join('');
     }
-    data.countries.forEach(function(c, i){
-      var btn = document.createElement('button'); btn.type = 'button'; btn.setAttribute('role','tab');
-      btn.textContent = c.flag + ' ' + c.country; btn.addEventListener('click', function(){ show(i); });
-      tabs.appendChild(btn);
+    data.countries.forEach(function (c, i) {
+      var b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab');
+      b.textContent = c.country; b.addEventListener('click', function () { showC(i); }); tabs.appendChild(b);
     });
-    show(0);
-  }).catch(function(){
-    document.querySelector('#ctable tbody').innerHTML = '<tr><td colspan="5">Contacts could not be loaded. See docs/provider-contacts.md in the repository.</td></tr>';
+    showC(0);
+  }).catch(function () {
+    document.getElementById('cgrid').innerHTML = '<p>Contacts could not be loaded. See docs/provider-contacts.md in the repository.</p>';
   });
 })();
 </script>
