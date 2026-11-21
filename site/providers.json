@@ -1,6 +1,6 @@
 {
   "lastChecked": "2026-11-21",
-  "note": "Numbers change. Always confirm on the provider's official website, app or SIM pack. 'official' = taken from the provider's own website; 'third-party' = from a news site or directory, not yet confirmed by the provider. Corrections welcome via a GitHub issue or pull request.",
+  "note": "Numbers change. Always confirm on the provider's official website, app or SIM pack. 'Official site' = taken from the provider's own website; 'Regulator list' = from the national regulator's published list; 'Third-party source' = from a news site or directory, not yet confirmed by the provider. Corrections welcome via a GitHub issue or pull request.",
   "safety": "Providers will never ask for your PIN, password or one-time code. Hang up on anyone who does.",
   "countries": [
     {
@@ -9,6 +9,7 @@
       "providers": [
         {
           "name": "MTN Uganda",
+          "type": "Mobile and 4G/5G home internet",
           "call": "100 (free from an MTN line)",
           "other": "",
           "whatsapp": "",
@@ -17,13 +18,44 @@
           "source": "https://www.mtn.co.ug/helppersonal/numbers-to-remember/"
         },
         {
+          "name": "MTN WakaNet (home fibre)",
+          "type": "Home fibre",
+          "call": "Self-service in the MyMTN app",
+          "other": "Or MTN customer care on 100",
+          "whatsapp": "",
+          "website": "https://www.mtn.co.ug/helppersonal/mtn-wakanet-fiber",
+          "status": "official",
+          "source": "https://www.mtn.co.ug/helppersonal/mtn-wakanet-fiber"
+        },
+        {
           "name": "Airtel Uganda",
+          "type": "Mobile and 4G/5G home internet",
           "call": "100 (free from an Airtel line)",
           "other": "0752 100 100 (from other networks)",
           "whatsapp": "",
           "website": "https://www.airtel.co.ug",
           "status": "third-party",
           "source": "https://helloduty.com/country/uganda"
+        },
+        {
+          "name": "Roke Telkom",
+          "type": "Home fibre and wireless",
+          "call": "+256 205 000 123 (24/7)",
+          "other": "customerservice@roketelkom.co.ug",
+          "whatsapp": "+256 703 681 506",
+          "website": "https://www.roketelkom.co.ug",
+          "status": "official",
+          "source": "https://business.roketelkom.co.ug/node/98"
+        },
+        {
+          "name": "Liquid Intelligent Technologies Uganda",
+          "type": "Fibre and business internet",
+          "call": "0800 262 800 (toll free)",
+          "other": "0414 562 800 · +256 707 262 800",
+          "whatsapp": "",
+          "website": "https://liquid.tech",
+          "status": "third-party",
+          "source": "https://kisiifinest.co.ke/wifi-internet-providers-in-uganda"
         }
       ]
     },
@@ -33,6 +65,7 @@
       "providers": [
         {
           "name": "Safaricom",
+          "type": "Mobile and 4G/5G home internet",
           "call": "100 prepaid (free), 200 postpaid",
           "other": "+254 722 002 100 (chargeable)",
           "whatsapp": "0722 000 100 (Zuri: send \"Hi Zuri\")",
@@ -41,13 +74,54 @@
           "source": "https://www.safaricom.co.ke/about/contact-us"
         },
         {
+          "name": "Safaricom Home Fibre",
+          "type": "Home fibre",
+          "call": "400 (free from the registered Safaricom line)",
+          "other": "USSD *400#",
+          "whatsapp": "",
+          "website": "https://www.safaricom.co.ke",
+          "status": "official",
+          "source": "https://www.safaricom.co.ke/about/contact-us"
+        },
+        {
           "name": "Airtel Kenya",
+          "type": "Mobile and home broadband",
           "call": "100 prepaid, 200 postpaid, 400 home broadband (free from Airtel)",
           "other": "0733 100 100 (from other networks)",
           "whatsapp": "",
           "website": "https://www.airtelkenya.com",
           "status": "third-party",
           "source": "https://businessradar.co.ke/airtel-kenya-customer-care-number/"
+        },
+        {
+          "name": "Zuku",
+          "type": "Home fibre and TV",
+          "call": "0205 205 205 (24/7; free from a Zuku landline)",
+          "other": "",
+          "whatsapp": "",
+          "website": "https://zuku.co.ke",
+          "status": "official",
+          "source": "https://zuku.co.ke/?p=2466"
+        },
+        {
+          "name": "Faiba (JTL)",
+          "type": "Home fibre",
+          "call": "0747 585 100",
+          "other": "020 840 5100 · csc@jtl.co.ke",
+          "whatsapp": "",
+          "website": "https://jtl.co.ke",
+          "status": "third-party",
+          "source": "https://kisiifinest.co.ke/internet-service-providers-in-kenya"
+        },
+        {
+          "name": "Poa Internet",
+          "type": "Home wireless and fibre",
+          "call": "0730 762 762",
+          "other": "support@poainternet.net",
+          "whatsapp": "0730 762 762",
+          "website": "https://poainternet.net",
+          "status": "third-party",
+          "source": "https://kisiifinest.co.ke/best-internet-providers-in-nairobi"
         }
       ]
     },
@@ -57,6 +131,7 @@
       "providers": [
         {
           "name": "Yas",
+          "type": "Mobile and home internet",
           "call": "100",
           "other": "+255 714 100 100 (roaming help)",
           "whatsapp": "",
@@ -66,6 +141,7 @@
         },
         {
           "name": "Vodacom Tanzania",
+          "type": "Mobile and home internet",
           "call": "100 (from a Vodacom line)",
           "other": "",
           "whatsapp": "",
@@ -74,7 +150,28 @@
           "source": "https://www.jaynevytours.com/how-to-check-your-vodacom-number-in-tanzania..html"
         },
         {
+          "name": "TTCL",
+          "type": "Fibre, fixed and mobile",
+          "call": "100 (from a TTCL line)",
+          "other": "022 210 0100 (from any network)",
+          "whatsapp": "",
+          "website": "https://www.ttcl.co.tz",
+          "status": "official",
+          "source": "https://ttcl.co.tz/dedicated-internet-bandwidth"
+        },
+        {
+          "name": "Savanna Fibre",
+          "type": "Home fibre",
+          "call": "+255 699 999 555",
+          "other": "support@savannafibre.co.tz",
+          "whatsapp": "",
+          "website": "https://savannafibre.com",
+          "status": "third-party",
+          "source": "https://savannafibre-wg67.onrender.com/contact"
+        },
+        {
           "name": "Halotel",
+          "type": "Mobile and home internet",
           "call": "",
           "other": "+255 620 100 000",
           "whatsapp": "",
@@ -84,6 +181,7 @@
         },
         {
           "name": "Airtel Tanzania",
+          "type": "Mobile and home internet",
           "call": "Not yet verified: check the official website",
           "other": "",
           "whatsapp": "",
@@ -99,6 +197,7 @@
       "providers": [
         {
           "name": "MTN Rwanda",
+          "type": "Mobile and home internet",
           "call": "100",
           "other": "+250 788 310 044",
           "whatsapp": "",
@@ -108,12 +207,49 @@
         },
         {
           "name": "Airtel Rwanda",
-          "call": "100 (customer enquiry code on all networks)",
+          "type": "Mobile and home internet",
+          "call": "100 (customer enquiry code, all networks)",
           "other": "",
           "whatsapp": "",
           "website": "https://www.airtel.co.rw",
           "status": "official-regulator",
           "source": "https://rura.rw/fileadmin/Documents/docs/RWANDA_NATIONAL_NUMBERING_PLAN.pdf"
+        },
+        {
+          "name": "CanalBox (GVA Rwanda)",
+          "type": "Home fibre",
+          "call": "8600",
+          "other": "0788 197 100 · USSD *860# · self-care at canalbox.rw",
+          "whatsapp": "",
+          "website": "https://canalbox.rw",
+          "status": "third-party",
+          "source": "https://www.newtimes.co.rw/article/37470/news/featured/canalbox-launches-fibre-internet-services-in-musanze"
+        },
+        {
+          "name": "Liquid Intelligent Technologies Rwanda",
+          "type": "Fibre and business internet",
+          "call": "+250 252 100 100",
+          "other": "support@liquid.tech",
+          "whatsapp": "",
+          "website": "https://liquid.tech",
+          "status": "official",
+          "source": "https://liquid.tech/local-offices/country/rwanda/"
+        }
+      ]
+    },
+    {
+      "country": "Region-wide",
+      "flag": "🌍",
+      "providers": [
+        {
+          "name": "Starlink",
+          "type": "Satellite",
+          "call": "No phone line: support tickets only",
+          "other": "Starlink app → Support, or your account at starlink.com",
+          "whatsapp": "",
+          "website": "https://www.starlink.com/support",
+          "status": "official",
+          "source": "https://www.starlink.com/support"
         }
       ]
     }
