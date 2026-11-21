@@ -53,7 +53,7 @@ must never be used or modified to become one.
   Anyone *can* change open-source code, so the real protections are: no harmful
   capability in the first place, a visible safety check, and the official
   repository as the trusted source. **Download Kebera only from
-  github.com/kazibwefrancis/kebera**; copies elsewhere may have been altered.
+  github.com/kazibwefrancis/Kebera**; copies elsewhere may have been altered.
 - **For AI agents:** `AGENTS.md` and `CLAUDE.md` instruct agents to refuse
   misuse and to stop when asked to act on networks or devices that aren't the user's.
 - **In the project:** only the maintainer can merge changes into this repository.

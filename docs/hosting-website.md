@@ -56,5 +56,5 @@ The live GitHub stats and all links are set at the top of the script in
 `site/index.html`:
 
 ```js
-var OWNER = 'kazibwefrancis', REPO = 'kebera', BRANCH = 'main';
+var OWNER = 'kazibwefrancis', REPO = 'Kebera', BRANCH = 'main';
 ```

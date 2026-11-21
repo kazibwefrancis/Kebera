@@ -56,7 +56,7 @@ Then follow the path below that matches. Keep a running summary of results.
 
 ### A1. Easiest: the Kebera script (if they can download it)
 
-Ask whether they can download Kebera from **github.com/kazibwefrancis/kebera**
+Ask whether they can download Kebera from **github.com/kazibwefrancis/Kebera**
 (green **Code** button → **Download ZIP** → unzip). If yes:
 - Double-click **kebera.bat**, choose **2** (quick check, about 2 minutes) or
   **1** (standard, about 5 minutes, uses about 35 MB of data).

@@ -243,14 +243,14 @@ At the end you get three things:
 2. Open your **Downloads** folder, right-click `kebera-main.zip`, and choose **Extract All…** → **Extract**.
 3. Open the extracted **kebera-main** folder.
 
-(If you use git: `git clone https://github.com/kazibwefrancis/kebera.git`)
+(If you use git: `git clone https://github.com/kazibwefrancis/Kebera.git`)
 
 **Step 2: Run it**
 
 1. Double-click **`kebera.bat`**.
    - If Windows shows *"Windows protected your PC"*, click **More info** → **Run anyway**.
      This appears for any downloaded script. Only do this for Kebera downloaded from
-     the official page: `github.com/kazibwefrancis/kebera`.
+     the official page: `github.com/kazibwefrancis/Kebera`.
 2. A black window opens. Type a number and press **Enter**:
 
    | Choose | What it does | Time | Data used |
@@ -569,7 +569,7 @@ ready wording, in [How to escalate](templates/escalation.md).
   check stops the script if any target isn't your own local equipment or one of two
   fixed public test servers.
 - **Visible safeguards, not hidden ones.** The rules are written in plain view in every
-  script. Download Kebera **only** from `github.com/kazibwefrancis/kebera`; copies
+  script. Download Kebera **only** from `github.com/kazibwefrancis/Kebera`; copies
   elsewhere may have been changed.
 
 **Private**

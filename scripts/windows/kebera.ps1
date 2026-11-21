@@ -7,7 +7,7 @@
 #  (2) fixed public test services listed in $KeberaAllowedPublic.
 #  There is deliberately NO option to point it at other targets.
 #  Misuse or perversion of Kebera is not tolerated. See ACCEPTABLE_USE.md.
-#  Get Kebera only from https://github.com/kazibwefrancis/kebera
+#  Get Kebera only from https://github.com/kazibwefrancis/Kebera
 # =============================================================================
 <#
 .SYNOPSIS
